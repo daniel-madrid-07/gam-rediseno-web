@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { ClaveEntorno, ClaveFamilia } from "@datos/taxonomias";
-  import type { Maquina } from "@tipos";
+  import { sugerir, type MaquinaSugerible } from "@lib/proyecciones";
   import { MAXIMO_PROPUESTAS, PASOS } from "@datos/asistente";
-  import { FILTROS_VACIOS, consultar } from "@lib/catalogo";
+  import { FILTROS_VACIOS } from "@lib/catalogo";
   import { filtros } from "@lib/estado/filtros";
   import { dialogoAbierto } from "@lib/estado/interfaz";
   import { fuente, hayFoto, textoAlternativo } from "@lib/fotos";
@@ -19,7 +19,7 @@
    * catálogo, así que al final se puede aplicar el resultado y seguir afinando.
    */
   interface Props {
-    catalogo: Maquina[];
+    catalogo: MaquinaSugerible[];
   }
 
   const { catalogo }: Props = $props();
@@ -37,7 +37,13 @@
   });
 
   const propuestas = $derived(
-    enResultado ? consultar(catalogo, filtrosDelAsistente).slice(0, MAXIMO_PROPUESTAS) : [],
+    enResultado
+      ? sugerir(catalogo, {
+          familia: respuestas["familias"] ?? "",
+          entorno: respuestas["entornos"] ?? "",
+          cero: respuestas["cero"] === "1",
+        }).slice(0, MAXIMO_PROPUESTAS)
+      : [],
   );
 
   function responder(valor: string): void {
@@ -57,7 +63,7 @@
     setTimeout(() => document.getElementById("catalogo")?.scrollIntoView({ block: "start" }), 60);
   }
 
-  function abrirFamilia(maquina: Maquina): void {
+  function abrirFamilia(maquina: MaquinaSugerible): void {
     filtros.set({ ...filtrosDelAsistente, familias: [maquina.familia] });
     dialogoAbierto.set(null);
     setTimeout(() => {
@@ -159,7 +165,7 @@
               {/if}
               <span class="grow">
                 <b>{maquina.nombre}</b>
-                <small>{maquina.ficha[0]?.[0]}: {maquina.ficha[0]?.[1]}</small>
+                <small>{maquina.dato?.[0]}: {maquina.dato?.[1]}</small>
               </span>
               <svg class="ico" aria-hidden="true" focusable="false">
                 <use href="#i-arrow-right"></use>

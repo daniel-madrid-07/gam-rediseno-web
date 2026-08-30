@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Servicio } from "@tipos";
+  import type { ServicioBreve } from "@lib/proyecciones";
   import { FAMILIAS, type ClaveFamilia } from "@datos/taxonomias";
   import { filtros } from "@lib/estado/filtros";
   import { dialogoAbierto } from "@lib/estado/interfaz";
@@ -14,7 +14,7 @@
    * acaba de saltar es el fallo clásico de este patrón.
    */
   interface Props {
-    servicios: Servicio[];
+    servicios: ServicioBreve[];
   }
 
   const { servicios }: Props = $props();
@@ -42,7 +42,7 @@
     setTimeout(() => document.getElementById("catalogo")?.scrollIntoView({ block: "start" }), 60);
   }
 
-  function abrirServicio(servicio: Servicio): void {
+  function abrirServicio(servicio: ServicioBreve): void {
     const seccion = CON_SECCION[servicio.id];
     dialogoAbierto.set(null);
     setTimeout(() => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Maquina } from "@tipos";
+  import type { MaquinaBreve } from "@lib/proyecciones";
   import { FAMILIAS } from "@datos/taxonomias";
   import { fuente, hayFoto, textoAlternativo } from "@lib/fotos";
   import { quitar, seleccion, vaciar } from "@lib/estado/seleccion";
@@ -14,7 +14,7 @@
    * escribirlas otra vez a mano.
    */
   interface Props {
-    catalogo: Maquina[];
+    catalogo: MaquinaBreve[];
   }
 
   const { catalogo }: Props = $props();
@@ -22,7 +22,7 @@
   const elegidas = $derived(
     $seleccion
       .map((id) => catalogo.find((m) => m.id === id))
-      .filter((m): m is Maquina => Boolean(m)),
+      .filter((m): m is MaquinaBreve => Boolean(m)),
   );
 
   function irAlFormulario(): void {

@@ -4,7 +4,7 @@
   import { seleccion } from "@lib/estado/seleccion";
   import { avisar } from "@lib/estado/interfaz";
   import { EMPRESA } from "@/config/sitio";
-  import type { Maquina } from "@tipos";
+  import type { MaquinaNombrada } from "@lib/proyecciones";
 
   /**
    * Formulario de solicitud de presupuesto.
@@ -18,7 +18,7 @@
    * formulario lo dice claramente en vez de fingir un envío correcto.
    */
   interface Props {
-    catalogo: Maquina[];
+    catalogo: MaquinaNombrada[];
     comunidades: string[];
     /** URL que recibe el formulario. Sin ella, el envío queda desactivado. */
     endpoint?: string;

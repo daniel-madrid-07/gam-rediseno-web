@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Delegacion, Maquina, Resultado, Servicio } from "@tipos";
-  import { buscar, construirIndice } from "@lib/buscador";
+  import type { Resultado } from "@tipos";
+  import { buscar, type EntradaIndice } from "@lib/buscador";
   import { resaltar } from "@lib/texto";
   import { dialogoAbierto } from "@lib/estado/interfaz";
   import { filtros } from "@lib/estado/filtros";
@@ -16,14 +16,11 @@
    * seguir escribiendo mientras se recorre la lista con las flechas.
    */
   interface Props {
-    catalogo: Maquina[];
-    servicios: Servicio[];
-    delegaciones: Delegacion[];
+    /** Índice ya aplanado en build: aquí no se recorre el catálogo entero. */
+    indice: EntradaIndice[];
   }
 
-  const { catalogo, servicios, delegaciones }: Props = $props();
-
-  const indice = construirIndice({ catalogo, servicios, delegaciones });
+  const { indice }: Props = $props();
 
   let consulta = $state("");
   let activo = $state(0);

@@ -6,6 +6,8 @@ import PanelAccesibilidad from "@islas/dialogos/PanelAccesibilidad.svelte";
 import Asistente from "@islas/dialogos/Asistente.svelte";
 import FichaServicio from "@islas/dialogos/FichaServicio.svelte";
 import CajonNavegacion from "@islas/dialogos/CajonNavegacion.svelte";
+import { construirIndice } from "@lib/buscador";
+import { catalogoBreve, catalogoSugerible, serviciosBreves } from "@lib/proyecciones";
 import type { Delegacion, Maquina, Servicio } from "@tipos";
 
 /**
@@ -25,12 +27,16 @@ interface Props {
 }
 
 const { catalogo, servicios, delegaciones } = Astro.props;
+
+/* El indice del buscador se aplana aqui, en build: la isla no vuelve a
+   recorrer el catalogo y el HTML no lleva los textos largos que no muestra. */
+const indice = construirIndice({ catalogo, servicios, delegaciones });
 ---
 
 <Avisos client:idle />
-<BuscadorGlobal {catalogo} {servicios} {delegaciones} client:idle />
-<Bandeja {catalogo} client:idle />
+<BuscadorGlobal {indice} client:idle />
+<Bandeja catalogo={catalogoBreve(catalogo)} client:idle />
 <PanelAccesibilidad client:idle />
-<Asistente {catalogo} client:idle />
+<Asistente catalogo={catalogoSugerible(catalogo)} client:idle />
 <FichaServicio {servicios} client:idle />
-<CajonNavegacion {servicios} client:idle />
+<CajonNavegacion servicios={serviciosBreves(servicios)} client:idle />

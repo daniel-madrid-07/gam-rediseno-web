@@ -20,6 +20,9 @@ const SECCIONES: Resultado[] = [
   { tipo: "seccion", id: "faq", titulo: "Preguntas frecuentes", detalle: "Plazos, carnets y coberturas", icono: "i-info", href: "#faq" },
 ];
 
+/** Un resultado con el texto contra el que se busca, ya normalizado. */
+export type EntradaIndice = [Resultado, string];
+
 export interface Fuentes {
   catalogo: readonly Maquina[];
   servicios: readonly Servicio[];
@@ -27,8 +30,8 @@ export interface Fuentes {
 }
 
 /** Aplana los cuatro orígenes a una lista homogénea con su texto de búsqueda. */
-export function construirIndice(fuentes: Fuentes): [Resultado, string][] {
-  const entradas: [Resultado, string][] = [];
+export function construirIndice(fuentes: Fuentes): EntradaIndice[] {
+  const entradas: EntradaIndice[] = [];
 
   for (const m of fuentes.catalogo) {
     entradas.push([
@@ -94,7 +97,7 @@ function puntuar(texto: string, aguja: string, tipo: Resultado["tipo"]): number 
 }
 
 export function buscar(
-  indice: readonly [Resultado, string][],
+  indice: readonly EntradaIndice[],
   consulta: string,
   limite = 12,
 ): Resultado[] {
