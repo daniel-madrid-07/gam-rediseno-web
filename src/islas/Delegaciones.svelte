@@ -2,6 +2,7 @@
   import type { Delegacion } from "@tipos";
   import { normalizar, plural } from "@lib/texto";
   import { EMPRESA } from "@/config/sitio";
+  import MasCercanas from "./delegaciones/MasCercanas.svelte";
 
   /**
    * Buscador de la red de delegaciones.
@@ -49,6 +50,8 @@
 
   const telefonoE164 = (telefono: string): string => `+34${telefono.replace(/\s/g, "")}`;
 </script>
+
+<MasCercanas {delegaciones} />
 
 <search class="results__bar" aria-label="Buscar delegación">
   <div class="field-search grow" style="max-inline-size:26rem">

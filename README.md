@@ -63,6 +63,27 @@ Esta es la decisión de rendimiento del proyecto:
 Todo lo demás (cabecera, héroe, servicios, mantenimiento, formación, sectores,
 sostenibilidad, FAQ y pie) es HTML estático sin JavaScript asociado.
 
+## «¿Cuál es mi delegación?»
+
+Las 54 delegaciones traen latitud y longitud, así que la pregunta se responde
+en el navegador: `lib/geo.ts` calcula la distancia y devuelve las tres más
+cercanas. Sin servicio de mapas, sin clave de API y sin que la posición salga
+del dispositivo.
+
+Existe porque la búsqueda por nombre deja fuera el caso más común: quien está
+en un municipio sin delegación escribe su ciudad, no encuentra nada y no llega
+a saber que tiene una a treinta kilómetros.
+
+Dos reglas que conviene no romper al tocarlo:
+
+- **Nunca se pide el permiso al cargar.** Sólo al pulsar el botón. Un navegador
+  que pregunta por la ubicación sin que nadie lo haya pedido molesta, y Chrome
+  además penaliza los permisos solicitados sin interacción previa. Hay una
+  prueba que lo comprueba.
+- **Cada fallo se explica por lo que la persona puede hacer.** Denegado, no
+  disponible y tiempo agotado dan mensajes distintos, y los tres remiten al
+  buscador por provincia, que sigue funcionando.
+
 ## Estado
 
 Tres átomos, cada uno con su alcance y su duración:
@@ -80,7 +101,7 @@ ni un color.
 
 ```bash
 npm test              # 35 tests de lógica pura (filtrado, geo, texto)
-npm run test:e2e      # 45 recorridos en escritorio y móvil
+npm run test:e2e      # 55 recorridos en escritorio y móvil
 npm run auditar       # contraste AA en 12 escenarios (temas, móvil, diálogos)
 npm run medir         # Lighthouse en móvil y escritorio
 ```
@@ -146,6 +167,20 @@ oficial.
   usarla fuera de una vista previa.
 - **Los rangos técnicos del catálogo son orientativos por familia.** Sustituir
   por los datos del ERP cuando se conecte.
+
+### Sobre las páginas por delegación
+
+Se estudió crear una página por cada una de las 54, con su `LocalBusiness`, y
+se descartó: con los datos actuales (nombre, dirección, CP, teléfono y
+coordenadas) las páginas serían la misma plantilla con la ciudad cambiada, en
+torno al 2 % de contenido propio. Eso es literalmente el ejemplo que da Google
+de página puente: «páginas dirigidas a regiones o ciudades concretas que
+canalizan a los usuarios a una misma página».
+
+Sería buena práctica en cuanto haya con qué llenarlas: horario de cada
+delegación, qué familias hay disponibles en ella (del ERP), foto de la sede,
+responsable de zona y provincias que cubre. Con eso dejan de ser plantillas y
+pasan a ser páginas de ubicación legítimas.
 
 ## Migración
 

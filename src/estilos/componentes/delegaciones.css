@@ -18,3 +18,120 @@
 .deleg__meta a:hover { text-decoration: underline; text-underline-offset: .25em; }
 
 .deleg__meta .ico { inline-size: 1em; block-size: 1em; }
+
+/* =========================================================
+   ¿CUÁL ES MI DELEGACIÓN?
+   Bloque de localización por GPS, delante del buscador por nombre.
+   ========================================================= */
+.cercanas {
+  border: 1.5px solid var(--line-2);
+  border-radius: var(--r2);
+  padding: var(--s5);
+  margin-block-end: var(--s5);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.cercanas__cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+}
+
+.cercanas__cabeza > .grow {
+  min-inline-size: 0;
+}
+
+.cercanas h3 {
+  margin-block-end: 0.25rem;
+}
+
+.cercanas p {
+  max-inline-size: 52ch;
+}
+
+.cercanas__aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--t-sm);
+  color: var(--info);
+  background: var(--info-tint);
+  border: 1px solid color-mix(in srgb, var(--info) 35%, transparent);
+  border-radius: var(--r2);
+  padding: var(--s3) var(--s4);
+}
+
+.cercanas__aviso .ico {
+  flex: none;
+  inline-size: 1.15em;
+  block-size: 1.15em;
+  margin-block-start: 0.15em;
+}
+
+.cercanas__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cercanas__lista li {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding-block: var(--s3);
+  border-block-end: 1px solid var(--line);
+  min-inline-size: 0;
+}
+
+.cercanas__lista li:last-child {
+  border-block-end: 0;
+}
+
+/* El orden va en un círculo: se lee antes que un número suelto en la fila */
+.cercanas__orden {
+  flex: none;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--rp);
+  background: var(--paper-3);
+  color: var(--ink-2);
+  font-size: var(--t-xs);
+  font-weight: 600;
+}
+
+.cercanas__lista b {
+  display: block;
+  font-size: var(--t-sm);
+}
+
+.cercanas__lista small {
+  display: block;
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+}
+
+.cercanas__km {
+  flex: none;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (width < 34rem) {
+  /* En pantalla estrecha el teléfono baja a su propia línea */
+  .cercanas__lista li {
+    flex-wrap: wrap;
+  }
+
+  .cercanas__lista li > .btn {
+    inline-size: 100%;
+  }
+}
