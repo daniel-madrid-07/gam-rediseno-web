@@ -70,5 +70,8 @@ const { titulo, descripcion, ruta = "/", tipo = "website", precargas = [] } = As
 <script>
   /* Mantiene el <html> al día con lo que la persona cambie en el panel. */
   import { sincronizarDocumento } from "@lib/estado/preferencias";
+  import { sincronizarMarcaDeDialogo } from "@lib/estado/interfaz";
+
   sincronizarDocumento();
+  sincronizarMarcaDeDialogo();
 </script>

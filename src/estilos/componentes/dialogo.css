@@ -25,6 +25,8 @@
 .sheet::backdrop { background: rgb(6 8 11 / .62); backdrop-filter: blur(4px); }
 
 .sheet__panel {
+  /* El scroll se queda dentro: al llegar al final no arrastra la pagina */
+  overscroll-behavior: contain;
   margin-inline-start: auto; inline-size: min(44rem, 100%); block-size: 100%;
   background: var(--paper); display: flex; flex-direction: column; overflow: hidden;
   animation: slideIn var(--d3) var(--ease);

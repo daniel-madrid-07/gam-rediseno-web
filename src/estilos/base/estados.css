@@ -51,34 +51,118 @@
   contain-intrinsic-size: auto var(--alto-estimado);
 }
 
-/* Secciones con rejillas de tarjetas: son bastante más altas que la media */
-#servicios,
-#catalogo,
-#delegaciones {
-  --alto-estimado: 1700px;
-}
-
-#mantenimiento,
-#formacion,
-#contacto {
-  --alto-estimado: 1400px;
-}
-
-/* Bandas cortas: cifras, sectores y sostenibilidad */
-#cifras,
+/**
+ * Altura estimada de cada sección, medida en el navegador con el diferido
+ * desactivado (`scripts/medir-secciones.mjs`). No son cifras a ojo: si la
+ * estimación se pasa, la página encoge al renderizarse de verdad y el
+ * desplazamiento se recorta; si se queda corta, crece y da un tirón. Las dos
+ * cosas se ven como saltos al desplazarse.
+ *
+ * Conviene volver a medirlas si se añade o se quita contenido de una sección.
+ */
 #familias {
-  --alto-estimado: 700px;
+  --alto-estimado: 2793px;
+}
+
+#catalogo {
+  --alto-estimado: 4325px;
+}
+
+#cifras {
+  --alto-estimado: 686px;
+}
+
+#servicios {
+  --alto-estimado: 2535px;
+}
+
+#mantenimiento {
+  --alto-estimado: 2020px;
+}
+
+#formacion {
+  --alto-estimado: 1756px;
+}
+
+#delegaciones {
+  --alto-estimado: 2177px;
+}
+
+#sectores {
+  --alto-estimado: 1149px;
+}
+
+#sostenibilidad {
+  --alto-estimado: 847px;
+}
+
+#faq {
+  --alto-estimado: 1117px;
+}
+
+#contacto {
+  --alto-estimado: 1465px;
 }
 
 @media (width < 48rem) {
-  /* En móvil todo se apila, así que las secciones son bastante más altas */
-  .cv {
-    --alto-estimado: 1400px;
+  /* En móvil todo se apila y las proporciones cambian bastante */
+  #familias {
+    --alto-estimado: 1218px;
   }
 
-  #servicios,
-  #catalogo,
-  #delegaciones {
-    --alto-estimado: 2600px;
+  #catalogo {
+    --alto-estimado: 5425px;
   }
+
+  #cifras {
+    --alto-estimado: 905px;
+  }
+
+  #servicios {
+    --alto-estimado: 2537px;
+  }
+
+  #mantenimiento {
+    --alto-estimado: 829px;
+  }
+
+  #formacion {
+    --alto-estimado: 789px;
+  }
+
+  #delegaciones {
+    --alto-estimado: 3930px;
+  }
+
+  #sectores {
+    --alto-estimado: 1964px;
+  }
+
+  #sostenibilidad {
+    --alto-estimado: 1469px;
+  }
+
+  #faq {
+    --alto-estimado: 1054px;
+  }
+
+  #contacto {
+    --alto-estimado: 2424px;
+  }
+}
+
+/**
+ * Con un diálogo abierto, las secciones dejan de diferir su renderizado.
+ *
+ * Un `<dialog>` modal cubre el viewport entero, así que Chrome deja de
+ * considerar visible lo que hay detrás y recalcula qué secciones puede saltar.
+ * La altura del documento cambia y el desplazamiento se corrige solo: medido,
+ * unos 17 px de salto al abrir y otros tantos al cerrar. Eso, repetido cada
+ * vez que se pulsa un botón de la cabecera, es el «rebote» que se reportó.
+ *
+ * Mientras el diálogo está abierto no se ve nada de la página, así que diferir
+ * su renderizado no ahorra nada: se desactiva y la altura deja de moverse.
+ */
+:root[data-dialogo] .cv {
+  content-visibility: visible;
 }

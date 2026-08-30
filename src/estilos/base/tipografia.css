@@ -11,7 +11,31 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
+
+  /* El carril de la barra de desplazamiento se reserva siempre. En Windows y
+     Linux la barra ocupa sitio de verdad (no se superpone como en macOS), así
+     que sin esto cualquier cambio de alto de la página la hace aparecer o
+     desaparecer y todo el maquetado salta unos 13 px en horizontal. */
+  scrollbar-gutter: stable;
 }
+
+/**
+ * Nota sobre bloquear el scroll con un diálogo abierto.
+ *
+ * Se probó (`overflow: hidden` en `html` mientras hay un modal) y se retiró:
+ * al dejar la página sin desplazamiento, `content-visibility: auto` recalcula
+ * qué queda fuera de pantalla, las secciones se contraen a su altura estimada
+ * y la posición de scroll se recorta. Medido: de 900 px saltaba a 532. Un
+ * salto peor que el problema que venía a resolver.
+ *
+ * Lo que sí elimina el rebote está en otras tres piezas:
+ *   · `overscroll-behavior: contain` en los paneles, para que su scroll no
+ *     encadene con el de la página al llegar al final;
+ *   · `focus({ preventScroll: true })` al cerrar, para que devolver el foco al
+ *     botón no arrastre la página;
+ *   · `scrollbar-gutter: stable` aquí arriba, para que la barra no mueva el
+ *     maquetado en horizontal.
+ */
 
 body {
   margin: 0;

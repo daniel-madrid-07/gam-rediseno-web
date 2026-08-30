@@ -101,7 +101,7 @@ ni un color.
 
 ```bash
 npm test              # 35 tests de lógica pura (filtrado, geo, texto)
-npm run test:e2e      # 55 recorridos en escritorio y móvil
+npm run test:e2e      # 69 recorridos en escritorio y móvil
 npm run auditar       # contraste AA en 12 escenarios (temas, móvil, diálogos)
 npm run medir         # Lighthouse en móvil y escritorio
 ```
@@ -129,6 +129,18 @@ Lo que se probó y **empeoraba**, por si alguien lo vuelve a intentar:
 La auditoría de contraste desactiva `content-visibility` antes de medir: Chrome
 no recalcula estilos fuera de pantalla y, sin eso, informa de fallos que no
 existen.
+
+### Alturas de las secciones diferidas
+
+```bash
+node scripts/medir-secciones.mjs   # imprime las reglas listas para pegar
+```
+
+`content-visibility: auto` necesita una altura estimada por sección. Si se pasa,
+la página encoge al renderizarse de verdad; si se queda corta, crece. Las dos
+cosas se ven como saltos al desplazarse. Los valores de
+`estilos/base/estados.css` están **medidos**, no puestos a ojo: conviene volver
+a pasar el script al añadir o quitar contenido de una sección.
 
 ## Tipografías
 

@@ -30,3 +30,21 @@ export function avisar(texto: string, tono: Aviso["tono"] = "neutro"): void {
 
 /** Identificador del diálogo abierto, o null. Sólo puede haber uno a la vez. */
 export const dialogoAbierto = atom<string | null>(null);
+
+/**
+ * Marca el <html> mientras hay un diálogo abierto.
+ *
+ * Lo consume el CSS para que las secciones no recalculen su altura detrás del
+ * modal (ver `estilos/base/estados.css`). Se hace con un atributo y no tocando
+ * estilos desde JavaScript por la misma razón que las preferencias: la
+ * decisión visual vive en la hoja de estilos, donde se puede auditar.
+ *
+ * Devuelve la función para desuscribirse.
+ */
+export function sincronizarMarcaDeDialogo(): () => void {
+  return dialogoAbierto.subscribe((abierto) => {
+    const raiz = document.documentElement;
+    if (abierto) raiz.setAttribute("data-dialogo", abierto);
+    else raiz.removeAttribute("data-dialogo");
+  });
+}

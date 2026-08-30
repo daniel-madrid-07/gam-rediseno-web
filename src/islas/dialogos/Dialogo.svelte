@@ -32,6 +32,11 @@
     if (!dialogo) return;
 
     if (abierto && !dialogo.open) {
+      // Se cierra cualquier otro antes de abrir: dos <dialog> modales a la vez
+      // se apilan en la capa superior y parpadean uno sobre otro
+      for (const otro of document.querySelectorAll<HTMLDialogElement>("dialog[open]")) {
+        if (otro !== dialogo) otro.close();
+      }
       quienAbrio = document.activeElement as HTMLElement | null;
       dialogo.showModal();
     } else if (!abierto && dialogo.open) {
@@ -42,7 +47,10 @@
   /** Cierra tanto si lo pide el botón como si lo pide la tecla Escape. */
   function alCerrar(): void {
     if ($dialogoAbierto === nombre) dialogoAbierto.set(null);
-    if (quienAbrio?.isConnected) quienAbrio.focus();
+    // `preventScroll` es lo que evita el rebote: sin él, el navegador desliza
+    // la página hasta el botón, y con `scroll-behavior: smooth` esa vuelta se
+    // ve como un salto. El botón está en la cabecera fija, así que ya se ve.
+    if (quienAbrio?.isConnected) quienAbrio.focus({ preventScroll: true });
     quienAbrio = null;
   }
 
