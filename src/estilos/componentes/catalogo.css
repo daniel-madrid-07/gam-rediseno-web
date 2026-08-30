@@ -234,6 +234,18 @@
 .side__panel {
   /* El scroll se queda dentro: al llegar al final no arrastra la pagina */
   overscroll-behavior: contain;
+
+  /* El carril de la barra se reserva siempre. El contenido de estos paneles
+     cambia de alto mientras están abiertos (los ajustes de accesibilidad, los
+     equipos de la bandeja, los pasos del asistente), así que la barra aparece
+     y desaparece y sin esto todo el contenido salta 13 px a un lado y al otro.
+     Es el mismo motivo por el que la página lo lleva en `html`. */
+  scrollbar-gutter: stable;
+
+  /* La entrada se promociona al compositor. Abrir un diálogo despierta a la
+     vez a los seis componentes suscritos al mismo átomo, y si el deslizamiento
+     compite con ese trabajo en el hilo principal se ven tirones. */
+  will-change: transform;
   inline-size: min(25rem, 100%); block-size: 100%; margin-inline-start: auto;
   background: var(--paper); display: flex; flex-direction: column; overflow-y: auto;
   animation: slideIn var(--d3) var(--ease);

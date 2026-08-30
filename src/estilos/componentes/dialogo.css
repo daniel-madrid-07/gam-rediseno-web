@@ -27,6 +27,7 @@
 .sheet__panel {
   /* El scroll se queda dentro: al llegar al final no arrastra la pagina */
   overscroll-behavior: contain;
+  will-change: transform;
   margin-inline-start: auto; inline-size: min(44rem, 100%); block-size: 100%;
   background: var(--paper); display: flex; flex-direction: column; overflow: hidden;
   animation: slideIn var(--d3) var(--ease);
@@ -36,7 +37,7 @@
 
 .sheet__top h2 { font-size: var(--t-2xl); }
 
-.sheet__body { padding: var(--s6) var(--s5); overflow-y: auto; display: flex; flex-direction: column; gap: var(--s6); }
+.sheet__body { padding: var(--s6) var(--s5); overflow-y: auto; scrollbar-gutter: stable; overscroll-behavior: contain; display: flex; flex-direction: column; gap: var(--s6); }
 
 .sheet__body > p { max-inline-size: var(--measure); }
 
@@ -96,7 +97,9 @@
 
 .palette__esc { font-family: var(--mono); font-size: 11px; color: var(--ink-3); border: 1px solid var(--line); border-radius: var(--r1); padding: .2em .5em; }
 
-.palette__out { overflow-y: auto; padding: var(--s2); }
+/* La lista de resultados cambia de alto con cada letra tecleada: sin reservar
+   el carril, la barra aparece y desaparece y los resultados bailan a los lados. */
+.palette__out { overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: var(--s2); }
 
 .palette__grp { padding: var(--s3) var(--s3) var(--s1); font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 

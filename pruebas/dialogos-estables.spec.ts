@@ -29,11 +29,9 @@ test.describe("estabilidad al abrir y cerrar", () => {
       await page.goto("/");
       await activarDialogos(page);
 
-      /* Se baja a ritmo de rueda de ratón, no de un salto. Con
-         `content-visibility` la altura del documento es una estimación hasta
-         que cada sección se renderiza, así que un `scrollTo` a mitad de página
-         se recorta y luego se corrige solo: eso pasa con diálogos y sin ellos,
-         y mediría algo que no es lo reportado. */
+      /* Se baja a ritmo de rueda de ratón, no de un salto, para que las
+         imágenes diferidas terminen de cargar y la altura del documento se
+         asiente antes de medir. */
       await page.evaluate(async () => {
         for (let y = 0; y < 3000; y += 120) {
           window.scrollTo(0, y);
@@ -90,6 +88,19 @@ test.describe("estabilidad al abrir y cerrar", () => {
           .overscrollBehaviorY,
     );
     expect(contencion).toBe("contain");
+  });
+
+  test("los paneles reservan su carril de barra", async ({ page }) => {
+    /* El contenido de estos paneles cambia de alto mientras están abiertos, así
+       que su barra aparece y desaparece. Sin el carril reservado, todo lo de
+       dentro salta a un lado y al otro: es el «rebote» que se reportó. */
+    await page.goto("/");
+    await activarDialogos(page);
+    await page.locator("#btn-a11y").dispatchEvent("click");
+
+    const panel = page.locator("dialog[open] .side__panel");
+    await expect(panel).toHaveCSS("scrollbar-gutter", "stable");
+    await expect(panel).toHaveCSS("overscroll-behavior-y", "contain");
   });
 
   test("el carril de la barra de desplazamiento está reservado siempre", async ({ page }) => {
