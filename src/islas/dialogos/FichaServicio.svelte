@@ -60,7 +60,7 @@
             sizes="(min-width: 48rem) 42rem, 92vw"
             alt={textoAlternativo(activo.id, activo.nombre)}
             width="800"
-            height="600"
+            height="500"
             loading="lazy"
             decoding="async"
           />

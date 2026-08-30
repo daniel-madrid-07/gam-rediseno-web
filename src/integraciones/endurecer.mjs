@@ -128,6 +128,50 @@ export default function endurecer({ base = "/" } = {}) {
           }
         }
 
+        /* ---- Ninguna página se publica sin estilos ----
+         *
+         * Pasó dos veces durante el desarrollo: compilar mientras el servidor
+         * de vista previa aún tenía tomado `dist/` dejaba el HTML sin la hoja
+         * y sin ningún error. La página se sirve en Times New Roman y sin
+         * maquetar, y no hay forma de enterarse hasta abrirla.
+         */
+        for (const ruta of htmls) {
+          const html = await readFile(ruta, "utf8");
+          const enlazada = /<link[^>]+rel="stylesheet"/.test(html);
+          const enLinea = /<style>[\s\S]{500,}?<\/style>/.test(html);
+          if (!enlazada && !enLinea) {
+            throw new Error(
+              `${relative(raiz, ruta)} se ha generado sin hoja de estilos. ` +
+                "Suele pasar al compilar con el servidor de vista previa abierto: " +
+                "ciérralo, borra dist/ y vuelve a compilar.",
+            );
+          }
+        }
+
+        /* ---- Todas las rutas llevan la base de despliegue ----
+         *
+         * Las islas se compilan también para el navegador, donde `process.env`
+         * no existe. Si la base se calcula con `process.env`, en el paquete de
+         * cliente sale "/" y cada imagen que pinta una isla pide `/img/...` en
+         * lugar de `/base/img/...`. En local no se ve, porque allí la base ya
+         * es "/", así que sólo aparece una vez publicado. De ahí esta guarda.
+         */
+        const prefijo = base.replace(/\/$/, "");
+        if (prefijo) {
+          const sinBase = [];
+          for await (const recurso of archivos(raiz, [".js", ".html"])) {
+            const contenido = await readFile(recurso, "utf8");
+            if (/["'`]\/(img|fuentes)\//.test(contenido)) sinBase.push(relative(raiz, recurso));
+          }
+          if (sinBase.length > 0) {
+            throw new Error(
+              `${sinBase.length} archivo(s) apuntan a /img/ sin la base "${prefijo}": ` +
+                `${sinBase.slice(0, 3).join(", ")}. ` +
+                "Suele venir de leer process.env en código que llega al navegador.",
+            );
+          }
+        }
+
         if (sospechosos.length > 0) {
           for (const { archivo, motivo } of sospechosos) {
             logger.error(`  ${archivo}: ${motivo}`);

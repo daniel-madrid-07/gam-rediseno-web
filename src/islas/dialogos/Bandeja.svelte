@@ -82,7 +82,7 @@
                 sizes="4rem"
                 alt={textoAlternativo(maquina.id, maquina.nombre)}
                 width="800"
-                height="600"
+                height="500"
                 loading="lazy"
                 decoding="async"
               />

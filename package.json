@@ -20,9 +20,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "auditar": "node scripts/auditar.mjs",
+    "auditar": "node scripts/auditar.mjs && node scripts/auditar-hover.mjs",
     "verify": "npm run lint && npm run check && npm run test && npm run test:e2e",
-    "deploy": "cross-env DESPLIEGUE=github astro build",
+    "deploy": "cross-env PUBLIC_DESPLIEGUE=github astro build",
     "medir": "node scripts/medir.mjs",
     "fuentes": "node scripts/traer-fuentes.mjs && python scripts/afinar-fuentes.py"
   },

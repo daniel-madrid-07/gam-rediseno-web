@@ -22,7 +22,16 @@
 
 .shelf__card .chip:not(.chip--ghost) { background: var(--ink); color: var(--paper); }
 
-.shelf__card .chip:not(.chip--ghost):hover { background: var(--night); }
+/* El hover fija fondo Y texto a la vez. La regla que había aquí sólo cambiaba
+   el fondo a `--night` y dejaba el texto heredado en `--paper`; en tema claro
+   eso es blanco sobre negro y se lee, pero en tema oscuro `--paper` también es
+   casi negro y el botón quedaba a 1,06:1, ilegible. Cambiar un color de un par
+   sin mirar el otro es justo el fallo que este archivo debe evitar. */
+.shelf__card .chip:not(.chip--ghost):hover {
+  background: var(--gam-on);
+  color: var(--gam-field);
+}
+
 
 .shelf__lead { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s2) var(--s4); }
 
@@ -52,7 +61,16 @@
 }
 
 .fam__img {
-  aspect-ratio: 16 / 10; inline-size: 100%; object-fit: cover; background: #FFFFFF;
+  aspect-ratio: 16 / 10;
+  inline-size: 100%;
+  /* Sin esto el `aspect-ratio` no se aplica: el <img> lleva los atributos
+     `width` y `height`, y con las dos dimensiones definidas el navegador los
+     usa tal cual. La caja salía vertical (380x600) para una foto apaisada, así
+     que `cover` la ampliaba 2,3 veces y recortaba los lados: de ahí que se
+     vieran borrosas y con zoom. */
+  block-size: auto;
+  object-fit: cover;
+  background: #FFFFFF;
   transition: opacity var(--d2) var(--ease);
 }
 

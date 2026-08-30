@@ -55,10 +55,10 @@
       <img
         src={foto.src}
         srcset={foto.srcset}
-        sizes="(min-width: 64rem) 19rem, (min-width: 40rem) 45vw, 92vw"
+        sizes="(min-width: 64rem) 25rem, (min-width: 40rem) 46vw, 92vw"
         alt={textoAlternativo(maquina.id, maquina.nombre)}
         width="800"
-        height="600"
+        height="500"
         loading="lazy"
         decoding="async"
       />

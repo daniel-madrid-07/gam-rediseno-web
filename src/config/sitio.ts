@@ -1,18 +1,28 @@
 /**
  * Configuración de despliegue y datos de la empresa.
  *
- * `origen` y `base` cambian según dónde se publique: GitHub Pages sirve el
- * sitio bajo un subdirectorio, un dominio propio lo sirve en la raíz. Todo lo
- * demás del proyecto lee de aquí para no repartir URLs por el código.
+ * IMPORTANTE: aquí NO se puede leer `process.env`. Este módulo lo importan
+ * las islas de Svelte, que se compilan también para el navegador, y allí
+ * `process` no existe: la comprobación salía siempre falsa, la base quedaba
+ * en "/" y todas las imágenes que pinta una isla pedían `/img/...` en lugar
+ * de `/gam-rediseno-web/img/...`. En local no se notaba, porque allí la base
+ * es "/" de todas formas; en producción se veían las tarjetas en gris.
+ *
+ * `import.meta.env` sí lo sustituye Vite en los dos paquetes, y `BASE_URL` lo
+ * rellena Astro con la base configurada, así que no puede desincronizarse.
  */
 
-const enPaginasGitHub = process.env["DESPLIEGUE"] === "github";
+/** Astro garantiza que coincide con `base` de astro.config.mjs. */
+const BASE = import.meta.env.BASE_URL || "/";
+
+/** Las variables con prefijo PUBLIC_ son las que Astro expone al cliente. */
+const enPaginasGitHub = import.meta.env["PUBLIC_DESPLIEGUE"] === "github";
 
 export const SITIO = {
   origen: enPaginasGitHub
     ? "https://daniel-madrid-07.github.io"
     : "https://gamrentals.com",
-  base: enPaginasGitHub ? "/gam-rediseno-web" : "/",
+  base: BASE,
 
   /** La vista previa no debe competir en buscadores con el sitio oficial. */
   indexable: !enPaginasGitHub,

@@ -22,6 +22,7 @@ interface Props {
   /** La foto del héroe es el LCP: se carga con prioridad y sin diferir. */
   prioritaria?: boolean;
   ancho?: number;
+  /** Alto intrínseco real del archivo. Las fotos del parque son 800x500. */
   alto?: number;
 }
 
@@ -32,7 +33,7 @@ const {
   class: clase,
   prioritaria = false,
   ancho = 800,
-  alto = 600,
+  alto = 500,
 } = Astro.props;
 
 const catalogo = ALTERNATIVOS as Record<string, string>;

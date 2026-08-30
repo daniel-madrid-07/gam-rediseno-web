@@ -65,12 +65,6 @@ for (const escenario of ESCENARIOS) {
     await pagina.waitForTimeout(500);
   }
 
-  // Sin esto, todo lo que esté fuera de pantalla se mide con estilos rancios
-  await pagina.evaluate(() => {
-    document.querySelectorAll(".cv").forEach((el) => {
-      el.style.contentVisibility = "visible";
-    });
-  });
   await pagina.waitForTimeout(400);
 
   await pagina.evaluate(auditor);

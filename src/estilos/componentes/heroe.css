@@ -97,7 +97,10 @@
   color: var(--gam-on); text-decoration: none;
 }
 
-.telcard__n:hover { color: var(--ink); }
+/* El texto se queda en blanco: la tarjeta tiene fondo rojo de marca y pasarlo
+   a `--ink` daba 2,94:1 en tema claro. La respuesta al ratón la da el
+   subrayado, que no depende del color. */
+.telcard__n:hover { color: var(--gam-on); text-decoration: underline; text-underline-offset: .2em; }
 
 .telcard__n .ico { inline-size: .8em; block-size: .8em; }
 

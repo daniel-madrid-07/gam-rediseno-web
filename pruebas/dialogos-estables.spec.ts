@@ -14,6 +14,8 @@ import { activarDialogos } from "./ayudas";
  *  3. Sin `scrollbar-gutter`, aparecer y desaparecer la barra movía el
  *     maquetado unos 13 px en horizontal.
  *  4. Dos diálogos podían quedar abiertos a la vez y parpadeaban uno sobre otro.
+ *  5. `content-visibility` recalculaba las secciones detrás del modal; se
+ *     retiró por completo (ver `estilos/base/estados.css`).
  */
 
 const BOTONES = [
@@ -88,18 +90,6 @@ test.describe("estabilidad al abrir y cerrar", () => {
           .overscrollBehaviorY,
     );
     expect(contencion).toBe("contain");
-  });
-
-  test("las secciones no recalculan su altura detrás de un diálogo", async ({ page }) => {
-    await page.goto("/");
-    await activarDialogos(page);
-    await page.locator("#btn-a11y").dispatchEvent("click");
-
-    await expect(page.locator("html")).toHaveAttribute("data-dialogo", "accesibilidad");
-    const diferido = await page.evaluate(
-      () => getComputedStyle(document.getElementById("servicios")!).contentVisibility,
-    );
-    expect(diferido).toBe("visible");
   });
 
   test("el carril de la barra de desplazamiento está reservado siempre", async ({ page }) => {

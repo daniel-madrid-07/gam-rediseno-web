@@ -29,140 +29,25 @@
 }
 
 /**
- * ---------- Renderizado diferido ----------
+ * ---------- Renderizado diferido: retirado ----------
  *
- * `content-visibility: auto` deja sin renderizar lo que está fuera de pantalla.
- * En una página tan larga como esta vale 11 puntos de rendimiento en móvil
- * (la primera pintura pasa de 3,0 s a 1,8 s), así que se queda.
+ * Estas secciones llevaban `content-visibility: auto` para no renderizar lo
+ * que estaba fuera de pantalla. Se ha quitado tras medirlo de nuevo:
  *
- * El precio es `contain-intrinsic-size`: mientras la sección está saltada, el
- * navegador reserva esa altura estimada en lugar de la real. Si la estimación
- * se queda muy corta, las secciones de más abajo se colocan demasiado arriba
- * y las herramientas automáticas creen ver solapamientos que en pantalla no
- * existen. Por eso la altura se ajusta por sección en vez de usar un único
- * valor para todas.
+ *  · Cuando se puso, valía 11 puntos de rendimiento en móvil. Hoy vale CERO:
+ *    96 con él y 96 sin él. Las tipografías autoalojadas y recortadas, la
+ *    precarga del LCP y el índice del buscador fuera del HTML le quitaron el
+ *    trabajo que hacía.
+ *  · A cambio cobraba caro. Obligaba a mantener una altura estimada por
+ *    sección (y si no cuadraba, la página encogía o crecía al desplazarse), y
+ *    con un diálogo modal abierto Chrome recalculaba qué secciones saltarse:
+ *    17 px de salto al abrir y otros tantos al cerrar, cada vez.
  *
- * `auto` delante del valor es lo que hace que, una vez renderizada de verdad,
- * el navegador recuerde su tamaño real y deje de usar la estimación.
+ * Si algún día vuelve a hacer falta, la forma correcta es medir las alturas
+ * con `scripts/medir-secciones.mjs` en lugar de estimarlas a ojo, y comprobar
+ * el comportamiento con los diálogos abiertos.
  */
 .cv {
-  --alto-estimado: 900px;
-  content-visibility: auto;
-  contain-intrinsic-size: auto var(--alto-estimado);
-}
-
-/**
- * Altura estimada de cada sección, medida en el navegador con el diferido
- * desactivado (`scripts/medir-secciones.mjs`). No son cifras a ojo: si la
- * estimación se pasa, la página encoge al renderizarse de verdad y el
- * desplazamiento se recorta; si se queda corta, crece y da un tirón. Las dos
- * cosas se ven como saltos al desplazarse.
- *
- * Conviene volver a medirlas si se añade o se quita contenido de una sección.
- */
-#familias {
-  --alto-estimado: 2793px;
-}
-
-#catalogo {
-  --alto-estimado: 4325px;
-}
-
-#cifras {
-  --alto-estimado: 686px;
-}
-
-#servicios {
-  --alto-estimado: 2535px;
-}
-
-#mantenimiento {
-  --alto-estimado: 2020px;
-}
-
-#formacion {
-  --alto-estimado: 1756px;
-}
-
-#delegaciones {
-  --alto-estimado: 2177px;
-}
-
-#sectores {
-  --alto-estimado: 1149px;
-}
-
-#sostenibilidad {
-  --alto-estimado: 847px;
-}
-
-#faq {
-  --alto-estimado: 1117px;
-}
-
-#contacto {
-  --alto-estimado: 1465px;
-}
-
-@media (width < 48rem) {
-  /* En móvil todo se apila y las proporciones cambian bastante */
-  #familias {
-    --alto-estimado: 1218px;
-  }
-
-  #catalogo {
-    --alto-estimado: 5425px;
-  }
-
-  #cifras {
-    --alto-estimado: 905px;
-  }
-
-  #servicios {
-    --alto-estimado: 2537px;
-  }
-
-  #mantenimiento {
-    --alto-estimado: 829px;
-  }
-
-  #formacion {
-    --alto-estimado: 789px;
-  }
-
-  #delegaciones {
-    --alto-estimado: 3930px;
-  }
-
-  #sectores {
-    --alto-estimado: 1964px;
-  }
-
-  #sostenibilidad {
-    --alto-estimado: 1469px;
-  }
-
-  #faq {
-    --alto-estimado: 1054px;
-  }
-
-  #contacto {
-    --alto-estimado: 2424px;
-  }
-}
-
-/**
- * Con un diálogo abierto, las secciones dejan de diferir su renderizado.
- *
- * Un `<dialog>` modal cubre el viewport entero, así que Chrome deja de
- * considerar visible lo que hay detrás y recalcula qué secciones puede saltar.
- * La altura del documento cambia y el desplazamiento se corrige solo: medido,
- * unos 17 px de salto al abrir y otros tantos al cerrar. Eso, repetido cada
- * vez que se pulsa un botón de la cabecera, es el «rebote» que se reportó.
- *
- * Mientras el diálogo está abierto no se ve nada de la página, así que diferir
- * su renderizado no ahorra nada: se desactiva y la altura deja de moverse.
- */
-:root[data-dialogo] .cv {
-  content-visibility: visible;
+  /* Marcador de sección larga. Sin efecto visual; lo usan los scripts de
+     auditoría para saber qué secciones conviene mirar enteras. */
 }

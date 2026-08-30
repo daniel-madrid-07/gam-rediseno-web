@@ -4,7 +4,16 @@ import svelte from "@astrojs/svelte";
 import sitemap from "@astrojs/sitemap";
 import endurecer from "./src/integraciones/endurecer.mjs";
 
-import { SITIO } from "./src/config/sitio.ts";
+/**
+ * La decisión de dónde se publica se toma aquí y sólo aquí. `src/config/sitio.ts`
+ * la recibe a través de `import.meta.env`, que es lo único que llega igual al
+ * paquete de servidor y al de navegador.
+ */
+const enPaginasGitHub = process.env.PUBLIC_DESPLIEGUE === "github";
+const SITIO = {
+  origen: enPaginasGitHub ? "https://daniel-madrid-07.github.io" : "https://gamrentals.com",
+  base: enPaginasGitHub ? "/gam-rediseno-web" : "/",
+};
 
 /**
  * Salida estática: el sitio se sirve desde cualquier CDN o desde GitHub Pages

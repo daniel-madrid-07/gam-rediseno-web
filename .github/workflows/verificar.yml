@@ -73,7 +73,7 @@ jobs:
       - name: Compilar para GitHub Pages
         run: npm run build:fast
         env:
-          DESPLIEGUE: github
+          PUBLIC_DESPLIEGUE: github
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

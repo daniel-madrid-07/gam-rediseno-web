@@ -101,8 +101,8 @@ ni un color.
 
 ```bash
 npm test              # 35 tests de lógica pura (filtrado, geo, texto)
-npm run test:e2e      # 69 recorridos en escritorio y móvil
-npm run auditar       # contraste AA en 12 escenarios (temas, móvil, diálogos)
+npm run test:e2e      # 67 recorridos en escritorio y móvil
+npm run auditar       # contraste AA en reposo y en :hover / :focus-visible
 npm run medir         # Lighthouse en móvil y escritorio
 ```
 
@@ -124,7 +124,8 @@ Lo que se probó y **empeoraba**, por si alguien lo vuelve a intentar:
   la hoja completa. FCP 2,6 s.
 - Quitar los 54 nodos `LocalBusiness` del JSON-LD: ahorra 4 KB comprimidos y la
   puntuación no se mueve, así que no compensa perder el marcado local.
-- Quitar `content-visibility`: cuesta 11 puntos de rendimiento en móvil.
+- `content-visibility` valía 11 puntos cuando se puso; hoy vale cero y se ha
+  retirado (ver `estilos/base/estados.css`).
 
 La auditoría de contraste desactiva `content-visibility` antes de medir: Chrome
 no recalcula estilos fuera de pantalla y, sin eso, informa de fallos que no
