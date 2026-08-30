@@ -14,7 +14,15 @@
 
 .shelf__card .btn--gam { --bg: var(--ink); --bd: var(--ink); --fg: var(--paper); }
 
-.shelf__card .btn--gam:hover { --bg: var(--night); --bd: var(--night); }
+/* El hover NO puede fijar un color absoluto aquí. El texto es `--paper`, que
+   es blanco en tema claro y casi negro en tema oscuro; poner el fondo en
+   `--night` daba 19:1 en claro y 1,06:1 en oscuro, ilegible. Expresado como
+   mezcla con `--ink` (que siempre es el opuesto de `--paper`), el par mantiene
+   su contraste en los dos temas por construcción. */
+.shelf__card .btn--gam:hover {
+  --bg: color-mix(in srgb, var(--ink) 86%, var(--paper));
+  --bd: color-mix(in srgb, var(--ink) 86%, var(--paper));
+}
 
 .shelf__card .chip--ghost { color: var(--gam-on); border-color: color-mix(in srgb, var(--gam-on) 55%, transparent); }
 

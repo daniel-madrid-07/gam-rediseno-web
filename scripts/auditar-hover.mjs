@@ -53,13 +53,22 @@ for (const escenario of ESCENARIOS) {
     { tema: escenario.tema, contraste: escenario.contraste ?? null },
   );
 
-  /* Sin esto, lo que está fuera de pantalla se mide con estilos rancios */
   await pagina.evaluate((selector) => {
-    document.querySelectorAll(".cv").forEach((s) => (s.style.contentVisibility = "visible"));
+    /* Las transiciones se apagan antes de medir. Los botones animan color y
+       fondo durante 200 ms, así que `getComputedStyle` justo después de forzar
+       `:hover` devuelve todavía el valor de reposo y la auditoría da un OK
+       falso. Así se escapó el botón «Buscar», que en tema oscuro quedaba a
+       1,06:1 con el ratón encima. Apagarlas es además mucho más rápido que
+       esperar a que terminen elemento por elemento. */
+    const sinMovimiento = document.createElement("style");
+    sinMovimiento.textContent =
+      "*,*::before,*::after{transition:none !important;animation:none !important}";
+    document.head.append(sinMovimiento);
+
     // Se marca cada interactivo para poder recorrerlos por índice desde CDP
     document.querySelectorAll(selector).forEach((el, i) => el.setAttribute("data-auditoria", String(i)));
   }, INTERACTIVOS);
-  await pagina.waitForTimeout(500);
+  await pagina.waitForTimeout(400);
 
   const total = await pagina.evaluate(() => document.querySelectorAll("[data-auditoria]").length);
   const { root } = await cdp.send("DOM.getDocument", { depth: -1 });

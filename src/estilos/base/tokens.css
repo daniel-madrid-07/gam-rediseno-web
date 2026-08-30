@@ -32,7 +32,11 @@
     /* ---- Marca: el rojo GAM ---- */
     --gam:         #E40F23;   /* superficies, logo, grafismo */
     --gam-ink:     #C10B1C;   /* texto sobre claro  6,2:1 */
-    --gam-deep:    #990916;   /* estado activo */
+    /* Fondo del estado activo de los botones rojos. NO se redefine en tema
+       oscuro: sus tres usos son fondos que llevan texto blanco encima, así que
+       aclararlo dejaba blanco sobre rosa a 2,25:1. Si alguna vez hace falta un
+       rojo legible SOBRE fondo oscuro, ese es `--gam-night`, no este. */
+    --gam-deep:    #990916;
     --gam-tint:    #FDEDEF;
     --gam-field:   #C10B1C;   /* fondo de bloques con texto: blanco a 6,2:1 */
     --gam-on:      #FFFFFF;   /* sobre --gam  4,8:1 */
@@ -112,7 +116,6 @@
       --night-3: #1A2028;
       --night-line: #262E38;
       --gam-ink:  #FF6B78;
-      --gam-deep: #FF8A94;
       --gam-tint: #2A1216;
       --gam-field: #C10B1C;
       --ok:       #45D18E;
@@ -143,7 +146,6 @@
     --night-3: #1A2028;
     --night-line: #262E38;
     --gam-ink:  #FF6B78;
-    --gam-deep: #FF8A94;
     --gam-tint: #2A1216;
     --gam-field: #C10B1C;
     --ok:       #45D18E;
