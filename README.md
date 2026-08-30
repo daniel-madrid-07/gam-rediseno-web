@@ -84,6 +84,23 @@ Dos reglas que conviene no romper al tocarlo:
   disponible y tiempo agotado dan mensajes distintos, y los tres remiten al
   buscador por provincia, que sigue funcionando.
 
+## Entrada y salida de los diálogos
+
+Se anima **sólo la opacidad**, nunca la geometría.
+
+La versión anterior deslizaba cada panel con `translateX(100%)` aplicado sobre
+el mismo elemento que hace de contenedor con scroll y que lleva dentro una
+cabecera pegajosa. Eso obliga al navegador a recolocar la cabecera en cada
+fotograma desde el hilo principal, y el desplazamiento se medía en porcentaje
+de un ancho que cambia en cuanto aparece la barra del panel: la entrada se
+pasaba de largo y vibraba. Se intentó corregir con `will-change`,
+`scrollbar-gutter` y `overscroll-behavior` y siguió fallando.
+
+La reescritura quita el problema en vez de contenerlo: sin transform no hay
+posición que recalcular. `@starting-style` y `transition-behavior:
+allow-discrete` permiten animar también el cierre, que antes era instantáneo.
+Hay una prueba que falla si alguien vuelve a meter un transform ahí.
+
 ## Estado
 
 Tres átomos, cada uno con su alcance y su duración:
@@ -101,7 +118,7 @@ ni un color.
 
 ```bash
 npm test              # 35 tests de lógica pura (filtrado, geo, texto)
-npm run test:e2e      # 67 recorridos en escritorio y móvil
+npm run test:e2e      # 71 recorridos en escritorio y móvil
 npm run auditar       # contraste AA en reposo y en :hover / :focus-visible
 npm run medir         # Lighthouse en móvil y escritorio
 ```

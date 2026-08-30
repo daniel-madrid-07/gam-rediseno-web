@@ -130,12 +130,10 @@
 .drawer::backdrop { background: rgb(6 8 11 / .6); backdrop-filter: blur(3px); }
 
 .drawer__panel {
-  will-change: transform;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
   margin-inline-start: auto; inline-size: min(24rem, 100%); block-size: 100%;
   background: var(--paper); display: flex; flex-direction: column; overflow-y: auto;
-  animation: slideIn var(--d3) var(--ease);
 }
 
 .drawer__top {

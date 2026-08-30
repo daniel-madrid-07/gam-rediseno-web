@@ -27,10 +27,8 @@
 .sheet__panel {
   /* El scroll se queda dentro: al llegar al final no arrastra la pagina */
   overscroll-behavior: contain;
-  will-change: transform;
   margin-inline-start: auto; inline-size: min(44rem, 100%); block-size: 100%;
   background: var(--paper); display: flex; flex-direction: column; overflow: hidden;
-  animation: slideIn var(--d3) var(--ease);
 }
 
 .sheet__top { display: flex; align-items: flex-start; gap: var(--s4); padding: var(--s5); border-block-end: 1px solid var(--line); }
@@ -84,7 +82,7 @@
   inline-size: min(42rem, calc(100% - 2rem)); margin: clamp(2rem, 8vh, 6rem) auto 0;
   background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--r4);
   box-shadow: var(--sh3); overflow: hidden; display: flex; flex-direction: column;
-  max-block-size: min(36rem, 78dvh); animation: popIn var(--d2) var(--ease);
+  max-block-size: min(36rem, 78dvh);
 }
 
 .palette__q { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s4); border-block-end: 1px solid var(--line); }
@@ -154,3 +152,81 @@
 .toast[data-show="true"] { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 .toast .ico { inline-size: 1.15em; block-size: 1.15em; color: var(--ok-night); flex: none; }
+
+
+/* =========================================================
+   ENTRADA Y SALIDA DE LOS DIÁLOGOS
+   ========================================================= */
+/**
+ * Una sola transición para los cuatro paneles, y sólo de opacidad.
+ *
+ * Antes cada uno entraba con `translateX(100%)` aplicado sobre el mismo
+ * elemento que hace de contenedor con scroll y que lleva dentro una cabecera
+ * pegajosa. Esa combinación obliga al navegador a recolocar la cabecera en
+ * cada fotograma desde el hilo principal, y el desplazamiento se medía en
+ * porcentaje del ancho del panel, que cambia en cuanto aparece su barra de
+ * desplazamiento. De ahí que la entrada se pasara de largo y vibrase.
+ *
+ * Aquí no se anima ninguna geometría: la opacidad no toca el diseño, no puede
+ * arrastrar nada y el navegador la resuelve sin recalcular posiciones. Es
+ * menos vistoso y es lo correcto.
+ *
+ * `@starting-style` y `allow-discrete` son lo que permite animar también el
+ * cierre, porque un <dialog> pasa de `display: block` a `none` de golpe. En un
+ * navegador que no los soporte el diálogo aparece y desaparece sin transición,
+ * que es una degradación perfectamente aceptable.
+ */
+dialog.side,
+dialog.sheet,
+dialog.drawer,
+dialog.palette {
+  opacity: 0;
+  transition:
+    opacity var(--d2) var(--ease),
+    overlay var(--d2) var(--ease) allow-discrete,
+    display var(--d2) var(--ease) allow-discrete;
+}
+
+dialog.side[open],
+dialog.sheet[open],
+dialog.drawer[open],
+dialog.palette[open] {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog.side[open],
+  dialog.sheet[open],
+  dialog.drawer[open],
+  dialog.palette[open] {
+    opacity: 0;
+  }
+}
+
+/* El fondo oscuro acompaña con la misma curva */
+dialog.side::backdrop,
+dialog.sheet::backdrop,
+dialog.drawer::backdrop,
+dialog.palette::backdrop {
+  opacity: 0;
+  transition:
+    opacity var(--d2) var(--ease),
+    overlay var(--d2) var(--ease) allow-discrete,
+    display var(--d2) var(--ease) allow-discrete;
+}
+
+dialog.side[open]::backdrop,
+dialog.sheet[open]::backdrop,
+dialog.drawer[open]::backdrop,
+dialog.palette[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog.side[open]::backdrop,
+  dialog.sheet[open]::backdrop,
+  dialog.drawer[open]::backdrop,
+  dialog.palette[open]::backdrop {
+    opacity: 0;
+  }
+}

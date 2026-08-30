@@ -242,13 +242,8 @@
      Es el mismo motivo por el que la página lo lleva en `html`. */
   scrollbar-gutter: stable;
 
-  /* La entrada se promociona al compositor. Abrir un diálogo despierta a la
-     vez a los seis componentes suscritos al mismo átomo, y si el deslizamiento
-     compite con ese trabajo en el hilo principal se ven tirones. */
-  will-change: transform;
   inline-size: min(25rem, 100%); block-size: 100%; margin-inline-start: auto;
   background: var(--paper); display: flex; flex-direction: column; overflow-y: auto;
-  animation: slideIn var(--d3) var(--ease);
 }
 
 .side__top { position: sticky; inset-block-start: 0; background: var(--paper); z-index: 1; display: flex; align-items: center; gap: var(--s3); padding: var(--s4) var(--s5); border-block-end: 1px solid var(--line); }

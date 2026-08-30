@@ -90,6 +90,33 @@ test.describe("estabilidad al abrir y cerrar", () => {
     expect(contencion).toBe("contain");
   });
 
+  test("la entrada de los paneles no anima ninguna geometría", async ({ page }) => {
+    /* La animación se reescribió: antes era un `translateX(100%)` sobre el
+       propio contenedor con scroll, y se pasaba de largo y vibraba. Ahora sólo
+       se anima la opacidad del <dialog>, así que no hay nada que pueda
+       desplazarse. Si alguien vuelve a meter un transform aquí, esto falla. */
+    await page.goto("/");
+    await activarDialogos(page);
+    await page.locator("#btn-a11y").dispatchEvent("click");
+    await page.waitForTimeout(400);
+
+    const panel = page.locator("dialog[open] .side__panel");
+    await expect(panel).toHaveCSS("transform", "none");
+    await expect(panel).toHaveCSS("animation-name", "none");
+
+    /* Y la posición no se mueve mientras el panel es visible */
+    const posiciones = await page.evaluate(async () => {
+      const p = document.querySelector("dialog[open] .side__panel");
+      const vistas = new Set();
+      for (let i = 0; i < 20; i += 1) {
+        vistas.add(Math.round(p.getBoundingClientRect().left));
+        await new Promise((listo) => requestAnimationFrame(listo));
+      }
+      return [...vistas];
+    });
+    expect(posiciones).toHaveLength(1);
+  });
+
   test("los paneles reservan su carril de barra", async ({ page }) => {
     /* El contenido de estos paneles cambia de alto mientras están abiertos, así
        que su barra aparece y desaparece. Sin el carril reservado, todo lo de

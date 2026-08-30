@@ -18,7 +18,6 @@
 @import "./base/preferencias.css" layer(base);
 @import "./base/maquetacion.css" layer(layout);
 @import "./base/estados.css" layer(estados);
-@import "./base/animaciones.css" layer(base);
 
 /* ---- Componentes ---- */
 @import "./componentes/icono.css" layer(componentes);
