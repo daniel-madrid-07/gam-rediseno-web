@@ -7,7 +7,14 @@
  * Va en línea y no como archivo externo a propósito: el logotipo forma parte
  * de la primera pintura, y una petición aparte lo haría aparecer tarde.
  */
-const sprite = await import("./sprite.svg.html?raw");
+const bruto = await import("./sprite.svg.html?raw");
+
+/**
+ * Los comentarios que separan las secciones del sprite ayudan a editarlo, pero
+ * viajan dentro del HTML de cada página y se leen al inspeccionar. Se quitan
+ * al insertarlo, no en el archivo fuente.
+ */
+const sprite = bruto.default.replace(/<!--[\s\S]*?-->/g, "").replace(/\n\s*\n/g, "\n");
 ---
 
-<Fragment set:html={sprite.default} />
+<Fragment set:html={sprite} />
