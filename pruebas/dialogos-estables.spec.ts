@@ -106,8 +106,8 @@ test.describe("estabilidad al abrir y cerrar", () => {
 
     /* Y la posición no se mueve mientras el panel es visible */
     const posiciones = await page.evaluate(async () => {
-      const p = document.querySelector("dialog[open] .side__panel");
-      const vistas = new Set();
+      const p = document.querySelector("dialog[open] .side__panel")!;
+      const vistas = new Set<number>();
       for (let i = 0; i < 20; i += 1) {
         vistas.add(Math.round(p.getBoundingClientRect().left));
         await new Promise((listo) => requestAnimationFrame(listo));
