@@ -1,0 +1,75 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import Foto from "@componentes/base/Foto.astro";
+import { FAMILIAS, type ClaveFamilia } from "@datos/taxonomias";
+import { FOTO_DE_FAMILIA } from "@lib/fotos";
+import { plural } from "@lib/texto";
+import type { Maquina } from "@tipos";
+
+/**
+ * Carrusel de familias: la puerta de entrada al catálogo.
+ *
+ * Es HTML estático con `scroll-snap`, sin una línea de JavaScript. Un carrusel
+ * hecho a mano con temporizadores y transformaciones sería más código, peor
+ * accesibilidad y ningún beneficio: el navegador ya sabe desplazar una lista.
+ */
+interface Props {
+  catalogo: Maquina[];
+}
+
+const { catalogo } = Astro.props;
+
+const claves = Object.keys(FAMILIAS) as ClaveFamilia[];
+const cuantas = (familia: ClaveFamilia): number =>
+  catalogo.filter((m) => m.familia === familia).length;
+---
+
+<section class="band shelf-space cv" id="familias" aria-labelledby="h-fam">
+  <div class="wrap">
+    <div class="head head--split">
+      <div>
+        <span class="kicker">Catálogo</span>
+        <h2 id="h-fam">Familias de maquinaria</h2>
+        <p>El parque se organiza en siete familias. Al elegir una, el catálogo queda filtrado.</p>
+      </div>
+      <a class="btn btn--ghost" href="#catalogo">Ver las {catalogo.length} familias</a>
+    </div>
+
+    <div class="fams" id="fams" role="group" aria-label="Familias de maquinaria, lista deslizable">
+      {
+        claves.map((clave) => {
+          const familia = FAMILIAS[clave];
+          const total = cuantas(clave);
+          return (
+            <a class="fam" href={`?fam=${clave}#catalogo`} data-fam={clave}>
+              <Foto
+                id={FOTO_DE_FAMILIA[clave] ?? ""}
+                alt={`Maquinaria de ${familia.nombre.toLowerCase()} de GAM`}
+                sizes="(min-width: 64rem) 18rem, 45vw"
+                class="fam__img"
+              />
+              <div class="fam__body">
+                <h3>{familia.nombre}</h3>
+                <p>{familia.claim}</p>
+                <span class="fam__n">
+                  {total} {plural(total, "familia", "familias")}
+                  <Icono nombre="i-arrow-right" />
+                </span>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <p class="carrusel-nota">
+      <Icono nombre="i-arrow-right" style="inline-size:1em;block-size:1em" />
+      Desliza para ver las siete familias
+    </p>
+  </div>
+</section>
+
+<script>
+  import { revelarEnCascada } from "@lib/contadores";
+  revelarEnCascada("#fams", ".fam");
+</script>

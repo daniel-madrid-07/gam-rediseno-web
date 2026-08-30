@@ -1,0 +1,106 @@
+[
+  {
+    "id": "agv-palet",
+    "nombre": "AGV y AMR para palés",
+    "familia": "robotica",
+    "icono": "m-agv",
+    "descripcion": "Transporte autónomo de palés suelo a suelo entre producción y almacén, mediante rutas predefinidas o navegación natural.",
+    "alturaMax": 0,
+    "cargaMax": 1500,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Carga",
+        "hasta 1.500 kg"
+      ],
+      [
+        "Navegación",
+        "natural o guiada"
+      ],
+      [
+        "Integración",
+        "con ERP y WMS"
+      ]
+    ],
+    "etiquetas": "agv amr robot autonomo palet suelo navegacion automatizacion industria 4.0"
+  },
+  {
+    "id": "agv-carros",
+    "nombre": "AGV para carros y convoyes",
+    "familia": "robotica",
+    "icono": "m-agv",
+    "descripcion": "Traslado automatizado de carros en línea de producción, con capacidad de coordinar convoyes completos en planta.",
+    "alturaMax": 0,
+    "cargaMax": 1000,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Carga",
+        "hasta 1.000 kg por carro"
+      ],
+      [
+        "Modo",
+        "unitario o convoy"
+      ],
+      [
+        "Aplicación",
+        "línea de producción"
+      ]
+    ],
+    "etiquetas": "agv carros convoy tugger linea produccion automocion trenes logisticos"
+  },
+  {
+    "id": "agv-sorting",
+    "nombre": "Sistemas de clasificación automática",
+    "familia": "robotica",
+    "icono": "m-agv",
+    "descripcion": "Clasificación automática para distribuir y organizar producto terminado, con trazabilidad de cada movimiento.",
+    "alturaMax": 0,
+    "cargaMax": 50,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Formato",
+        "paquetería y contenedor"
+      ],
+      [
+        "Función",
+        "clasificación y distribución"
+      ],
+      [
+        "Datos",
+        "trazabilidad por unidad"
+      ]
+    ],
+    "etiquetas": "sorting clasificacion paqueteria ecommerce robot distribucion trazabilidad"
+  }
+]

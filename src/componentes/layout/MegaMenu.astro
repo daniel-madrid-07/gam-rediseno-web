@@ -1,0 +1,74 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import type { MenuNav } from "@datos/navegacion";
+
+/**
+ * Un panel desplegable de la cabecera.
+ *
+ * Sale del documento ya renderizado y oculto con `hidden`; la isla de
+ * navegación se limita a quitar y poner ese atributo junto con `aria-expanded`.
+ * Así el contenido del menú existe para el buscador y para quien navegue sin
+ * JavaScript, en vez de aparecer sólo cuando se hidrata la isla.
+ */
+interface Props {
+  menu: MenuNav;
+}
+
+const { menu } = Astro.props;
+---
+
+<div class="mega" id={menu.id} hidden>
+  <div class="wrap mega__in">
+    {
+      menu.columnas.map((columna) => (
+        <div class="megacol">
+          <h3>{columna.titulo}</h3>
+          {columna.enlaces.map((enlace) => (
+            <a
+              href={enlace.href}
+              data-goto={enlace.abre}
+              target={enlace.externo ? "_blank" : undefined}
+              rel={enlace.externo ? "noopener" : undefined}
+            >
+              <Icono nombre={enlace.icono} />
+              {enlace.texto}
+            </a>
+          ))}
+        </div>
+      ))
+    }
+
+    <div class="mega__side">
+      <span class="kicker">{menu.lateral.antetitulo}</span>
+      <p>{menu.lateral.texto}</p>
+
+      {
+        menu.lateral.boton && (
+          <button type="button" class="btn btn--gam btn--sm" data-open-wizard>
+            <Icono nombre={menu.lateral.boton.icono} />
+            {menu.lateral.boton.texto}
+          </button>
+        )
+      }
+
+      {
+        menu.lateral.etiquetas && (
+          <div class="row" style="gap:.4rem">
+            {menu.lateral.etiquetas.map((etiqueta) => (
+              <span class="pill num">{etiqueta}</span>
+            ))}
+          </div>
+        )
+      }
+
+      {
+        menu.lateral.enlace && (
+          <a class="link" href={menu.lateral.enlace.href}>
+            {menu.lateral.enlace.texto}
+            <Icono nombre="i-arrow-right" />
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

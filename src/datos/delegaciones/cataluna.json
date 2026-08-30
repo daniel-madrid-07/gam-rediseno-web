@@ -1,0 +1,57 @@
+[
+  {
+    "id": "barcelona",
+    "nombre": "Barcelona",
+    "direccion": "Pol. Ind. El Pla, Miquel Torelló i Pages 26",
+    "cp": "08750",
+    "ciudad": "Molins de Rei, Barcelona",
+    "comunidad": "Cataluña",
+    "telefono": "936 803 620",
+    "lat": 41.40105,
+    "lng": 2.02521
+  },
+  {
+    "id": "gam-en-mercabarna",
+    "nombre": "GAM en Mercabarna",
+    "direccion": "Carrer Major, Edificio P2, Bajo",
+    "cp": "08040",
+    "ciudad": "Barcelona",
+    "comunidad": "Cataluña",
+    "telefono": "932 742 324",
+    "lat": 41.32969,
+    "lng": 2.11429
+  },
+  {
+    "id": "gerona",
+    "nombre": "Gerona",
+    "direccion": "Pol. Ind. De Celrá, C/ Torrent Orriols, Nº72",
+    "cp": "17460",
+    "ciudad": "Celrá, Gerona",
+    "comunidad": "Cataluña",
+    "telefono": "972 406 242",
+    "lat": 42.03338,
+    "lng": 2.87465
+  },
+  {
+    "id": "lerida",
+    "nombre": "Lérida",
+    "direccion": "Pol. Ind. Les Canals, Parcela 2",
+    "cp": "25190",
+    "ciudad": "Lérida",
+    "comunidad": "Cataluña",
+    "telefono": "973 216 378",
+    "lat": 41.61974,
+    "lng": 0.67749
+  },
+  {
+    "id": "tarragona",
+    "nombre": "Tarragona",
+    "direccion": "Ctra. A7, Km 1.151,4",
+    "cp": "43480",
+    "ciudad": "Vilaseca, Tarragona",
+    "comunidad": "Cataluña",
+    "telefono": "977 189 100",
+    "lat": 41.10394,
+    "lng": 1.12886
+  }
+]

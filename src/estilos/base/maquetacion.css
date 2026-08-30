@@ -1,0 +1,54 @@
+/**
+ * Maquetacion: contenedores, ritmo de seccion y rejillas.
+ *
+ * Las secciones alternan tono (`band`, `band--alt`, `band--night`) para que el
+ * scroll tenga estructura reconocible sin necesidad de repartir tarjetas por
+ * toda la pagina. Es lo que sostiene la jerarquia visual del conjunto.
+ */
+
+/* ---------- Contenedores ---------- */
+.wrap { width: min(100% - (var(--pad) * 2), var(--wrap)); margin-inline: auto; }
+.prose { max-inline-size: var(--measure); }
+.prose p + p { margin-block-start: var(--s4); }
+
+/* ---------- Sección: el ritmo de la página ---------- */
+.band { padding-block: var(--band); background: var(--paper); color: var(--ink); }
+.band--alt   { background: var(--paper-2); }
+.band--night { background: var(--night); color: var(--on-night); }
+.band--night h1, .band--night h2, .band--night h3, .band--night h4 { color: var(--on-night); }
+.band--night p { color: var(--on-night-2); }
+.band + .band:not(.band--night):not(.band--alt) { border-block-start: 1px solid var(--line); }
+.band--tight { padding-block: calc(var(--band) * .62); }
+
+/* ---------- Cabecera de sección ---------- */
+.head { display: grid; gap: var(--s4); margin-block-end: var(--s7); }
+.head > * { min-inline-size: 0; }
+@media (width >= 56rem) {
+  .head--split { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: var(--s6); }
+}
+.head h2 { max-inline-size: 20ch; }
+.head p { color: var(--ink-2); max-inline-size: 56ch; font-size: var(--t-lg); line-height: 1.55; }
+.band--night .head p { color: var(--on-night-2); }
+
+/* ---------- Antetítulo ---------- */
+.kicker {
+  display: block; font-family: var(--mono); font-size: var(--t-2xs); font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3);
+  padding-block: .55rem; border-block-start: 2px solid var(--ink);
+  margin-block-end: var(--s4);
+}
+.band--night .kicker, .on-night .kicker { color: var(--on-night-3); border-block-start-color: var(--on-night-3); }
+.kicker--gam { border-block-start-color: var(--gam); color: var(--gam-ink); }
+
+/* ---------- Rejillas ---------- */
+.grid { display: grid; gap: var(--s5); }
+.grid > * { min-inline-size: 0; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+
+.stack { display: flex; flex-direction: column; }
+.s2 { gap: var(--s2); } .s3 { gap: var(--s3); } .s4 { gap: var(--s4); }
+.s5 { gap: var(--s5); } .s6 { gap: var(--s6); } .s7 { gap: var(--s7); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+.grow { flex: 1 1 auto; min-inline-size: 0; }

@@ -1,0 +1,78 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import BuscadorHeroe from "@islas/BuscadorHeroe.svelte";
+import { SITIO, EMPRESA } from "@/config/sitio";
+import { numero } from "@lib/texto";
+
+/**
+ * Primera pantalla: qué hace GAM, con qué respaldo y por dónde se empieza.
+ *
+ * La foto se escribe en el HTML y no la pinta ninguna isla porque es el LCP de
+ * la página: si dependiera de JavaScript, la métrica se mediría contra el
+ * momento en que se hidrata, no contra el momento en que se descarga.
+ */
+const base = SITIO.base.replace(/\/$/, "");
+
+const GARANTIAS = [
+  "Entrega desde la delegación más cercana",
+  "Asistencia técnica 24 horas, todo el año",
+  "85 % del parque, cero emisiones",
+  "Renting flexible, leasing y alquiler puntual",
+];
+---
+
+<section class="hero on-night" id="inicio" aria-labelledby="h-hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="kicker">GAM · General de Alquiler de Maquinaria</span>
+        <h1 id="h-hero">Alquiler, venta y mantenimiento de <em>maquinaria industrial</em></h1>
+        <p class="hero__lede">
+          Más de {numero(EMPRESA.equipos)} equipos en elevación, manutención, manipulación y energía.
+          {EMPRESA.delegaciones} delegaciones en España, {EMPRESA.talleresMoviles} talleres móviles y
+          asistencia técnica 24 horas. Trabajamos con todas las marcas del mercado.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--quiet btn--lg" href="#catalogo">
+            <Icono nombre="i-search" />
+            Ver el catálogo
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#contacto">
+            <Icono nombre="i-mail" />
+            Pedir presupuesto
+          </a>
+        </div>
+
+        <ul class="hero__proof" role="list">
+          {
+            GARANTIAS.map((texto) => (
+              <li>
+                <Icono nombre="i-check-circle" /> {texto}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <figure class="hero__shot">
+        <img
+          src={`${base}/img/hero-xl.webp`}
+          srcset={`${base}/img/hero-m.webp 800w, ${base}/img/hero-xl.webp 1600w`}
+          sizes="100vw"
+          alt="Delegación de GAM con maquinaria de elevación y manutención lista para alquiler"
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption class="hero__tag">
+          <b class="num">+{numero(EMPRESA.equipos)}</b>
+          <span>Máquinas en parque propio</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <BuscadorHeroe client:idle />
+  </div>
+</section>

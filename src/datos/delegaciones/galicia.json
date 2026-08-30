@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ferrol",
+    "nombre": "Ferrol",
+    "direccion": "Pol. Ind. Vilar do Colo, C/ Rua Pipela Parcela 3",
+    "cp": "15622",
+    "ciudad": "Laraxe, Cabanas, Ferrol (A Coruña)",
+    "comunidad": "Galicia",
+    "telefono": "981 349 003",
+    "lat": 43.44718,
+    "lng": -8.17208
+  },
+  {
+    "id": "lugo",
+    "nombre": "Lugo",
+    "direccion": "Pol. Ind. Outeiro de Rey, Fase I, Parcela 1.1, A6 - Salida 507",
+    "cp": "27150",
+    "ciudad": "Outerio de Rey, Lugo",
+    "comunidad": "Galicia",
+    "telefono": "982 207 432",
+    "lat": 43.10969,
+    "lng": -7.60332
+  },
+  {
+    "id": "orense",
+    "nombre": "Orense",
+    "direccion": "Pol. Ind. San Cibrao  das Viñas, C/Ricardo Martín Esperanza, 1 Parcela 1D",
+    "cp": "32911",
+    "ciudad": "San Cibrao das Viñas. Orense",
+    "comunidad": "Galicia",
+    "telefono": "988 383 844",
+    "lat": 42.29004,
+    "lng": -7.81086
+  },
+  {
+    "id": "pontevedra",
+    "nombre": "Pontevedra",
+    "direccion": "Lugar Casillas, Nº1",
+    "cp": "36418",
+    "ciudad": "Atios, O Porriño, Pontevedra",
+    "comunidad": "Galicia",
+    "telefono": "986 348 087",
+    "lat": 42.135,
+    "lng": -8.62111
+  },
+  {
+    "id": "santiago-de-compostela",
+    "nombre": "Santiago de Compostela",
+    "direccion": "Pol. Ind. Costa Vella, Rúa Letonia nº3",
+    "cp": "15707",
+    "ciudad": "Santiago de Compostela, A Coruña",
+    "comunidad": "Galicia",
+    "telefono": "981 897 529",
+    "lat": 42.90507,
+    "lng": -8.51237
+  }
+]

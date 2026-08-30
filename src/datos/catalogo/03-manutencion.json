@@ -1,0 +1,223 @@
+[
+  {
+    "id": "carretilla-elevadora",
+    "nombre": "Carretillas elevadoras",
+    "familia": "manutencion",
+    "icono": "m-carretilla",
+    "descripcion": "Carretillas contrapesadas eléctricas, diésel y GLP para carga, descarga y apilado en almacén y patio, desde 1.000 hasta 16.000 kg.",
+    "alturaMax": 7,
+    "cargaMax": 16000,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die",
+      "glp"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de carga",
+        "1.000 – 16.000 kg"
+      ],
+      [
+        "Altura de elevación",
+        "3 – 7 m"
+      ],
+      [
+        "Motorización",
+        "eléctrica, diésel o GLP"
+      ]
+    ],
+    "etiquetas": "carretilla contrapesada frontal hyster yale toyota linde almacen palet"
+  },
+  {
+    "id": "retractil",
+    "nombre": "Carretillas retráctiles y trilaterales",
+    "familia": "manutencion",
+    "icono": "m-carretilla",
+    "descripcion": "Mástil retráctil o cabeza trilateral para trabajar en pasillo estrecho y a altura de estantería, con motorización eléctrica.",
+    "alturaMax": 12,
+    "cargaMax": 2500,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de elevación",
+        "6 – 12 m"
+      ],
+      [
+        "Capacidad de carga",
+        "1.400 – 2.500 kg"
+      ],
+      [
+        "Pasillo",
+        "desde 1,6 m"
+      ]
+    ],
+    "etiquetas": "retractil trilateral pasillo estrecho estanteria vna almacen altura"
+  },
+  {
+    "id": "apilador",
+    "nombre": "Apiladores eléctricos y manuales",
+    "familia": "manutencion",
+    "icono": "m-transpaleta",
+    "descripcion": "Apilado de palés con conductor acompañante o montado, para almacenes con pasillo y altura limitados.",
+    "alturaMax": 5.4,
+    "cargaMax": 2000,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele",
+      "man"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de elevación",
+        "1,6 – 5,4 m"
+      ],
+      [
+        "Capacidad de carga",
+        "1.000 – 2.000 kg"
+      ],
+      [
+        "Conducción",
+        "acompañante o montado"
+      ]
+    ],
+    "etiquetas": "apilador stacker manual autopropulsado logitrans almacen"
+  },
+  {
+    "id": "transpaleta",
+    "nombre": "Transpaletas manuales y eléctricas",
+    "familia": "manutencion",
+    "icono": "m-transpaleta",
+    "descripcion": "Movimiento horizontal de palés a ras de suelo, en versión manual o eléctrica, para carga, descarga y traslado interno.",
+    "alturaMax": 0,
+    "cargaMax": 3000,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele",
+      "man"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de carga",
+        "1.500 – 3.000 kg"
+      ],
+      [
+        "Tipo",
+        "manual o eléctrica"
+      ],
+      [
+        "Horquillas",
+        "1.150 mm estándar"
+      ]
+    ],
+    "etiquetas": "transpaleta pallet truck manual electrica almacen carga horizontal"
+  },
+  {
+    "id": "preparapedidos",
+    "nombre": "Preparapedidos y recogepedidos",
+    "familia": "manutencion",
+    "icono": "m-transpaleta",
+    "descripcion": "Preparación de pedidos a nivel bajo, medio y alto, con plataforma elevable para el operario.",
+    "alturaMax": 10,
+    "cargaMax": 1200,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de picking",
+        "1,5 – 10 m"
+      ],
+      [
+        "Capacidad de carga",
+        "1.000 – 1.200 kg"
+      ],
+      [
+        "Nivel",
+        "bajo, medio y alto"
+      ]
+    ],
+    "etiquetas": "preparapedidos recogepedidos order picker picking ecommerce logistica"
+  },
+  {
+    "id": "tractor-arrastre",
+    "nombre": "Tractores de arrastre",
+    "familia": "manutencion",
+    "icono": "m-agv",
+    "descripcion": "Arrastre de trenes de carros en líneas de producción y almacén, con motorización eléctrica y capacidad de 3.000 a 15.000 kg.",
+    "alturaMax": 0,
+    "cargaMax": 15000,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de arrastre",
+        "3.000 – 15.000 kg"
+      ],
+      [
+        "Motorización",
+        "eléctrica"
+      ],
+      [
+        "Uso",
+        "tren logístico interno"
+      ]
+    ],
+    "etiquetas": "tractor arrastre tow tractor tren logistico carros automocion"
+  }
+]

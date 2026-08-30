@@ -1,0 +1,57 @@
+[
+  {
+    "id": "albacete",
+    "nombre": "Albacete",
+    "direccion": "Pol. Ind. Ángel Blanco, Ctra. de Requena N-322 Km 164,4",
+    "cp": "02007",
+    "ciudad": "Albacete",
+    "comunidad": "Castilla-La Mancha",
+    "telefono": "967 592 806",
+    "lat": 39.02008,
+    "lng": -1.85679
+  },
+  {
+    "id": "ciudad-real",
+    "nombre": "Ciudad Real",
+    "direccion": "Ctra de Carrión de Calatrava  N-430 Km 312.800",
+    "cp": "13170",
+    "ciudad": "Miguelturra, Ciudad Real",
+    "comunidad": "Castilla-La Mancha",
+    "telefono": "926 647 230",
+    "lat": 38.99867,
+    "lng": -3.87384
+  },
+  {
+    "id": "cuenca",
+    "nombre": "Cuenca",
+    "direccion": "Delegación atendida desde San Fernando de Henares",
+    "cp": "-",
+    "ciudad": "Cuenca",
+    "comunidad": "Castilla-La Mancha",
+    "telefono": "916 715 960",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "guadalajara",
+    "nombre": "Guadalajara",
+    "direccion": "Delegación atendida desde San Fernando de Henares",
+    "cp": "-",
+    "ciudad": "Guadalajara",
+    "comunidad": "Castilla-La Mancha",
+    "telefono": "916 715 960",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "toledo",
+    "nombre": "Toledo",
+    "direccion": "Pol. Ind. Sta. Mª de Benquerencia, C/ Alonso Quijano, Parc. R10 (esq. Cueva de Montesinos, 2)",
+    "cp": "45007",
+    "ciudad": "Toledo",
+    "comunidad": "Castilla-La Mancha",
+    "telefono": "925 240 118",
+    "lat": 39.88039,
+    "lng": -3.92546
+  }
+]

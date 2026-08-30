@@ -1,0 +1,13 @@
+[
+  {
+    "id": "cantabria",
+    "nombre": "Cantabria",
+    "direccion": "Barrio de Requejada 23B y 24B",
+    "cp": "39312",
+    "ciudad": "Polanco, Cantabria",
+    "comunidad": "Cantabria",
+    "telefono": "942 517 402",
+    "lat": 43.39232,
+    "lng": -4.0225
+  }
+]

@@ -1,0 +1,73 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import FormularioContacto from "@islas/FormularioContacto.svelte";
+import { EMPRESA } from "@/config/sitio";
+import type { Delegacion, Maquina } from "@tipos";
+
+/**
+ * Contacto y solicitud de presupuesto.
+ *
+ * El teléfono aparece tres veces en esta sección (botón del formulario, tarjeta
+ * lateral y pie) y es intencionado: en este sector mucha gente prefiere llamar,
+ * y esconder el número detrás de un formulario sólo consigue que no contacten.
+ */
+interface Props {
+  catalogo: Maquina[];
+  delegaciones: Delegacion[];
+}
+
+const { catalogo, delegaciones } = Astro.props;
+
+const comunidades = [...new Set(delegaciones.map((d) => d.comunidad))].sort((a, b) =>
+  a.localeCompare(b, "es"),
+);
+---
+
+<section class="band band--alt cv" id="contacto" aria-labelledby="h-con">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kicker">Contacto</span>
+        <h2 id="h-con">Contacto y solicitud de presupuesto</h2>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact__form">
+        <FormularioContacto {catalogo} {comunidades} client:visible />
+      </div>
+
+      <aside class="contact__aside" aria-label="Otras vías de contacto">
+        <div class="telcard on-night">
+          <span class="kicker">Atención a cliente</span>
+          <a class="telcard__n num" href={`tel:${EMPRESA.telefonoE164}`}>
+            <Icono nombre="i-phone" />
+            {EMPRESA.telefono}
+          </a>
+          <p>
+            De lunes a viernes en horario comercial. Asistencia técnica 24/7 los 365 días del año.
+          </p>
+        </div>
+
+        <div class="contact__list">
+          <a href="mailto:clientes@gamrentals.com">
+            <Icono nombre="i-mail" />
+            clientes@gamrentals.com
+          </a>
+          <a href="#delegaciones">
+            <Icono nombre="i-pin" />
+            {delegaciones.length} delegaciones en España
+          </a>
+          <a href="#faq">
+            <Icono nombre="i-info" />
+            Preguntas frecuentes
+          </a>
+          <div>
+            <Icono nombre="i-clock" />
+            Asistencia técnica 24 horas
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

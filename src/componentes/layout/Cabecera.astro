@@ -1,0 +1,156 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import MegaMenu from "./MegaMenu.astro";
+import ContadorBandeja from "@islas/ContadorBandeja.svelte";
+import { MENUS, ENLACE_DELEGACIONES, type MenuNav } from "@datos/navegacion";
+import { EMPRESA } from "@/config/sitio";
+import type { Servicio } from "@tipos";
+
+/**
+ * Cabecera fija con la navegación principal.
+ *
+ * El único trozo hidratado es el contador de la bandeja, que tiene que
+ * reaccionar a lo que pase en el catálogo. Los desplegables los abre un script
+ * de módulo al pie del componente: son tres atributos ARIA y no necesitan un
+ * framework detrás.
+ */
+interface Props {
+  servicios: Servicio[];
+}
+
+const { servicios } = Astro.props;
+
+/** Servicios que tienen sección propia en la página; el resto abre su panel. */
+const CON_SECCION: Record<string, string> = {
+  mantenimiento: "#mantenimiento",
+  formacion: "#formacion",
+};
+
+const TITULOS_COLUMNA = ["Maquinaria", "Proyectos", "Personas y flota"];
+
+/** Reparte los diez servicios en tres columnas, en orden de lectura vertical. */
+const menuServicios: MenuNav = {
+  id: "mp-serv",
+  texto: "Servicios",
+  columnas: TITULOS_COLUMNA.map((titulo, columna) => ({
+    titulo,
+    enlaces: servicios
+      .filter((_, i) => i % 3 === columna)
+      .map((s) => ({
+        texto: s.nombre,
+        href: CON_SECCION[s.id] ?? "#servicios",
+        icono: s.icono,
+      })),
+  })),
+  lateral: {
+    antetitulo: "Un solo proveedor",
+    texto:
+      "Alquiler, venta, mantenimiento, energía, formación y automatización, con un único proveedor.",
+    enlace: { texto: "Ver los 10 servicios", href: "#servicios" },
+  },
+};
+
+const [maquinaria, comprar, empresa] = MENUS;
+const enOrden = [maquinaria!, comprar!, menuServicios, empresa!];
+---
+
+<header class="masthead" id="masthead">
+  <div class="wrap masthead__in">
+    <a class="brandmark" href="#inicio" aria-label="GAM Soluciones, ir al inicio">
+      <Icono nombre="logo-gam" relleno viewBox="0 0 124 46" />
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <button
+        type="button"
+        class="nav__item"
+        aria-expanded="false"
+        aria-controls={maquinaria!.id}
+        data-mega={maquinaria!.id}
+      >
+        {maquinaria!.texto}
+        <Icono nombre="i-chevron-down" class="chev" />
+      </button>
+      <button
+        type="button"
+        class="nav__item"
+        aria-expanded="false"
+        aria-controls={comprar!.id}
+        data-mega={comprar!.id}
+      >
+        {comprar!.texto}
+        <Icono nombre="i-chevron-down" class="chev" />
+      </button>
+      <button
+        type="button"
+        class="nav__item"
+        aria-expanded="false"
+        aria-controls={menuServicios.id}
+        data-mega={menuServicios.id}
+      >
+        {menuServicios.texto}
+        <Icono nombre="i-chevron-down" class="chev" />
+      </button>
+      <a class="nav__item" href={ENLACE_DELEGACIONES.href}>{ENLACE_DELEGACIONES.texto}</a>
+      <button
+        type="button"
+        class="nav__item"
+        aria-expanded="false"
+        aria-controls={empresa!.id}
+        data-mega={empresa!.id}
+      >
+        {empresa!.texto}
+        <Icono nombre="i-chevron-down" class="chev" />
+      </button>
+    </nav>
+
+    <div class="hactions">
+      <button
+        type="button"
+        class="iconbtn"
+        id="btn-search"
+        data-abre="buscador"
+        aria-haspopup="dialog"
+        aria-label="Buscar máquina, servicio o delegación"
+      >
+        <Icono nombre="i-search" />
+      </button>
+
+      <ContadorBandeja client:idle />
+
+      <button
+        type="button"
+        class="iconbtn"
+        id="btn-a11y"
+        data-abre="accesibilidad"
+        aria-haspopup="dialog"
+        aria-label="Accesibilidad y apariencia"
+      >
+        <Icono nombre="i-a11y" />
+      </button>
+
+      <a class="btn btn--tel" href={`tel:${EMPRESA.telefonoE164}`}>
+        <Icono nombre="i-phone" />
+        <span>{EMPRESA.telefono}</span>
+      </a>
+
+      <button
+        type="button"
+        class="iconbtn navtoggle"
+        id="btn-drawer"
+        data-abre="cajon"
+        aria-haspopup="dialog"
+        aria-label="Abrir menú de navegación"
+      >
+        <Icono nombre="i-menu" />
+      </button>
+    </div>
+  </div>
+
+  {enOrden.map((menu) => <MegaMenu menu={menu} />)}
+</header>
+
+<script>
+  import { iniciarMegaMenus } from "@lib/megamenu";
+  iniciarMegaMenus();
+</script>

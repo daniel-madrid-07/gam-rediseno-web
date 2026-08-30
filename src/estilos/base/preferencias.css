@@ -1,0 +1,53 @@
+/**
+ * Preferencias de accesibilidad.
+ *
+ * Dos orígenes que hay que respetar por igual: lo que el sistema operativo
+ * declara (`prefers-reduced-motion`) y lo que la persona elige en el panel de
+ * la propia página (`data-motion`, `data-links`, `data-spacing`). La elección
+ * explícita en la página gana, porque es la más reciente y la más deliberada.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Movimiento desactivado desde el panel ---------- */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+:root[data-motion="off"] html {
+  scroll-behavior: auto;
+}
+
+/* ---------- Subrayado permanente de enlaces ---------- */
+:root[data-links="always"] main a:not(.btn):not(.tile):not(.chip):not(.pill) {
+  text-decoration: underline;
+}
+
+/* ---------- Espaciado de lectura ampliado ---------- */
+:root[data-spacing="wide"] body {
+  letter-spacing: 0.04em;
+  word-spacing: 0.12em;
+  line-height: 1.85;
+}
+
+:root[data-spacing="wide"] p,
+:root[data-spacing="wide"] li {
+  max-inline-size: 56ch;
+}

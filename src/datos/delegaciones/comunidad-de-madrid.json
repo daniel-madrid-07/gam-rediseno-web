@@ -1,0 +1,46 @@
+[
+  {
+    "id": "alcala-de-henares",
+    "nombre": "Alcalá de Henares",
+    "direccion": "Pol. Ind. Camarmilla, C/ Francia esquina C/Grecia",
+    "cp": "28802",
+    "ciudad": "Alcalá de Henares, Madrid",
+    "comunidad": "Comunidad de Madrid",
+    "telefono": "916 715 960",
+    "lat": 40.48151,
+    "lng": -3.38635
+  },
+  {
+    "id": "gam-audiovisuales",
+    "nombre": "GAM Audiovisuales",
+    "direccion": "Pol. Ind. Las Castellanas, Parcela 35, Ctra. N-II/INTA",
+    "cp": "28830",
+    "ciudad": "San Fernando de Henares",
+    "comunidad": "Comunidad de Madrid",
+    "telefono": "913 831 092",
+    "lat": 40.45609,
+    "lng": -3.51184
+  },
+  {
+    "id": "gam-en-mercamadrid",
+    "nombre": "GAM en Mercamadrid",
+    "direccion": "Avda de Madrid, s/n, Local PECF1B, Mercamadrid",
+    "cp": "28053",
+    "ciudad": "Madrid",
+    "comunidad": "Comunidad de Madrid",
+    "telefono": "918 874 988",
+    "lat": 40.3589,
+    "lng": -3.66179
+  },
+  {
+    "id": "san-fernando-de-henares",
+    "nombre": "San Fernando de Henares",
+    "direccion": "Pol.Ind. Las Castellanas, Ctra. N-II, Ctra. del INTA, Parcela 35",
+    "cp": "28830",
+    "ciudad": "San Fernando de Henares, Madrid",
+    "comunidad": "Comunidad de Madrid",
+    "telefono": "916 715 960",
+    "lat": 40.4556,
+    "lng": -3.51228
+  }
+]

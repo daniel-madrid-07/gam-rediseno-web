@@ -1,0 +1,31 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+
+/**
+ * Bloque plegable de sección.
+ *
+ * Es un `<details>` nativo: sin JavaScript ya abre, cierra, se anuncia bien en
+ * lectores de pantalla y responde a la búsqueda del navegador (Ctrl+F encuentra
+ * texto dentro de un `<details>` cerrado y lo despliega solo). Escribir esto a
+ * mano con botones y `aria-expanded` sería más código y peor comportamiento.
+ *
+ * En escritorio arranca abierto y en móvil cerrado, para no alargar el scroll.
+ * De eso se encarga un script al montar la página, no una media query, porque
+ * `open` es un atributo y no una propiedad que el CSS pueda cambiar.
+ */
+interface Props {
+  titulo: string;
+  /** Deja el bloque abierto también en móvil. */
+  siempreAbierto?: boolean;
+}
+
+const { titulo, siempreAbierto = false } = Astro.props;
+---
+
+<details class="mcol" open data-plegable-movil={siempreAbierto ? undefined : "true"}>
+  <summary>
+    {titulo}
+    <Icono nombre="i-chevron-down" class="chev" />
+  </summary>
+  <slot />
+</details>

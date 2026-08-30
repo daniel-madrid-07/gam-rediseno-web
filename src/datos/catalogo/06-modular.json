@@ -1,0 +1,144 @@
+[
+  {
+    "id": "caseta-obra",
+    "nombre": "Casetas de obra y oficinas prefabricadas",
+    "familia": "modular",
+    "icono": "m-modulo",
+    "descripcion": "Módulos de oficina y caseta de obra que evitan la obra civil. Ensamblables en planta y en altura, con acabados, climatización y voz y datos opcionales.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "na"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Medidas",
+        "estándar y a medida"
+      ],
+      [
+        "Instalación",
+        "sin obra civil"
+      ],
+      [
+        "Opcionales",
+        "clima, voz y datos, vinilado"
+      ]
+    ],
+    "etiquetas": "caseta obra oficina prefabricada modulo movil vestuario site"
+  },
+  {
+    "id": "vestuario-sanitario",
+    "nombre": "Vestuarios, módulos sanitarios y casetas WC",
+    "familia": "modular",
+    "icono": "m-modulo",
+    "descripcion": "Vestuarios, casetas de aseo y módulos sanitarios prefabricados, con suministro eléctrico y de agua.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "na"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Tipos",
+        "vestuario, WC, sanitario"
+      ],
+      [
+        "Suministro",
+        "eléctrico y de agua"
+      ],
+      [
+        "Uso",
+        "obra, evento, sanitario"
+      ]
+    ],
+    "etiquetas": "vestuario wc sanitario laboratorio aseo quimico higiene obra"
+  },
+  {
+    "id": "aula-kiosco",
+    "nombre": "Aulas, kioscos-bar y garitas de vigilancia",
+    "familia": "modular",
+    "icono": "m-modulo",
+    "descripcion": "Aulas prefabricadas, kioscos-bar y garitas de vigilancia, con acabados en panel, composite, vinilado o cristal.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "na"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Usos",
+        "educación, hostelería, control"
+      ],
+      [
+        "Acabados",
+        "panel, composite, vinilado, cristal"
+      ],
+      [
+        "Entrega",
+        "montaje y transporte incluidos"
+      ]
+    ],
+    "etiquetas": "aula colegio kiosco bar garita seguridad control acceso feria evento"
+  },
+  {
+    "id": "contenedor",
+    "nombre": "Contenedores marítimos y de almacenaje",
+    "familia": "modular",
+    "icono": "m-modulo",
+    "descripcion": "Contenedores marítimos y de almacenaje en formatos de 10, 20 y 40 pies, estancos y con cierre reforzado.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "na"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Formatos",
+        "10, 20 y 40 pies"
+      ],
+      [
+        "Cierre",
+        "seguridad reforzada"
+      ],
+      [
+        "Uso",
+        "almacenaje y archivo"
+      ]
+    ],
+    "etiquetas": "contenedor maritimo almacenaje 20 40 pies estanco seguridad archivo"
+  }
+]

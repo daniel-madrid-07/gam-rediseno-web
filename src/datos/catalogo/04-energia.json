@@ -1,0 +1,220 @@
+[
+  {
+    "id": "grupo-pequeno",
+    "nombre": "Grupos electrógenos hasta 600 kVA",
+    "familia": "energia",
+    "icono": "m-grupo",
+    "descripcion": "Grupos portátiles e insonorizados para trabajo en isla o sincronizado, con depósito de gran autonomía. GAM gestiona el repostaje y la asistencia.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Potencia",
+        "3 – 600 kVA"
+      ],
+      [
+        "Modo",
+        "isla o sincronizado"
+      ],
+      [
+        "Servicio",
+        "repostaje y asistencia 24 h"
+      ]
+    ],
+    "etiquetas": "grupo electrogeno generador pramac kva insonorizado obra evento respaldo"
+  },
+  {
+    "id": "grupo-grande",
+    "nombre": "Grupos electrógenos de más de 600 kVA",
+    "familia": "energia",
+    "icono": "m-grupo",
+    "descripcion": "Grupos de alta potencia para planta, parada industrial o evento de gran formato. El proyecto de instalación y la legalización van incluidos.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Potencia",
+        "600 – 2.000 kVA"
+      ],
+      [
+        "Instalación",
+        "proyecto llave en mano"
+      ],
+      [
+        "Legalización",
+        "incluida"
+      ]
+    ],
+    "etiquetas": "alta potencia planta industrial parada legalizacion proyecto kva"
+  },
+  {
+    "id": "compresor",
+    "nombre": "Compresores de aire",
+    "familia": "energia",
+    "icono": "m-compresor",
+    "descripcion": "Compresores portátiles diésel y eléctricos para herramienta neumática, arenado y procesos industriales.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "ext",
+      "int"
+    ],
+    "motores": [
+      "die",
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Caudal",
+        "2 – 25 m³/min"
+      ],
+      [
+        "Presión",
+        "7 – 14 bar"
+      ],
+      [
+        "Motorización",
+        "diésel o eléctrica"
+      ]
+    ],
+    "etiquetas": "compresor aire comprimido neumatico arenado atlas copco bar caudal"
+  },
+  {
+    "id": "clima",
+    "nombre": "Climatización y frío industrial",
+    "familia": "energia",
+    "icono": "m-compresor",
+    "descripcion": "Climatizadores, unidades de tratamiento de aire, plantas enfriadoras, intercambiadores de calor y depósitos de inercia, abiertos y presurizados.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die"
+    ],
+    "cero": true,
+    "canales": [
+      "alq"
+    ],
+    "ficha": [
+      [
+        "Equipos",
+        "climatizador, UTA, enfriadora"
+      ],
+      [
+        "Complementos",
+        "intercambiador, depósito de inercia"
+      ],
+      [
+        "Potencia",
+        "según proyecto"
+      ]
+    ],
+    "etiquetas": "climatizacion frio industrial uta enfriadora chiller inercia intercambiador"
+  },
+  {
+    "id": "canon-calor",
+    "nombre": "Cañones de calor y calefacción",
+    "familia": "energia",
+    "icono": "m-compresor",
+    "descripcion": "Aporte de calor temporal para secado de obra, carpas y naves, sin instalación fija. Versiones eléctricas, directas e indirectas.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Potencia térmica",
+        "20 – 150 kW"
+      ],
+      [
+        "Tipo",
+        "directo, indirecto o eléctrico"
+      ],
+      [
+        "Uso",
+        "secado, carpas, naves"
+      ]
+    ],
+    "etiquetas": "canon calor calefactor secado obra carpa nave kw generador aire caliente"
+  },
+  {
+    "id": "torre-iluminacion",
+    "nombre": "Torres de iluminación",
+    "familia": "energia",
+    "icono": "m-grupo",
+    "descripcion": "Iluminación autónoma sobre remolque para trabajo nocturno, eventos y emergencias. Versiones LED y solares.",
+    "alturaMax": 9,
+    "cargaMax": 0,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die",
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de mástil",
+        "hasta 9 m"
+      ],
+      [
+        "Iluminación",
+        "LED de alto rendimiento"
+      ],
+      [
+        "Autonomía",
+        "hasta 100 h"
+      ]
+    ],
+    "etiquetas": "torre iluminacion led solar nocturno obra evento emergencia mastil"
+  }
+]

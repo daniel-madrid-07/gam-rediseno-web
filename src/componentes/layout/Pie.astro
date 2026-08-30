@@ -1,0 +1,89 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import { COLUMNAS_PIE, ENLACES_LEGALES, REDES } from "@datos/pie";
+import { EMPRESA } from "@/config/sitio";
+
+/**
+ * Pie de página.
+ *
+ * Cada columna es un `<details>` que en móvil se pliega, para que el pie no
+ * sean cuarenta enlaces seguidos. El `<h3>` va dentro y duplicado con el
+ * `<summary>` a propósito: el resumen es el control que abre, y el encabezado
+ * es lo que aparece en la lista de encabezados de un lector de pantalla.
+ */
+const anio = new Date().getFullYear();
+---
+
+<footer class="footer on-night" id="pie">
+  <div class="wrap">
+    <div class="footer__brand">
+      <div>
+        <a class="brandmark brandmark--lg" href="#inicio" aria-label="GAM Soluciones, ir al inicio">
+          <Icono nombre="logo-gam" relleno viewBox="0 0 124 46" />
+        </a>
+        <p class="footer__claim">
+          General de Alquiler de Maquinaria. Servicios integrales de gestión y alquiler de
+          maquinaria para la industria.
+        </p>
+      </div>
+      <div class="footer__act">
+        <a class="btn btn--tel btn--lg" href={`tel:${EMPRESA.telefonoE164}`}>
+          <Icono nombre="i-phone" />
+          {EMPRESA.telefono}
+        </a>
+        <a class="btn btn--ghost btn--lg" href="#contacto">Pedir presupuesto</a>
+      </div>
+    </div>
+
+    <div class="footer__cols">
+      {
+        COLUMNAS_PIE.map((columna) => (
+          <details class="mcol" open data-plegable-movil="true">
+            <summary>
+              {columna.titulo}
+              <Icono nombre="i-chevron-down" class="chev" />
+            </summary>
+            <h3>{columna.titulo}</h3>
+            <ul role="list">
+              {columna.enlaces.map((enlace) => (
+                <li>
+                  <a
+                    href={enlace.href}
+                    data-goto={enlace.abre}
+                    data-service={enlace.servicio}
+                    target={enlace.externo ? "_blank" : undefined}
+                    rel={enlace.externo ? "noopener" : undefined}
+                  >
+                    {enlace.mono ? <span class="num">{enlace.texto}</span> : enlace.texto}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {columna.nota && <p class="footer__geo">{columna.nota}</p>}
+          </details>
+        ))
+      }
+    </div>
+
+    <div class="footer__bar">
+      <span class="footer__copy">Copyright © {anio} GAM</span>
+      <nav class="footer__legal" aria-label="Enlaces legales">
+        {ENLACES_LEGALES.map((enlace) => <a href={enlace.href}>{enlace.texto}</a>)}
+      </nav>
+      <div class="footer__social">
+        {
+          REDES.map((red) => (
+            <a
+              href={red.href}
+              target="_blank"
+              rel="noopener"
+              aria-label={`GAM en ${red.nombre} (se abre en una pestaña nueva)`}
+            >
+              <Icono nombre={red.icono} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

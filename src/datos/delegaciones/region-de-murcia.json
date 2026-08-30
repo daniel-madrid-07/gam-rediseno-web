@@ -1,0 +1,13 @@
+[
+  {
+    "id": "murcia",
+    "nombre": "Murcia",
+    "direccion": "Avda. Puntarrón 22, Autovía del Mediterráneo, Salida 581",
+    "cp": "30835",
+    "ciudad": "Sangonera La Seca, Murcia",
+    "comunidad": "Región de Murcia",
+    "telefono": "968 836 136",
+    "lat": 37.94339,
+    "lng": -1.26227
+  }
+]

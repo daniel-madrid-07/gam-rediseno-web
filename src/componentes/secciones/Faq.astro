@@ -1,0 +1,42 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import { PREGUNTAS } from "@datos/faq";
+
+/**
+ * Preguntas frecuentes.
+ *
+ * Acordeón de `<details>` sin JavaScript. Las respuestas están en el HTML
+ * aunque el bloque esté cerrado, así que el buscador las indexa y Ctrl+F las
+ * encuentra: un acordeón que sólo inserta el texto al abrirlo pierde las dos
+ * cosas.
+ */
+---
+
+<section class="band cv" id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kicker">Preguntas frecuentes</span>
+        <h2 id="h-faq">Preguntas frecuentes</h2>
+      </div>
+    </div>
+
+    <div class="faq">
+      {
+        PREGUNTAS.map((entrada) => (
+          <details>
+            <summary>
+              {entrada.pregunta}
+              <Icono nombre="i-plus" class="plus" />
+            </summary>
+            <div>
+              {entrada.respuesta.map((parrafo) => (
+                <p set:html={parrafo} />
+              ))}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

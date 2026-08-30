@@ -1,0 +1,84 @@
+name: Verificar y publicar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Permisos mínimos: leer el repo y publicar en Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un despliegue a la vez; los push encadenados no se pisan entre sí
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Comprobación de tipos
+        run: npm run check
+
+      - name: Tests unitarios
+        run: npm test
+
+      - name: Navegadores de Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Pruebas de extremo a extremo
+        run: npm run test:e2e
+
+      - name: Auditoría de contraste
+        run: |
+          npx astro build
+          npx astro preview --port 4321 &
+          npx wait-on http://localhost:4321 --timeout 60000
+          node scripts/auditar.mjs
+
+  publicar:
+    needs: verificar
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Compilar para GitHub Pages
+        run: npm run build:fast
+        env:
+          DESPLIEGUE: github
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4

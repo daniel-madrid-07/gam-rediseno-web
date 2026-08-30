@@ -1,0 +1,108 @@
+/* =========================================================
+   HÉROE
+   La primera pantalla tiene que hacer algo, no solo prometer:
+   titular corto, foto de producto y el buscador real.
+   ========================================================= */
+.hero { position: relative; background: var(--night); color: var(--on-night); padding-block: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem) 0; overflow: hidden; }
+
+/* Sin resplandores: la estructura la marca una banda roja al pie del héroe */
+.hero::after {
+  content: ""; position: absolute; inset-block-end: 0; inset-inline: 0;
+  block-size: 6px; background: var(--gam); pointer-events: none;
+}
+
+.hero__grid { position: relative; display: grid; gap: var(--s7); align-items: center; }
+
+.hero__grid > * { min-inline-size: 0; }
+
+@media (width >= 62rem) { .hero__grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--s8); } }
+
+.hero h1 { color: var(--on-night); margin-block: var(--s4) var(--s5); max-inline-size: 18ch; overflow-wrap: break-word; }
+
+.hero h1 em { font-style: normal; color: var(--gam-night); overflow-wrap: anywhere; }
+
+.hero__lede { color: var(--on-night-2); font-size: var(--t-lg); line-height: 1.55; max-inline-size: 48ch; }
+
+.hero .kicker { color: var(--on-night-3); }
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-block-start: var(--s6); }
+
+.hero__proof { display: grid; gap: var(--s3) var(--s6); margin-block-start: var(--s7); grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+
+.hero__proof li { display: flex; align-items: flex-start; gap: .55em; font-size: var(--t-sm); color: var(--on-night-2); line-height: 1.4; }
+
+.hero__proof .ico { inline-size: 1.05em; block-size: 1.05em; color: var(--ok-night); margin-block-start: .18em; }
+
+/* Panel de foto: producto real desde el primer pantallazo */
+.hero__shot { position: relative; min-inline-size: 0; border-radius: var(--r4); overflow: hidden; box-shadow: var(--sh3); background: var(--night-2); }
+
+.hero__shot img { inline-size: 100%; block-size: clamp(15rem, 32vw, 24rem); object-fit: cover; display: block; }
+
+.hero__tag {
+  position: absolute; inset-block-end: var(--s4); inset-inline-start: var(--s4);
+  display: flex; flex-direction: column; gap: .1rem;
+  background: color-mix(in srgb, var(--night) 86%, transparent);
+  backdrop-filter: blur(8px); border: 1px solid var(--night-line);
+  padding: .7rem 1rem; border-radius: var(--r2); color: var(--on-night);
+}
+
+.hero__tag b { font-family: var(--sans); overflow-wrap: anywhere; font-size: var(--t-xl); font-variation-settings: "wdth" 112; letter-spacing: -.02em; line-height: 1; }
+
+.hero__tag span { font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .1em; text-transform: uppercase; color: var(--on-night-3); }
+
+@media (width < 62rem) { .hero__shot img { block-size: clamp(12rem, 42vw, 18rem); } }
+
+/* =========================================================
+   CIFRAS
+   ========================================================= */
+.figs { display: grid; gap: var(--s6) var(--s5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
+
+.fig { display: flex; flex-direction: column; gap: .25rem; padding-block-start: var(--s3); border-block-start: 2px solid var(--night-line); }
+
+.fig__v {
+  font-family: var(--sans); font-variation-settings: "wdth" 116; font-weight: 800;
+  font-size: clamp(2.4rem, 1.55rem + 3.4vw, 4.5rem); line-height: .88; letter-spacing: -.045em;
+  font-variation-settings: "wdth" 76; font-variant-numeric: tabular-nums; color: var(--on-night);
+}
+
+.fig__l { font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .12em; text-transform: uppercase; color: var(--on-night-2); }
+
+.fig__n { font-size: var(--t-xs); color: var(--on-night-3); line-height: 1.4; }
+
+.fig--gam { border-block-start-color: var(--gam); }
+
+.fig--gam .fig__v { color: var(--gam-night); }
+
+.fig--ok { border-block-start-color: var(--ok-night); }
+
+.fig--ok .fig__v { color: var(--ok-night); }
+
+.ticks { display: flex; flex-direction: column; gap: var(--s3); }
+
+.ticks li { display: flex; gap: .7rem; font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55; }
+
+.ticks .ico { inline-size: 1.1em; block-size: 1.1em; color: var(--ok); flex: none; margin-block-start: .3em; }
+
+.telcard {
+  background: var(--gam-field); color: var(--gam-on);
+  padding: var(--s5); display: flex; flex-direction: column; gap: var(--s3);
+}
+
+.telcard .kicker { color: var(--gam-on); border-block-start-color: color-mix(in srgb, var(--gam-on) 60%, transparent); }
+
+.telcard__n { overflow-wrap: anywhere;
+  display: inline-flex; align-items: center; gap: .6rem; font-family: var(--sans);
+  font-variation-settings: "wdth" 114; font-weight: 800; letter-spacing: -.025em;
+  font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.25rem); line-height: 1;
+  color: var(--gam-on); text-decoration: none;
+}
+
+.telcard__n:hover { color: var(--ink); }
+
+.telcard__n .ico { inline-size: .8em; block-size: .8em; }
+
+.telcard p { font-size: var(--t-sm); color: var(--gam-on); }
+
+.band--night .ticks li { color: var(--on-night-2); }
+
+.band--night .ticks .ico { color: var(--ok-night); }

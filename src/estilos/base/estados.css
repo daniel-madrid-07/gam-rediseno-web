@@ -1,0 +1,9 @@
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 560ms var(--ease), transform 560ms var(--ease); }
+
+.reveal[data-in="true"] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+:root[data-motion="off"] .reveal { opacity: 1; transform: none; }
+
+.cv { content-visibility: auto; contain-intrinsic-size: auto 620px; }

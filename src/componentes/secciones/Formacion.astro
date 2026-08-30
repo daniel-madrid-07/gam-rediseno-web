@@ -1,0 +1,77 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import Plegable from "@componentes/base/Plegable.astro";
+import { MODALIDADES } from "@datos/mantenimiento";
+import { CURSOS } from "@datos/cursos";
+
+/**
+ * Formación homologada (Kirleo).
+ *
+ * El catálogo de cursos es una tabla porque cada curso se compara por
+ * normativa y modalidad, que es exactamente para lo que sirve una tabla.
+ */
+---
+
+<section class="band cv" id="formacion" aria-labelledby="h-form">
+  <div class="wrap">
+    <div class="head head--split">
+      <div>
+        <span class="kicker">Formación · Kirleo</span>
+        <h2 id="h-form">Formación homologada de operarios</h2>
+        <p>
+          Cursos abiertos, programas a medida y formación <i lang="en">in company</i>, todos con
+          carnet y certificado oficial. Más de 300 cursos al mes, impartidos por técnicos de PRL
+          titulados y con prácticas en maquinaria de GAM. Tramitamos la bonificación FUNDAE.
+        </p>
+      </div>
+      <a class="btn btn--gam" href="#contacto">
+        <Icono nombre="v-formacion" />
+        Solicitar información
+      </a>
+    </div>
+
+    <Plegable titulo="Catálogo de cursos homologados">
+      <div class="tablewrap">
+        <table class="data">
+          <caption>Catálogo de cursos homologados</caption>
+          <thead>
+            <tr>
+              <th scope="col">Curso</th>
+              <th scope="col">Normativa</th>
+              <th scope="col">Modalidad</th>
+              <th scope="col">Contenido</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              CURSOS.map((curso) => (
+                <tr>
+                  <th scope="row">{curso.nombre}</th>
+                  <td class="num">{curso.norma}</td>
+                  <td>{curso.modalidad}</td>
+                  <td>{curso.descripcion}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </Plegable>
+
+    <Plegable titulo="Modalidades y bonificación">
+      <div class="grid g3" style="margin-block-start:var(--s6)">
+        {
+          MODALIDADES.map((modalidad) => (
+            <div class="panel">
+              <div class="panel__ico">
+                <Icono nombre={modalidad.icono} />
+              </div>
+              <h3>{modalidad.titulo}</h3>
+              <p>{modalidad.texto}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Plegable>
+  </div>
+</section>

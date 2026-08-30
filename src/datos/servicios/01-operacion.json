@@ -1,0 +1,97 @@
+[
+  {
+    "id": "alquiler",
+    "nombre": "Alquiler de maquinaria",
+    "icono": "v-alquiler",
+    "resumen": "Más de 40.000 equipos",
+    "descripcion": "Elevación, manutención, manipulación y energía de primeras marcas, con un único interlocutor y entrega desde la delegación más cercana.",
+    "detalle": "Un servicio integral de alquiler de maquinaria de primeras marcas y proyectos llave en mano que cubren cualquier necesidad en elevación, energía, manutención y manipulación, complementado con un servicio personalizado de postventa.",
+    "puntos": [
+      "Asesoramiento técnico previo a la contratación",
+      "Control presupuestario y ahorro frente a la compra",
+      "Servicio técnico especializado en obra o en delegación",
+      "Renting flexible y leasing para optimización de flotas"
+    ],
+    "enlace": {
+      "texto": "Ver el catálogo",
+      "href": "#catalogo",
+      "externo": false
+    }
+  },
+  {
+    "id": "energia",
+    "nombre": "Energía",
+    "icono": "v-energia",
+    "resumen": "+1.000 grupos electrógenos",
+    "descripcion": "Proyectos llave en mano de suministro temporal de energía: asesoramiento, equipos, legalización, repostaje, mantenimiento y gestión de residuos.",
+    "detalle": "Analizamos la necesidad de tu negocio, fábrica o evento y diseñamos toda la instalación, incluyendo certificaciones y legalizaciones. Más de 1.000 grupos electrógenos de distintas capacidades, más de 600 técnicos especializados y un equipo de ingenieros industriales para llevar cada proyecto de principio a fin.",
+    "puntos": [
+      "Grupos electrógenos de 3 a 2.000 kVA, en isla o sincronizados",
+      "Climatización y frío industrial: UTA, enfriadoras, intercambiadores",
+      "Cañones de calor eléctricos y diésel",
+      "Asistencia técnica 24 horas y servicio de repostaje"
+    ],
+    "enlace": {
+      "texto": "Ver equipos de energía",
+      "href": "#catalogo",
+      "externo": false
+    }
+  },
+  {
+    "id": "mantenimiento",
+    "nombre": "Mantenimiento",
+    "icono": "v-mantenimiento",
+    "resumen": "600 técnicos · 300 talleres móviles",
+    "descripcion": "Programas a medida para tu flota o para flotas de terceros, de todas las marcas del mercado, con servicio de guardia y maquinaria de sustitución.",
+    "detalle": "El servicio de mantenimiento de GAM ofrece programas a medida para máquinas o flotas de terceros. Contamos con 600 técnicos y 300 talleres móviles, atención técnica especializada, servicio de guardia y maquinaria de sustitución. Trabajamos con todas las marcas del mercado.",
+    "puntos": [
+      "Preventivo: revisiones periódicas programadas por calendario u horas",
+      "Full Service básico: preventivo más averías hasta importe pactado",
+      "Full Service integral: cobertura completa según criterios del cliente",
+      "Kits de mejora: seguridad, visibilidad, ahorro energético, control de flota"
+    ],
+    "enlace": {
+      "texto": "Solicitar soporte técnico",
+      "href": "#contacto",
+      "externo": false
+    }
+  },
+  {
+    "id": "modular",
+    "nombre": "Construcción modular",
+    "icono": "v-modular",
+    "resumen": "Sin obra civil",
+    "descripcion": "Módulos prefabricados y proyectos de arquitectura modular a medida: diseño, construcción, montaje, transporte y reparaciones.",
+    "detalle": "Desde montajes o edificaciones simples hasta grandes proyectos, evitando obras civiles y aportando gran inmediatez gracias a la rapidez de instalación. Nos ocupamos del diseño, la construcción modular, el montaje, el transporte y las posibles reparaciones.",
+    "puntos": [
+      "Casetas de obra, oficinas, aulas, vestuarios y módulos sanitarios",
+      "Kioscos-bar, garitas de seguridad y contenedores de almacenaje",
+      "Acabados a medida: composite, vinilado, cristal, dobles cubiertas",
+      "Climatización, voz y datos, cimentaciones y suministro eléctrico"
+    ],
+    "enlace": {
+      "texto": "Ver soluciones modulares",
+      "href": "#catalogo",
+      "externo": false
+    }
+  },
+  {
+    "id": "robotica",
+    "nombre": "Robótica móvil",
+    "icono": "v-robotica",
+    "resumen": "AGV y AMR",
+    "descripcion": "Automatizamos el movimiento de materiales en fábricas, almacenes y centros logísticos para reducir tiempos, costes y riesgos.",
+    "detalle": "Un AGV (vehículo de guiado automático) o AMR (robot móvil autónomo) transporta materiales dentro de fábricas, almacenes y centros logísticos sin intervención humana, desplazándose de forma segura por rutas predefinidas o mediante navegación inteligente.",
+    "puntos": [
+      "Movimiento de palés suelo a suelo y de carros en línea",
+      "Recogida de palé acabado y envío a almacén",
+      "Contenedores plásticos y metálicos, y gestión de convoyes",
+      "Clasificación automática (sorting) del proceso logístico"
+    ],
+    "enlace": {
+      "texto": "Ver soluciones de robótica",
+      "href": "#catalogo",
+      "externo": false
+    }
+  }
+]

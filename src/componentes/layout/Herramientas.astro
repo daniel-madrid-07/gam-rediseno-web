@@ -1,0 +1,36 @@
+---
+import Avisos from "@islas/Avisos.svelte";
+import Bandeja from "@islas/dialogos/Bandeja.svelte";
+import BuscadorGlobal from "@islas/dialogos/BuscadorGlobal.svelte";
+import PanelAccesibilidad from "@islas/dialogos/PanelAccesibilidad.svelte";
+import Asistente from "@islas/dialogos/Asistente.svelte";
+import FichaServicio from "@islas/dialogos/FichaServicio.svelte";
+import CajonNavegacion from "@islas/dialogos/CajonNavegacion.svelte";
+import type { Delegacion, Maquina, Servicio } from "@tipos";
+
+/**
+ * Los diálogos y los avisos, todos juntos al final del documento.
+ *
+ * Se hidratan con `client:idle`: ninguno se ve al cargar la página, así que
+ * pueden esperar a que el navegador termine lo urgente. Van al final del
+ * <body> y no dentro de las secciones porque un `<dialog>` modal se sale del
+ * flujo de todas formas, y aquí no puede quedar atrapado dentro de un
+ * contenedor con `transform` o `content-visibility`, que es lo que rompe el
+ * posicionamiento de los modales sin que se vea el motivo.
+ */
+interface Props {
+  catalogo: Maquina[];
+  servicios: Servicio[];
+  delegaciones: Delegacion[];
+}
+
+const { catalogo, servicios, delegaciones } = Astro.props;
+---
+
+<Avisos client:idle />
+<BuscadorGlobal {catalogo} {servicios} {delegaciones} client:idle />
+<Bandeja {catalogo} client:idle />
+<PanelAccesibilidad client:idle />
+<Asistente {catalogo} client:idle />
+<FichaServicio {servicios} client:idle />
+<CajonNavegacion {servicios} client:idle />

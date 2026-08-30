@@ -1,0 +1,57 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import { SECTORES } from "@datos/sectores";
+import { MARCAS } from "@datos/marcas";
+import { EMPRESA } from "@/config/sitio";
+
+/**
+ * Sectores atendidos y marcas distribuidas.
+ *
+ * Las marcas son una lista, no una rejilla de logotipos: no tenemos los
+ * originales con licencia de uso, y una tipografía honesta con el nombre
+ * escrito es preferible a un logotipo redibujado a ojo.
+ */
+---
+
+<section class="band cv" id="sectores" aria-labelledby="h-sec">
+  <div class="wrap stack s7">
+    <div>
+      <div class="head">
+        <div>
+          <span class="kicker">Sectores</span>
+          <h2 id="h-sec">Sectores atendidos</h2>
+        </div>
+      </div>
+      <div class="sectors">
+        {
+          SECTORES.map((sector) => (
+            <div class="sector">
+              <Icono nombre={sector.icono} />
+              <b>{sector.nombre}</b>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div id="marcas">
+      <div class="head head--split">
+        <div>
+          <span class="kicker">Marcas</span>
+          <h2 style="font-size:var(--t-2xl)">Marcas que distribuimos</h2>
+          <p style="font-size:var(--t-md)">
+            Distribuidores oficiales. Venta, garantía y postventa con red propia de talleres y
+            técnicos.
+          </p>
+        </div>
+        <a class="link" href={EMPRESA.filiales.online} target="_blank" rel="noopener">
+          Comprar por marca
+          <Icono nombre="i-external" />
+        </a>
+      </div>
+      <div class="brands" role="list">
+        {MARCAS.map((marca) => <span role="listitem">{marca}</span>)}
+      </div>
+    </div>
+  </div>
+</section>

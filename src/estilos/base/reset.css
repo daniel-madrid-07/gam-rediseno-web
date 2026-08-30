@@ -1,0 +1,57 @@
+/**
+ * Reset mínimo.
+ *
+ * Vive en la capa `reset`, la primera de todas, así que cualquier regla de
+ * cualquier componente le gana sin necesidad de subir especificidad. Por eso
+ * puede usar selectores de elemento sin miedo.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5,
+p, figure, blockquote,
+dl, dd, ul, ol, fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+search {
+  display: block;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+}
+
+fieldset {
+  border: 0;
+  min-inline-size: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+:where(a) {
+  color: inherit;
+}

@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import Cabecera from "@componentes/layout/Cabecera.astro";
+import Pie from "@componentes/layout/Pie.astro";
+import BarraPulgar from "@componentes/layout/BarraPulgar.astro";
+import Herramientas from "@componentes/layout/Herramientas.astro";
+import Heroe from "@componentes/secciones/Heroe.astro";
+import Familias from "@componentes/secciones/Familias.astro";
+import Catalogo from "@componentes/secciones/Catalogo.astro";
+import Cifras from "@componentes/secciones/Cifras.astro";
+import Servicios from "@componentes/secciones/Servicios.astro";
+import Mantenimiento from "@componentes/secciones/Mantenimiento.astro";
+import Formacion from "@componentes/secciones/Formacion.astro";
+import Delegaciones from "@componentes/secciones/Delegaciones.astro";
+import SectoresMarcas from "@componentes/secciones/SectoresMarcas.astro";
+import Sostenibilidad from "@componentes/secciones/Sostenibilidad.astro";
+import Faq from "@componentes/secciones/Faq.astro";
+import Contacto from "@componentes/secciones/Contacto.astro";
+import { grafoDePortada } from "@lib/jsonld";
+import { SITIO } from "@/config/sitio";
+import type { Delegacion, Maquina, Servicio } from "@tipos";
+
+/**
+ * Portada.
+ *
+ * Lee las tres colecciones una vez y las reparte. El orden de las secciones es
+ * el recorrido comercial: qué se alquila, cómo se encuentra, quién lo respalda,
+ * qué más se ofrece y por dónde se contacta.
+ */
+const catalogo = (await getCollection("catalogo")).map((e) => e.data as Maquina);
+const servicios = (await getCollection("servicios")).map((e) => e.data as Servicio);
+const delegaciones = (await getCollection("delegaciones")).map((e) => e.data as Delegacion);
+
+const datosEstructurados = grafoDePortada({ catalogo, servicios, delegaciones });
+---
+
+<Base titulo={SITIO.titulo} descripcion={SITIO.descripcion}>
+  <script
+    slot="cabeza"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(datosEstructurados)}
+  />
+
+  <Cabecera {servicios} />
+
+  <main id="contenido">
+    <Heroe />
+    <Familias {catalogo} />
+    <Catalogo {catalogo} />
+    <Cifras />
+    <Servicios {servicios} />
+    <Mantenimiento />
+    <Formacion />
+    <Delegaciones {delegaciones} />
+    <SectoresMarcas />
+    <Sostenibilidad />
+    <Faq />
+    <Contacto {catalogo} {delegaciones} />
+  </main>
+
+  <Pie />
+  <BarraPulgar />
+  <Herramientas {catalogo} {servicios} {delegaciones} />
+</Base>
+
+<script>
+  import { iniciarAtajos } from "@lib/atajos";
+  import { iniciarPlegables } from "@lib/plegables";
+
+  iniciarAtajos();
+  iniciarPlegables();
+</script>

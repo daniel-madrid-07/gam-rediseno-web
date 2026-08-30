@@ -1,0 +1,24 @@
+[
+  {
+    "id": "bilbao",
+    "nombre": "Bilbao",
+    "direccion": "Pol. Ind. Arriaga, Barrio Sakoni 6",
+    "cp": "48950",
+    "ciudad": "Erandio, Vizcaya",
+    "comunidad": "País Vasco",
+    "telefono": "944 994 300",
+    "lat": 43.29741,
+    "lng": -2.95875
+  },
+  {
+    "id": "vitoria",
+    "nombre": "Vitoria",
+    "direccion": "Delegación atendida desde Aldaiturriaga.",
+    "cp": "-",
+    "ciudad": "Vitoria",
+    "comunidad": "País Vasco",
+    "telefono": "944 994 300",
+    "lat": null,
+    "lng": null
+  }
+]

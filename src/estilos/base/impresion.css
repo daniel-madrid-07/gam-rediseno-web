@@ -1,0 +1,8 @@
+@media print {
+  .masthead, .totop, .toast, .filters, .card__foot, .footer__social, .shelf, .skiplinks { display: none !important; }
+  body { background: #fff; color: #000; }
+  .band { padding-block: 1.5rem; page-break-inside: avoid; }
+  .band--night, .hero, .footer { background: #fff !important; color: #000 !important; }
+  .band--night h1, .band--night h2, .hero h1, .fig__v { color: #000 !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .75em; color: #555; }
+}

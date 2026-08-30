@@ -1,0 +1,35 @@
+[
+  {
+    "id": "alicante",
+    "nombre": "Alicante",
+    "direccion": "Pol. Ind. Atalayas,  Avda del Yen, Nº165-166",
+    "cp": "03114",
+    "ciudad": "Alicante",
+    "comunidad": "Comunidad Valenciana",
+    "telefono": "965 106 580",
+    "lat": 38.33903,
+    "lng": -0.55933
+  },
+  {
+    "id": "castellon",
+    "nombre": "Castellón",
+    "direccion": "Pol. Ind. Vía Europa, C/ Villafamés s/n",
+    "cp": "12550",
+    "ciudad": "Almazora, Castellón",
+    "comunidad": "Comunidad Valenciana",
+    "telefono": "964 340 043",
+    "lat": 39.96593,
+    "lng": -0.08675
+  },
+  {
+    "id": "valencia",
+    "nombre": "Valencia",
+    "direccion": "PL INDUSTRIAL Nº1 6(2)",
+    "cp": "46440",
+    "ciudad": "Almussafes, Valencia",
+    "comunidad": "Comunidad Valenciana",
+    "telefono": "961 417 790",
+    "lat": 39.3248,
+    "lng": -0.4122
+  }
+]

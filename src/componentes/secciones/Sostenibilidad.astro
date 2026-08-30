@@ -1,0 +1,61 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+
+/**
+ * Sostenibilidad.
+ *
+ * Las cuatro cifras van en su propia rejilla y no en la de «GAM en cifras»
+ * porque aquí no se animan: son contexto del párrafo, no un titular.
+ */
+const COMPROMISOS = [
+  "Maquinaria eléctrica de interior sin emisiones ni ruido en planta",
+  "Economía circular: reacondicionamos y damos una segunda vida a la máquina",
+  "Gestión de residuos incluida en los proyectos de energía",
+  "Informe de sostenibilidad y objetivos de desarrollo sostenible públicos",
+];
+
+const CIFRAS = [
+  { valor: "85 %", etiqueta: "Parque cero emisiones" },
+  { valor: "+3.400", etiqueta: "Vehículos eléctricos" },
+  { valor: "+40.000", etiqueta: "Máquinas en parque" },
+  { valor: "300", etiqueta: "Talleres móviles" },
+];
+---
+
+<section class="band band--night cv on-night" id="sostenibilidad" aria-labelledby="h-sos">
+  <div class="wrap">
+    <div class="eco">
+      <div>
+        <span class="kicker">Modo sostenible</span>
+        <h2 id="h-sos">El 85 % del parque es cero emisiones</h2>
+        <p
+          style="font-size:var(--t-lg);line-height:1.55;max-inline-size:52ch;margin-block:var(--s4) var(--s5)"
+        >
+          La mayor parte del parque es cero emisiones. Renovamos la flota hacia equipos eléctricos y
+          de baterías de litio, reacondicionamos máquinas para devolverlas al mercado a través de
+          Reviver y operamos más de 3.400 vehículos eléctricos de última milla con Inquieto.
+        </p>
+        <ul class="ticks" role="list">
+          {
+            COMPROMISOS.map((compromiso) => (
+              <li>
+                <Icono nombre="i-check" /> {compromiso}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="eco__figs">
+        {
+          CIFRAS.map((cifra) => (
+            <div class="eco__fig">
+              <b class="num">{cifra.valor}</b>
+              <span>{cifra.etiqueta}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

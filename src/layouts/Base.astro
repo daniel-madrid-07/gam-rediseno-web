@@ -1,0 +1,73 @@
+---
+import Cabeza from "@componentes/layout/Cabeza.astro";
+import Sprite from "@componentes/base/Sprite.astro";
+import "@/estilos/indice.css";
+
+/**
+ * Esqueleto de todas las páginas.
+ *
+ * El único script que va en el <head> es el de preferencias, y va en línea y
+ * sin `defer` por una razón concreta: tiene que correr antes de la primera
+ * pintura o quien tenga el tema oscuro guardado ve un fogonazo blanco al
+ * cargar. Todo lo demás baja como isla y se hidrata cuando toca.
+ */
+interface Props {
+  titulo: string;
+  descripcion: string;
+  ruta?: string;
+  tipo?: "website" | "article" | "product";
+}
+
+const { titulo, descripcion, ruta = "/", tipo = "website" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <Cabeza {titulo} {descripcion} {ruta} {tipo} />
+    <script is:inline>
+      /* Preferencias antes del primer pintado: evita el parpadeo de tema. */
+      (function () {
+        const raiz = document.documentElement;
+        const leer = function (clave) {
+          try {
+            return localStorage.getItem(clave);
+          } catch {
+            /* Modo privado o cookies bloqueadas: se usan los valores por defecto */
+            return null;
+          }
+        };
+        const tema = leer("gam:pref:tema");
+        if (tema === "dark" || tema === "light") raiz.setAttribute("data-theme", tema);
+
+        const escala = leer("gam:pref:escala");
+        const factor = { "100": "1", "115": "1.15", "130": "1.3", "150": "1.5" }[escala];
+        if (factor && factor !== "1") {
+          raiz.style.setProperty("--ui-scale", factor);
+          raiz.setAttribute("data-scale", parseFloat(factor) >= 1.3 ? "lg" : "md");
+        }
+        if (leer("gam:pref:contraste") === "high") raiz.setAttribute("data-contrast", "high");
+        if (leer("gam:pref:movimiento") === "off") raiz.setAttribute("data-motion", "off");
+        if (leer("gam:pref:enlaces") === "always") raiz.setAttribute("data-links", "always");
+        if (leer("gam:pref:espaciado") === "wide") raiz.setAttribute("data-spacing", "wide");
+      })();
+    </script>
+    <slot name="cabeza" />
+  </head>
+
+  <body>
+    <Sprite />
+    <div class="skiplinks">
+      <a href="#contenido">Ir al contenido</a>
+      <a href="#catalogo">Ir al catálogo</a>
+      <a href="#contacto">Ir a contacto</a>
+    </div>
+    <slot />
+  </body>
+</html>
+
+<script>
+  /* Mantiene el <html> al día con lo que la persona cambie en el panel. */
+  import { sincronizarDocumento } from "@lib/estado/preferencias";
+  sincronizarDocumento();
+</script>

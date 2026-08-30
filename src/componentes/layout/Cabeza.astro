@@ -1,0 +1,85 @@
+---
+import { SITIO } from "@/config/sitio";
+
+/**
+ * Metadatos del documento.
+ *
+ * El `canonical` apunta siempre al sitio oficial de producción, no al dominio
+ * donde esté desplegada esta versión: así una vista previa nunca compite en
+ * buscadores con gamrentals.com ni se lleva sus posiciones.
+ */
+interface Props {
+  titulo: string;
+  descripcion: string;
+  /** Ruta canónica sin dominio, p. ej. "/maquinaria/plat-tijera". */
+  ruta?: string;
+  imagen?: string;
+  tipo?: "website" | "article" | "product";
+}
+
+const {
+  titulo,
+  descripcion,
+  ruta = "/",
+  tipo = "website",
+  imagen = "https://gamrentals.com/media/media-bd/imagenes/cabecera-alquiler-1920x550-1595927378.png",
+} = Astro.props;
+
+const canonica = new URL(ruta, "https://gamrentals.com/es/").href;
+
+/** Los idiomas que sirve el sitio oficial. */
+const IDIOMAS: readonly [string, string][] = [
+  ["es-ES", "https://gamrentals.com/es"],
+  ["en", "https://gamrentals.com/en"],
+  ["pt-PT", "https://gamrentals.com/pt"],
+  ["es-MX", "https://gamrentals.com/mx"],
+  ["es-CL", "https://gamrentals.com/cl"],
+  ["es-PE", "https://gamrentals.com/pe"],
+  ["fr-MA", "https://gamrentals.com/ma"],
+  ["ar-SA", "https://gamrentals.com/sa"],
+  ["x-default", "https://gamrentals.com/es"],
+];
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<title>{titulo}</title>
+<meta name="description" content={descripcion} />
+<meta
+  name="robots"
+  content={SITIO.indexable
+    ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    : "noindex, nofollow"}
+/>
+<meta name="author" content="GAM · General de Alquiler de Maquinaria" />
+<meta name="theme-color" content="#0B0E12" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+<meta name="format-detection" content="telephone=yes" />
+
+<meta property="og:site_name" content="GAM Soluciones" />
+<meta property="og:title" content={titulo} />
+<meta property="og:description" content={descripcion} />
+<meta property="og:type" content={tipo} />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:url" content={canonica} />
+<meta property="og:image" content={imagen} />
+<meta
+  property="og:image:alt"
+  content="Delegación de GAM con plataformas elevadoras y carretillas listas para alquiler"
+/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={titulo} />
+<meta name="twitter:description" content={descripcion} />
+
+<link rel="canonical" href={canonica} />
+{IDIOMAS.map(([codigo, href]) => <link rel="alternate" hreflang={codigo} href={href} />)}
+
+<link rel="icon" href={`${SITIO.base.replace(/\/$/, "")}/favicon.svg`} type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+/>

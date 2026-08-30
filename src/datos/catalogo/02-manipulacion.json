@@ -1,0 +1,252 @@
+[
+  {
+    "id": "telehandler",
+    "nombre": "Manipuladores telescópicos",
+    "familia": "manipulacion",
+    "icono": "m-telehandler",
+    "descripcion": "Elevación y colocación de carga con brazo telescópico. Los implementos intercambiables permiten trabajar con horquilla, cazo, cesta o gancho.",
+    "alturaMax": 25,
+    "cargaMax": 5000,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de elevación",
+        "4 – 25 m"
+      ],
+      [
+        "Capacidad de carga",
+        "2.500 – 5.000 kg"
+      ],
+      [
+        "Implementos",
+        "horquilla, cazo, cesta, gancho"
+      ]
+    ],
+    "etiquetas": "telescopico manitou merlo magni jcb obra implementos horquilla"
+  },
+  {
+    "id": "carretilla-4x4",
+    "nombre": "Carretillas elevadoras todoterreno 4x4",
+    "familia": "manipulacion",
+    "icono": "m-carretilla",
+    "descripcion": "Carretilla de tracción total con neumáticos de obra, para mover palés en terreno sin compactar, barro o pendiente.",
+    "alturaMax": 6,
+    "cargaMax": 7000,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de carga",
+        "2.500 – 7.000 kg"
+      ],
+      [
+        "Altura de elevación",
+        "3 – 6 m"
+      ],
+      [
+        "Tracción",
+        "4x4 permanente"
+      ]
+    ],
+    "etiquetas": "todoterreno rough terrain obra 4x4 palets barro"
+  },
+  {
+    "id": "miniexcavadora",
+    "nombre": "Miniexcavadoras",
+    "familia": "manipulacion",
+    "icono": "m-excavadora",
+    "descripcion": "Excavación en espacios reducidos, con modelos de radio de giro corto. Para zanjas, cimentaciones ligeras y obra de urbanización.",
+    "alturaMax": 0,
+    "cargaMax": 8000,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die",
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Peso operativo",
+        "0,8 – 8 t"
+      ],
+      [
+        "Profundidad de excavación",
+        "1,7 – 4,2 m"
+      ],
+      [
+        "Giro",
+        "radio corto disponible"
+      ]
+    ],
+    "etiquetas": "miniexcavadora excavadora zanja cimentacion urbanizacion kubota takeuchi"
+  },
+  {
+    "id": "minicargadora",
+    "nombre": "Minicargadoras",
+    "familia": "manipulacion",
+    "icono": "m-excavadora",
+    "descripcion": "Máquina compacta para carga, nivelación y limpieza de tajo. Admite implementos intercambiables: cazo, barredora y martillo.",
+    "alturaMax": 0,
+    "cargaMax": 1200,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad operativa",
+        "500 – 1.200 kg"
+      ],
+      [
+        "Ancho",
+        "desde 1,4 m"
+      ],
+      [
+        "Implementos",
+        "cazo, barredora, martillo"
+      ]
+    ],
+    "etiquetas": "minicargadora bobcat skid steer cazo barredora martillo"
+  },
+  {
+    "id": "retroexcavadora",
+    "nombre": "Retroexcavadoras y miniretrocargadoras",
+    "familia": "manipulacion",
+    "icono": "m-excavadora",
+    "descripcion": "Pala cargadora delantera y brazo excavador trasero en un mismo equipo, con desplazamiento por vía urbana sin necesidad de góndola.",
+    "alturaMax": 0,
+    "cargaMax": 9000,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Peso operativo",
+        "5 – 9 t"
+      ],
+      [
+        "Profundidad de excavación",
+        "hasta 5,5 m"
+      ],
+      [
+        "Capacidad de pala",
+        "0,8 – 1,1 m³"
+      ]
+    ],
+    "etiquetas": "retroexcavadora mixta pala jcb 3cx urbana"
+  },
+  {
+    "id": "pala-cargadora",
+    "nombre": "Palas cargadoras",
+    "familia": "manipulacion",
+    "icono": "m-excavadora",
+    "descripcion": "Carga de áridos y movimiento de grandes volúmenes en cantera, planta de reciclaje y acopio.",
+    "alturaMax": 0,
+    "cargaMax": 12000,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de cazo",
+        "1,0 – 3,5 m³"
+      ],
+      [
+        "Peso operativo",
+        "7 – 18 t"
+      ],
+      [
+        "Aplicación",
+        "áridos, reciclaje, cantera"
+      ]
+    ],
+    "etiquetas": "pala cargadora frontal aridos cantera reciclaje acopio"
+  },
+  {
+    "id": "grua-hidraulica",
+    "nombre": "Grúas hidráulicas industriales",
+    "familia": "manipulacion",
+    "icono": "m-telehandler",
+    "descripcion": "Grúas industriales Ormig de tipo pick and carry, para montaje dentro de nave con carga suspendida y desplazamiento propio.",
+    "alturaMax": 0,
+    "cargaMax": 30000,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Capacidad de carga",
+        "2 – 30 t"
+      ],
+      [
+        "Tipo",
+        "pick and carry"
+      ],
+      [
+        "Uso",
+        "montaje industrial y mantenimiento"
+      ]
+    ],
+    "etiquetas": "grua ormig pick and carry montaje industrial carga suspendida"
+  }
+]

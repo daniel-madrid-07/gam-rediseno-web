@@ -1,0 +1,59 @@
+---
+import { SITIO } from "@/config/sitio";
+import ALTERNATIVOS from "@datos/fotos.json";
+
+/**
+ * Una fotografía del parque de GAM.
+ *
+ * Los archivos ya están normalizados a WebP en dos anchos (`-s` 420 px y `-m`
+ * 800 px), así que aquí sólo hay que declarar el `srcset` y dejar que el
+ * navegador escoja. El texto alternativo sale del catálogo de fotos y no se
+ * escribe en la plantilla: así una misma máquina se describe igual en la ficha,
+ * en la bandeja y en el carrusel, que es lo que espera quien navega con lector.
+ */
+interface Props {
+  /** Identificador de la foto, que coincide con el de la familia de máquina. */
+  id: string;
+  /** Sustituye al alternativo del catálogo cuando el contexto pide otro. */
+  alt?: string;
+  /** Valor del atributo `sizes`; sin él el navegador asume el ancho completo. */
+  sizes?: string;
+  class?: string;
+  /** La foto del héroe es el LCP: se carga con prioridad y sin diferir. */
+  prioritaria?: boolean;
+  ancho?: number;
+  alto?: number;
+}
+
+const {
+  id,
+  alt,
+  sizes = "(min-width: 64rem) 26rem, 90vw",
+  class: clase,
+  prioritaria = false,
+  ancho = 800,
+  alto = 600,
+} = Astro.props;
+
+const catalogo = ALTERNATIVOS as Record<string, string>;
+const descripcion = alt ?? catalogo[id] ?? "";
+const base = SITIO.base.replace(/\/$/, "");
+const existe = id in catalogo || prioritaria;
+---
+
+{
+  existe && (
+    <img
+      src={`${base}/img/${id}-m.webp`}
+      srcset={`${base}/img/${id}-s.webp 420w, ${base}/img/${id}-m.webp 800w`}
+      sizes={sizes}
+      alt={descripcion}
+      class={clase}
+      width={ancho}
+      height={alto}
+      loading={prioritaria ? "eager" : "lazy"}
+      fetchpriority={prioritaria ? "high" : "auto"}
+      decoding={prioritaria ? "sync" : "async"}
+    />
+  )
+}

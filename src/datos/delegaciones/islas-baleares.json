@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ibiza",
+    "nombre": "Ibiza",
+    "direccion": "Pol. Ind. Cana Palava naves 21-22, Ctra. San Miguel, km. 0,400",
+    "cp": "07819",
+    "ciudad": "Jesús, Sta. Eulalia, Ibiza",
+    "comunidad": "Islas Baleares",
+    "telefono": "971 305 835",
+    "lat": 38.95929,
+    "lng": 1.44499
+  },
+  {
+    "id": "mallorca",
+    "nombre": "Mallorca",
+    "direccion": "Pol. Ind. Binissalem, C/ Pou Comú,19",
+    "cp": "07350",
+    "ciudad": "Binissalem, Mallorca",
+    "comunidad": "Islas Baleares",
+    "telefono": "971 886 722",
+    "lat": 39.68157,
+    "lng": 2.83486
+  }
+]

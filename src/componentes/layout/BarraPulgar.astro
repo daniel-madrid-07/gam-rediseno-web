@@ -1,0 +1,31 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import VolverArriba from "@islas/VolverArriba.svelte";
+import { EMPRESA } from "@/config/sitio";
+
+/**
+ * Barra fija de acciones en móvil.
+ *
+ * Tres acciones, no cuatro: con cuatro la rejilla se parte en dos filas en
+ * pantallas de 360 px y la barra pasa a comerse el doble de alto. Y son las
+ * tres que de verdad se usan desde el móvil, en el orden en que se necesitan:
+ * llamar, buscar, pedir presupuesto.
+ */
+---
+
+<nav class="thumbbar" aria-label="Acciones rápidas">
+  <a class="thumbbar__tel" href={`tel:${EMPRESA.telefonoE164}`}>
+    <Icono nombre="i-phone" />
+    Llamar
+  </a>
+  <button type="button" data-abre="buscador">
+    <Icono nombre="i-search" />
+    Buscar
+  </button>
+  <a href="#form-contacto">
+    <Icono nombre="i-mail" />
+    Presupuesto
+  </a>
+</nav>
+
+<VolverArriba client:idle />

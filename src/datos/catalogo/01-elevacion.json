@@ -1,0 +1,224 @@
+[
+  {
+    "id": "plat-articulada",
+    "nombre": "Plataformas elevadoras articuladas",
+    "familia": "elevacion",
+    "icono": "m-articulada",
+    "descripcion": "Brazo articulado que salva obstáculos y sitúa la cesta sobre el punto de trabajo. Para fachadas, naves industriales y mantenimiento en altura.",
+    "alturaMax": 43,
+    "cargaMax": 450,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die",
+      "hib"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "12 – 43 m"
+      ],
+      [
+        "Alcance horizontal",
+        "hasta 21 m"
+      ],
+      [
+        "Carga en cesta",
+        "200 – 450 kg"
+      ]
+    ],
+    "etiquetas": "brazo articulado jlg genie haulotte cesta altura fachada nacelle"
+  },
+  {
+    "id": "plat-tijera",
+    "nombre": "Plataformas elevadoras de tijera",
+    "familia": "elevacion",
+    "icono": "m-tijera",
+    "descripcion": "Elevación vertical con la mayor superficie de plataforma y capacidad de carga de la gama. Modelos eléctricos de interior y modelos 4x4 para exterior.",
+    "alturaMax": 32,
+    "cargaMax": 1000,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "6 – 32 m"
+      ],
+      [
+        "Carga en plataforma",
+        "230 – 1.000 kg"
+      ],
+      [
+        "Ancho de paso",
+        "desde 0,76 m"
+      ]
+    ],
+    "etiquetas": "tijera scissor slab rough terrain interior almacen mantenimiento"
+  },
+  {
+    "id": "plat-telescopica",
+    "nombre": "Plataformas elevadoras telescópicas",
+    "familia": "elevacion",
+    "icono": "m-telescopica",
+    "descripcion": "Brazo telescópico recto para alcanzar gran altura y distancia. Para montaje industrial, naves de altura y estructuras de gran envergadura.",
+    "alturaMax": 58,
+    "cargaMax": 450,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die",
+      "hib"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "14 – 58 m"
+      ],
+      [
+        "Alcance horizontal",
+        "hasta 25 m"
+      ],
+      [
+        "Carga en cesta",
+        "230 – 450 kg"
+      ]
+    ],
+    "etiquetas": "telescopica boom lift recta industrial nave montaje"
+  },
+  {
+    "id": "plat-unipersonal",
+    "nombre": "Plataformas elevadoras unipersonales",
+    "familia": "elevacion",
+    "icono": "m-unipersonal",
+    "descripcion": "Equipo ligero y estrecho, de accionamiento eléctrico, para mantenimiento de instalaciones, superficies comerciales y preparación de pedidos en altura.",
+    "alturaMax": 8,
+    "cargaMax": 240,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "3 – 8 m"
+      ],
+      [
+        "Carga máxima",
+        "130 – 240 kg"
+      ],
+      [
+        "Peso",
+        "desde 260 kg"
+      ]
+    ],
+    "etiquetas": "unipersonal vertical mast bravi power tower retail escalera mantenimiento"
+  },
+  {
+    "id": "plat-camion",
+    "nombre": "Plataformas elevadoras sobre camión",
+    "familia": "elevacion",
+    "icono": "m-camion",
+    "descripcion": "Plataforma montada sobre chasis de camión, con desplazamiento por carretera. Para fachadas, alumbrado público, telecomunicaciones y poda.",
+    "alturaMax": 72,
+    "cargaMax": 300,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "die"
+    ],
+    "cero": false,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "16 – 72 m"
+      ],
+      [
+        "Carga en cesta",
+        "200 – 300 kg"
+      ],
+      [
+        "Permiso",
+        "carné B hasta 3.500 kg"
+      ]
+    ],
+    "etiquetas": "camion cesta cte multitel fachada alumbrado poda telecomunicaciones"
+  },
+  {
+    "id": "plat-oruga",
+    "nombre": "Plataformas elevadoras sobre oruga",
+    "familia": "elevacion",
+    "icono": "m-articulada",
+    "descripcion": "Tren de orugas y estabilizadores para terreno blando o irregular. Ancho de paso reducido para acceder por puertas estrechas.",
+    "alturaMax": 52,
+    "cargaMax": 230,
+    "entornos": [
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "hib"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Altura de trabajo",
+        "12 – 52 m"
+      ],
+      [
+        "Ancho de paso",
+        "desde 0,79 m"
+      ],
+      [
+        "Carga en cesta",
+        "200 – 230 kg"
+      ]
+    ],
+    "etiquetas": "oruga spider araña jardin terreno irregular estabilizadores"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "huesca",
+    "nombre": "Huesca",
+    "direccion": "Delegación atendida desde Zaragoza",
+    "cp": "-",
+    "ciudad": "Huesca",
+    "comunidad": "Aragón",
+    "telefono": "976 455 024",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "teruel",
+    "nombre": "Teruel",
+    "direccion": "Delegación atendida desde Zaragoza",
+    "cp": "-",
+    "ciudad": "Teruel",
+    "comunidad": "Aragón",
+    "telefono": "976 455 024",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "zaragoza",
+    "nombre": "Zaragoza",
+    "direccion": "Pol. Ind. Malpica, C/ E, Parcela 70",
+    "cp": "50016",
+    "ciudad": "Zaragoza",
+    "comunidad": "Aragón",
+    "telefono": "976 455 024",
+    "lat": 41.65788,
+    "lng": -0.78882
+  }
+]

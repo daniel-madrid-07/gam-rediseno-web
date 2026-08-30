@@ -1,0 +1,185 @@
+/* =========================================================================
+   SISTEMA GAM
+   Color   · el rojo es acción y marca, nunca decoración
+   Tipo    · escala contenida: los titulares informan, no gritan
+   Ritmo   · las secciones alternan tono para que el scroll tenga estructura
+   ========================================================================= */
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* ---- Neutros: grises fríos con sesgo pizarra ---- */
+    --paper:       #FFFFFF;   /* superficie principal */
+    --paper-2:     #F4F6F8;   /* sección alterna */
+    --paper-3:     #E8ECF0;   /* relleno de campo, figura */
+    --ink:         #101418;   /* texto principal  15,9:1 */
+    --ink-2:       #333B45;   /* texto secundario 11,1:1 */
+    --ink-3:       #4E5966;   /* texto terciario   7,2:1 */
+    --line:        #DCE1E7;
+    --line-2:      #C2CAD3;
+    --line-3:      #98A3AF;
+
+    /* ---- Oscuro: para héroe, cifras y pie. Fijo en ambos temas ---- */
+    --night:       #0B0E12;
+    --night-2:     #141920;
+    --night-3:     #1E252E;
+    --night-line:  #2C343E;
+    --on-night:    #F2F5F8;   /* 17,4:1 sobre --night */
+    --on-night-2:  #C4CDD8;   /* 10,4:1 sobre --night */
+    --on-night-3:  #A0ABB9;   /*  7,4:1 sobre --night */
+
+    /* ---- Marca: el rojo GAM ---- */
+    --gam:         #E40F23;   /* superficies, logo, grafismo */
+    --gam-ink:     #C10B1C;   /* texto sobre claro  6,2:1 */
+    --gam-deep:    #990916;   /* estado activo */
+    --gam-tint:    #FDEDEF;
+    --gam-field:   #C10B1C;   /* fondo de bloques con texto: blanco a 6,2:1 */
+    --gam-on:      #FFFFFF;   /* sobre --gam  4,8:1 */
+    --gam-night:   #FF5563;   /* rojo legible sobre oscuro  6,3:1 */
+
+    /* ---- Semántico: estado, no acento ---- */
+    --ok:        #096436;
+    --ok-tint:   #E4F3EB;
+    --ok-night:  #45D18E;
+    --warn:      #764D00;
+    --warn-tint: #FDF2DA;
+    --info:      #0A5AA0;
+    --info-tint: #E8F1FA;
+    --focus:     #0A5AA0;
+    --focus-on-night: #8FC4FF;
+
+    /* ---- Tipografía ---- */
+    --sans:  "Archivo", "Archivo Narrow", "Helvetica Neue", Arial, sans-serif;
+    --text:  "Instrument Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+    /* El eje de anchura hace el trabajo: estrecho = placa de máquina, no panel de control */
+    --wd-tight: 82;
+    --wd-mid:   92;
+
+    /* Escala contenida. El salto grande solo lo da el titular del héroe. */
+    --t-2xs:  0.75rem;
+    --t-xs:   0.8125rem;
+    --t-sm:   0.9375rem;
+    --t-md:   1rem;
+    --t-lg:   1.125rem;
+    --t-xl:   clamp(1.25rem, 1.16rem + 0.42vw, 1.5rem);
+    --t-2xl:  clamp(1.5rem,  1.32rem + 0.85vw, 2rem);
+    --t-3xl:  clamp(2rem, 1.55rem + 2.2vw, 3.5rem);
+    --t-4xl:  clamp(2.6rem, 1.85rem + 3.6vw, 5.25rem);
+
+    --lh-tight: 1.12;
+    --lh-snug:  1.3;
+    --lh-body:  1.65;
+    --measure:  64ch;
+
+    /* ---- Ritmo ---- */
+    --s1: .25rem; --s2: .5rem;  --s3: .75rem; --s4: 1rem;
+    --s5: 1.5rem; --s6: 2rem;   --s7: 2.75rem; --s8: 4rem;
+    --band: clamp(3.25rem, 2.2rem + 4.2vw, 5.5rem);   /* alto de sección */
+
+    --r1: 0px; --r2: 2px; --r3: 3px; --r4: 4px; --rp: 999px;
+
+    --sh1: 0 1px 2px rgb(16 20 24 / .07), 0 1px 1px rgb(16 20 24 / .04);
+    --sh2: 0 8px 20px -8px rgb(16 20 24 / .16), 0 2px 6px -3px rgb(16 20 24 / .09);
+    --sh3: 0 28px 64px -24px rgb(16 20 24 / .32), 0 8px 22px -10px rgb(16 20 24 / .16);
+
+    --wrap: 82rem;
+    --wrap-text: 46rem;
+    --pad: clamp(1.1rem, 0.55rem + 2.4vw, 2.75rem);
+
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --d1: 120ms; --d2: 200ms; --d3: 380ms;
+
+    --ui-scale: 1;
+  }
+
+  /* ---------- Tema oscuro ---------- */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper:   #0F1318;
+      --paper-2: #151A21;
+      --paper-3: #1F262F;
+      --ink:     #EDF1F5;
+      --ink-2:   #C6CFDA;
+      --ink-3:   #A3AEBB;
+      --line:    #262E38;
+      --line-2:  #38414D;
+      --line-3:  #566170;
+      --night:   #080B0E;
+      --night-2: #10151A;
+      --night-3: #1A2028;
+      --night-line: #262E38;
+      --gam-ink:  #FF6B78;
+      --gam-deep: #FF8A94;
+      --gam-tint: #2A1216;
+      --gam-field: #C10B1C;
+      --ok:       #45D18E;
+      --ok-tint:  #0E2A1E;
+      --warn:     #E3B24D;
+      --warn-tint:#2A2109;
+      --info:     #6FB2F0;
+      --info-tint:#0D1F30;
+      --focus:    #8FC4FF;
+      --sh1: 0 1px 2px rgb(0 0 0 / .55);
+      --sh2: 0 8px 20px -8px rgb(0 0 0 / .7), 0 2px 6px -3px rgb(0 0 0 / .5);
+      --sh3: 0 28px 64px -24px rgb(0 0 0 / .85), 0 8px 22px -10px rgb(0 0 0 / .6);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper:   #0F1318;
+    --paper-2: #151A21;
+    --paper-3: #1F262F;
+    --ink:     #EDF1F5;
+    --ink-2:   #C6CFDA;
+    --ink-3:   #A3AEBB;
+    --line:    #262E38;
+    --line-2:  #38414D;
+    --line-3:  #566170;
+    --night:   #080B0E;
+    --night-2: #10151A;
+    --night-3: #1A2028;
+    --night-line: #262E38;
+    --gam-ink:  #FF6B78;
+    --gam-deep: #FF8A94;
+    --gam-tint: #2A1216;
+    --gam-field: #C10B1C;
+    --ok:       #45D18E;
+    --ok-tint:  #0E2A1E;
+    --warn:     #E3B24D;
+    --warn-tint:#2A2109;
+    --info:     #6FB2F0;
+    --info-tint:#0D1F30;
+    --focus:    #8FC4FF;
+    --sh1: 0 1px 2px rgb(0 0 0 / .55);
+    --sh2: 0 8px 20px -8px rgb(0 0 0 / .7), 0 2px 6px -3px rgb(0 0 0 / .5);
+    --sh3: 0 28px 64px -24px rgb(0 0 0 / .85), 0 8px 22px -10px rgb(0 0 0 / .6);
+  }
+
+  /* ---------- Contraste reforzado ---------- */
+  :root[data-contrast="high"] {
+    --ink: #000; --ink-2: #101418; --ink-3: #262D35;
+    --line: #6B7480; --line-2: #4A535F; --line-3: #262D35;
+    --paper: #FFF; --paper-2: #FFF; --paper-3: #EDF0F3;
+    --gam-ink: #9B0715; --focus: #002E96;
+    --on-night: #FFF; --on-night-2: #E6EBF0; --on-night-3: #CDD5DE;
+    --night: #000; --night-2: #06090C; --night-3: #10151A; --night-line: #7A8493;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root[data-contrast="high"]:not([data-theme="light"]) {
+      --ink: #FFF; --ink-2: #E9EDF2; --ink-3: #CCD4DD;
+      --line: #7A8493; --line-2: #98A2B0; --line-3: #C0C8D2;
+      --paper: #000; --paper-2: #06090C; --paper-3: #12171D;
+      --gam-ink: #FF97A1; --focus: #9CCCFF;
+    }
+  }
+  :root[data-contrast="high"][data-theme="dark"] {
+    --ink: #FFF; --ink-2: #E9EDF2; --ink-3: #CCD4DD;
+    --line: #7A8493; --line-2: #98A2B0; --line-3: #C0C8D2;
+    --paper: #000; --paper-2: #06090C; --paper-3: #12171D;
+    --gam-ink: #FF97A1; --focus: #9CCCFF;
+  }
+  @media (prefers-contrast: more) { :root { --ink-3: #414B57; --line: #A9B2BD; } }
+}

@@ -1,0 +1,99 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import type { Servicio } from "@tipos";
+
+/**
+ * Los diez servicios de GAM.
+ *
+ * Dos tienen sección propia más abajo y son enlaces; los otros ocho abren su
+ * panel de detalle y son botones. La distinción importa: un enlace navega y se
+ * puede abrir en otra pestaña, un botón ejecuta una acción. Usar `<a href="#">`
+ * para lo segundo es lo que hace que un lector de pantalla anuncie «enlace»
+ * cuando no lleva a ninguna parte.
+ */
+interface Props {
+  servicios: Servicio[];
+}
+
+const { servicios } = Astro.props;
+
+const CON_SECCION: Record<string, string> = {
+  mantenimiento: "#mantenimiento",
+  formacion: "#formacion",
+};
+
+const PANELES = [
+  {
+    icono: "v-audiovisual",
+    titulo: "Servicios técnicos",
+    texto:
+      "División especializada en el diseño y la producción de grandes eventos: iluminación, vídeo, estructuras, sonido, energía y maquinaria. Para construcción modular cubrimos diseño, montaje, transporte y reparaciones.",
+  },
+  {
+    icono: "v-robotica",
+    titulo: "Servicios integrales",
+    texto:
+      "Desde la gestión optimizada de tu flota mediante estudios técnicos y proyectos de logística interna y externa, hasta industria 4.0 y mejora de procesos con robótica móvil, automatización y AGV.",
+  },
+];
+---
+
+<section class="band cv" id="servicios" aria-labelledby="h-serv">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kicker">Servicios</span>
+        <h2 id="h-serv">Servicios integrales para la industria</h2>
+        <p>
+          En GAM conocemos las necesidades de nuestros clientes y sabemos cómo solucionarlas.
+          Trabajamos para que dediquen sus recursos a su negocio principal mientras nosotros
+          asumimos las actividades secundarias.
+        </p>
+      </div>
+    </div>
+
+    <div class="svcs" id="svcs">
+      {
+        servicios.map((servicio) => {
+          const seccion = CON_SECCION[servicio.id];
+          const Etiqueta = seccion ? "a" : "button";
+          const atributos = seccion
+            ? { href: seccion }
+            : { type: "button" as const, "data-service": servicio.id };
+          return (
+            <Etiqueta class="svc" {...atributos}>
+              <div class="svc__top">
+                <div class="svc__ico">
+                  <Icono nombre={servicio.icono} />
+                </div>
+              </div>
+              <div>
+                <h3>{servicio.nombre}</h3>
+                <span class="svc__dato">{servicio.resumen}</span>
+              </div>
+              <p>{servicio.descripcion}</p>
+              <span class="svc__go">
+                {seccion ? "Ver la sección" : "Ver el detalle"}
+                <Icono nombre="i-arrow-right" />
+              </span>
+            </Etiqueta>
+          );
+        })
+      }
+    </div>
+
+    <div class="grid g2" style="margin-block-start:var(--s6)">
+      {
+        PANELES.map((panel) => (
+          <div class="panel">
+            <div class="panel__ico">
+              <Icono nombre={panel.icono} />
+            </div>
+            <h3>{panel.titulo}</h3>
+            <p>{panel.texto}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

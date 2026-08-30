@@ -1,0 +1,111 @@
+[
+  {
+    "id": "fregadora",
+    "nombre": "Fregadoras industriales",
+    "familia": "limpieza",
+    "icono": "m-limpieza",
+    "descripcion": "Fregado y secado de suelo industrial en una sola pasada. Modelos de conductor acompañante y de conductor montado.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Rendimiento",
+        "1.000 – 7.000 m²/h"
+      ],
+      [
+        "Ancho de trabajo",
+        "43 – 110 cm"
+      ],
+      [
+        "Motorización",
+        "batería"
+      ]
+    ],
+    "etiquetas": "fregadora tennant scrubber suelo industrial nave logistica limpieza"
+  },
+  {
+    "id": "barredora",
+    "nombre": "Barredoras industriales",
+    "familia": "limpieza",
+    "icono": "m-limpieza",
+    "descripcion": "Recogida de sólidos y polvo en nave, patio y viario, con sistema de filtración integrado.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "int",
+      "ext"
+    ],
+    "motores": [
+      "ele",
+      "die"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue",
+      "oca"
+    ],
+    "ficha": [
+      [
+        "Rendimiento",
+        "2.500 – 12.000 m²/h"
+      ],
+      [
+        "Ancho de barrido",
+        "70 – 180 cm"
+      ],
+      [
+        "Filtración",
+        "polvo integrada"
+      ]
+    ],
+    "etiquetas": "barredora sweeper polvo patio viario nave solidos"
+  },
+  {
+    "id": "aspiradora",
+    "nombre": "Aspiradoras y pulidoras industriales",
+    "familia": "limpieza",
+    "icono": "m-limpieza",
+    "descripcion": "Aspiración de sólidos y líquidos y pulido de pavimento continuo, para taller y planta industrial.",
+    "alturaMax": 0,
+    "cargaMax": 0,
+    "entornos": [
+      "int"
+    ],
+    "motores": [
+      "ele"
+    ],
+    "cero": true,
+    "canales": [
+      "alq",
+      "nue"
+    ],
+    "ficha": [
+      [
+        "Aspiración",
+        "sólidos y líquidos"
+      ],
+      [
+        "Depósito",
+        "30 – 100 l"
+      ],
+      [
+        "Pulido",
+        "pavimento continuo"
+      ]
+    ],
+    "etiquetas": "aspiradora pulidora abrillantadora solidos liquidos taller planta"
+  }
+]

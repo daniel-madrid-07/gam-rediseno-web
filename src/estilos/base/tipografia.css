@@ -1,0 +1,126 @@
+/**
+ * Tipografía y elementos de texto.
+ *
+ * Archivo es una variable con eje de anchura: los titulares van estrechos
+ * (`wdth` 82) porque así se leen como una placa de identificación de máquina,
+ * no como un panel de control. Es la decisión que da carácter a la página.
+ */
+
+html {
+  font-size: calc(100% * var(--ui-scale));
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--t-md);
+  line-height: var(--lh-body);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* ---------- Titulares ---------- */
+h1, h2, h3, h4, .h {
+  font-family: var(--sans);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  font-variation-settings: "wdth" var(--wd-tight);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: var(--t-4xl);
+  line-height: 0.94;
+  letter-spacing: -0.018em;
+}
+
+h2 {
+  font-size: var(--t-3xl);
+  line-height: 0.96;
+}
+
+/* A partir de h3 el texto es de lectura, no de rótulo: se ensancha y baja
+   a caja mixta, que a este tamaño se lee bastante mejor que la versalita. */
+h3 {
+  font-size: var(--t-xl);
+  font-variation-settings: "wdth" var(--wd-mid);
+  text-transform: none;
+  letter-spacing: -0.012em;
+  line-height: var(--lh-snug);
+}
+
+h4 {
+  font-size: var(--t-md);
+  font-variation-settings: "wdth" var(--wd-mid);
+  text-transform: none;
+  letter-spacing: -0.005em;
+  line-height: var(--lh-snug);
+  font-weight: 700;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+strong, b {
+  font-weight: 620;
+  color: inherit;
+}
+
+small {
+  font-size: var(--t-xs);
+}
+
+a {
+  color: var(--gam-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--r1);
+}
+
+.on-night :focus-visible {
+  outline-color: var(--focus-on-night);
+}
+
+::selection {
+  background: var(--gam);
+  color: var(--gam-on);
+}
+
+/* ---------- Barra de desplazamiento ---------- */
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border: 3px solid var(--paper-2);
+  border-radius: var(--rp);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line-3);
+}

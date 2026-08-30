@@ -1,0 +1,101 @@
+[
+  {
+    "id": "avila",
+    "nombre": "Ávila",
+    "direccion": "Delegación atendida desde Salamanca",
+    "cp": "-",
+    "ciudad": "Ávila",
+    "comunidad": "Castilla y León",
+    "telefono": "923 204 160",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "burgos",
+    "nombre": "Burgos",
+    "direccion": "Calle López bravo Nº 46 Polígono Industrial Villalonquejar",
+    "cp": "09901",
+    "ciudad": "Burgos",
+    "comunidad": "Castilla y León",
+    "telefono": "947 475 158",
+    "lat": 42.3696,
+    "lng": -3.73674
+  },
+  {
+    "id": "leon",
+    "nombre": "León",
+    "direccion": "Cam. El Tejar S/N 24234",
+    "cp": "24234",
+    "ciudad": "Villacé, León",
+    "comunidad": "Castilla y León",
+    "telefono": "987 282 029",
+    "lat": 42.34347,
+    "lng": -5.59085
+  },
+  {
+    "id": "palencia",
+    "nombre": "Palencia",
+    "direccion": "Delegación atendida desde Valladolid.",
+    "cp": "-",
+    "ciudad": "Palencia",
+    "comunidad": "Castilla y León",
+    "telefono": "983 297 597",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "salamanca",
+    "nombre": "Salamanca",
+    "direccion": "Pol. Ind. Villares de la Reina, Ctra. Valladolid N-209",
+    "cp": "37184",
+    "ciudad": "Villares de la Reina, Salamanca",
+    "comunidad": "Castilla y León",
+    "telefono": "923 204 160",
+    "lat": 40.99853,
+    "lng": -5.63035
+  },
+  {
+    "id": "segovia",
+    "nombre": "Segovia",
+    "direccion": "Delegación atendida desde Valladolid.",
+    "cp": "-",
+    "ciudad": "Segovia",
+    "comunidad": "Castilla y León",
+    "telefono": "983 297 597",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "soria",
+    "nombre": "Soria",
+    "direccion": "Pol. Ind. Las Casas, C/ B Parcela 212",
+    "cp": "42005",
+    "ciudad": "Soria",
+    "comunidad": "Castilla y León",
+    "telefono": "975 239 860",
+    "lat": 41.77622,
+    "lng": -2.49264
+  },
+  {
+    "id": "valladolid",
+    "nombre": "Valladolid",
+    "direccion": "Pol. Ind. San Cristóbal, C/Aluminio nº28",
+    "cp": "47012",
+    "ciudad": "Valladolid",
+    "comunidad": "Castilla y León",
+    "telefono": "983 297 597",
+    "lat": 41.621,
+    "lng": -4.71328
+  },
+  {
+    "id": "zamora",
+    "nombre": "Zamora",
+    "direccion": "Delegación atendida desde Salamanca.",
+    "cp": "-",
+    "ciudad": "Zamora",
+    "comunidad": "Castilla y León",
+    "telefono": "923 204 160",
+    "lat": null,
+    "lng": null
+  }
+]

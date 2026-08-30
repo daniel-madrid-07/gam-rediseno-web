@@ -1,0 +1,100 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+
+/**
+ * Cifras corporativas.
+ *
+ * El número final está escrito en el HTML, no lo pone la animación. En la web
+ * antigua la cuenta atrás arrancaba en cero y, cuando el script fallaba, los
+ * contadores se quedaban clavados en «+0», que es peor que no animar nada.
+ * Aquí el valor correcto es lo que hay en el documento y la animación sólo lo
+ * adorna si puede.
+ */
+interface Cifra {
+  valor: string;
+  /** Número al que anima el contador; sin él, la cifra no se anima. */
+  cuenta?: number;
+  prefijo?: string;
+  sufijo?: string;
+  etiqueta: string;
+  nota: string;
+  tono?: "gam" | "ok";
+}
+
+const CIFRAS: Cifra[] = [
+  {
+    valor: "+2000",
+    cuenta: 2000,
+    prefijo: "+",
+    etiqueta: "Trabajadores",
+    nota: "600 de ellos, técnicos de campo",
+  },
+  {
+    valor: "+80",
+    cuenta: 80,
+    prefijo: "+",
+    etiqueta: "Delegaciones",
+    nota: "54 en España, presencia en 8 países",
+    tono: "gam",
+  },
+  { valor: "350", cuenta: 350, etiqueta: "Talleres", nota: "300 de ellos, móviles" },
+  {
+    valor: "+70.000",
+    cuenta: 70000,
+    prefijo: "+",
+    etiqueta: "Clientes",
+    nota: "De la obra a la gran industria",
+  },
+  {
+    valor: "85 %",
+    cuenta: 85,
+    sufijo: "%",
+    etiqueta: "Cero emisiones",
+    nota: "Del parque de más de 40.000 máquinas",
+    tono: "ok",
+  },
+];
+---
+
+<section
+  class="band band--night band--tight cv on-night"
+  id="cifras"
+  aria-labelledby="h-cifras"
+>
+  <div class="wrap">
+    <div class="head head--split">
+      <div>
+        <span class="kicker">La empresa</span>
+        <h2 id="h-cifras">GAM en cifras</h2>
+      </div>
+      <a class="link" href="#delegaciones">
+        Ver la red completa
+        <Icono nombre="i-arrow-right" />
+      </a>
+    </div>
+
+    <div class="figs" role="list">
+      {
+        CIFRAS.map((cifra) => (
+          <div class={`fig${cifra.tono ? ` fig--${cifra.tono}` : ""}`} role="listitem">
+            <span
+              class="fig__v"
+              data-count={cifra.cuenta}
+              data-prefix={cifra.prefijo}
+              data-suffix={cifra.sufijo}
+            >
+              {cifra.valor}
+            </span>
+            <span class="fig__l">{cifra.etiqueta}</span>
+            <span class="fig__n">{cifra.nota}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animarCifras } from "@lib/contadores";
+  animarCifras();
+</script>

@@ -1,0 +1,13 @@
+---
+/**
+ * Sprite SVG del sitio: logotipo, iconos de interfaz, familias de máquina y
+ * sectores. Se inserta una vez al principio del <body> y todos los `<Icono>`
+ * de la página apuntan aquí con `<use>`.
+ *
+ * Va en línea y no como archivo externo a propósito: el logotipo forma parte
+ * de la primera pintura, y una petición aparte lo haría aparecer tarde.
+ */
+const sprite = await import("./sprite.svg.html?raw");
+---
+
+<Fragment set:html={sprite.default} />

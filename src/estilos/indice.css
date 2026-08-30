@@ -1,0 +1,35 @@
+/**
+ * Punto de entrada único de la hoja de estilos.
+ *
+ * El orden de `@layer` se declara aquí y sólo aquí: a partir de este momento
+ * da igual en qué orden lleguen los archivos, porque la capa decide quién gana.
+ * Eso es lo que permite que un componente nuevo no tenga que pelear con
+ * `!important` contra las utilidades ni contra los estilos base.
+ */
+@layer reset, tokens, base, layout, componentes, estados, utilidades;
+
+/* ---- Fundamentos ---- */
+@import "./base/tokens.css" layer(tokens);
+@import "./base/reset.css" layer(reset);
+@import "./base/tipografia.css" layer(base);
+@import "./base/preferencias.css" layer(base);
+@import "./base/maquetacion.css" layer(layout);
+@import "./base/estados.css" layer(estados);
+@import "./base/animaciones.css" layer(base);
+
+/* ---- Componentes ---- */
+@import "./componentes/icono.css" layer(componentes);
+@import "./componentes/boton.css" layer(componentes);
+@import "./componentes/cabecera.css" layer(componentes);
+@import "./componentes/heroe.css" layer(componentes);
+@import "./componentes/catalogo.css" layer(componentes);
+@import "./componentes/dialogo.css" layer(componentes);
+@import "./componentes/servicios.css" layer(componentes);
+@import "./componentes/formulario.css" layer(componentes);
+@import "./componentes/delegaciones.css" layer(componentes);
+@import "./componentes/pie.css" layer(componentes);
+@import "./componentes/movil.css" layer(componentes);
+
+/* ---- Utilidades: siempre las últimas, siempre las que ganan ---- */
+@import "./base/utilidades.css" layer(utilidades);
+@import "./base/impresion.css" layer(utilidades);

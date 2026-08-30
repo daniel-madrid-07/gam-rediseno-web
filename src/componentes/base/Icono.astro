@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+/**
+ * Un icono del sprite.
+ *
+ * Referencia un `<symbol>` ya presente en el documento con `<use>`, así que el
+ * SVG viaja una sola vez por página por muchas veces que se repita el icono.
+ * Hereda `currentColor`, de modo que cambia con el tema sin JavaScript.
+ */
+interface Props extends HTMLAttributes<"svg"> {
+  /** Id del símbolo en el sprite, sin la almohadilla. */
+  nombre: string;
+  /** Los iconos macizos (logos, pictogramas) se rellenan en vez de trazarse. */
+  relleno?: boolean;
+  /** Texto alternativo. Sin él el icono se marca como decorativo. */
+  titulo?: string;
+}
+
+const { nombre, relleno = false, titulo, class: clase, ...resto } = Astro.props;
+const clases = ["ico", relleno && "ico--fill", clase].filter(Boolean).join(" ");
+---
+
+<svg
+  class={clases}
+  role={titulo ? "img" : undefined}
+  aria-label={titulo}
+  aria-hidden={titulo ? undefined : "true"}
+  focusable="false"
+  {...resto}
+>
+  <use href={`#${nombre}`}></use>
+</svg>

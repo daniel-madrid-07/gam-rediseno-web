@@ -1,0 +1,24 @@
+[
+  {
+    "id": "navia",
+    "nombre": "Navia",
+    "direccion": "Ctra. N 634, Torce",
+    "cp": "33795",
+    "ciudad": "Jarrio, Coaña, Navia, Asturias",
+    "comunidad": "Principado de Asturias",
+    "telefono": "985 631 796",
+    "lat": 43.54051,
+    "lng": -6.76114
+  },
+  {
+    "id": "oficinas-centrales-gam-granda",
+    "nombre": "Oficinas Centrales GAM - Granda",
+    "direccion": "Edificio GAM, Carretera Tiñana Km 1",
+    "cp": "33199",
+    "ciudad": "Granda, Siero, Asturias",
+    "comunidad": "Principado de Asturias",
+    "telefono": "985 732 273",
+    "lat": 43.38287,
+    "lng": -5.75695
+  }
+]

@@ -1,0 +1,39 @@
+---
+import Icono from "@componentes/base/Icono.astro";
+import ExploradorCatalogo from "@islas/Catalogo.svelte";
+import type { Maquina } from "@tipos";
+
+/**
+ * Sección del catálogo.
+ *
+ * El encabezado y el texto de contexto son HTML estático porque nunca cambian;
+ * sólo el explorador se hidrata. Así el buscador indexa la sección aunque el
+ * JavaScript no llegue a ejecutarse.
+ */
+interface Props {
+  catalogo: Maquina[];
+}
+
+const { catalogo } = Astro.props;
+---
+
+<section class="band band--alt cv" id="catalogo" aria-labelledby="h-cat">
+  <div class="wrap">
+    <div class="head head--split">
+      <div>
+        <span class="kicker">Catálogo</span>
+        <h2 id="h-cat">Catálogo de maquinaria</h2>
+        <p>
+          Rangos técnicos que cubre el parque de GAM, por familia. El modelo concreto y su
+          disponibilidad los confirma la delegación que te atiende.
+        </p>
+      </div>
+      <button type="button" class="btn btn--ghost" data-open-wizard>
+        <Icono nombre="i-sliders" />
+        Asistente de selección
+      </button>
+    </div>
+
+    <ExploradorCatalogo {catalogo} client:visible />
+  </div>
+</section>

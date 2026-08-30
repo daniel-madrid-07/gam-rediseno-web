@@ -1,0 +1,20 @@
+/* =========================================================
+   DELEGACIONES
+   ========================================================= */
+.delegs { display: grid; gap: var(--s3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+
+.deleg { display: flex; flex-direction: column; gap: var(--s2); padding-block: var(--s4); border-block-start: 1px solid var(--line); }
+
+.deleg h3 { font-size: var(--t-md); }
+
+.deleg__com { font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+
+.deleg address { font-style: normal; font-size: var(--t-sm); color: var(--ink); line-height: 1.5; }
+
+.deleg__meta { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin-block-start: auto; padding-block-start: var(--s3); border-block-start: 1px solid var(--line); }
+
+.deleg__meta a { font-family: var(--mono); font-size: var(--t-sm); display: inline-flex; align-items: center; gap: .4em; min-block-size: 2.5rem; text-decoration: none; font-weight: 500; }
+
+.deleg__meta a:hover { text-decoration: underline; text-underline-offset: .25em; }
+
+.deleg__meta .ico { inline-size: 1em; block-size: 1em; }

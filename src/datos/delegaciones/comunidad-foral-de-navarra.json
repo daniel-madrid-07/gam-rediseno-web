@@ -1,0 +1,13 @@
+[
+  {
+    "id": "pamplona",
+    "nombre": "Pamplona",
+    "direccion": "Pol. Ind. Agustinos, C/ E, H-16",
+    "cp": "31195",
+    "ciudad": "Berrioplano, Pamplona",
+    "comunidad": "Comunidad Foral de Navarra",
+    "telefono": "948 188 641",
+    "lat": 42.83737,
+    "lng": -1.68116
+  }
+]

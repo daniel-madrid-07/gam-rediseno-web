@@ -1,0 +1,58 @@
+/* =========================================================
+   PIE — aquí la marca cierra la página
+   ========================================================= */
+.footer { background: var(--night); color: var(--on-night-2); }
+
+.footer__brand {
+  padding-block: var(--s7); border-block-end: 1px solid var(--night-line);
+  display: grid; gap: var(--s5); align-items: center;
+}
+
+.footer__claim { text-wrap: balance; }
+
+.footer__brand > * { min-inline-size: 0; }
+
+@media (width >= 56rem) { .footer__brand { grid-template-columns: minmax(0, 1fr) auto; gap: var(--s7); } }
+
+.footer__brand .brandmark svg { color: var(--gam); }
+
+.footer__claim { font-family: var(--sans); font-size: var(--t-xl); font-weight: 650; letter-spacing: -.02em; color: var(--on-night); max-inline-size: 26ch; margin-block-start: var(--s4); line-height: 1.25; }
+
+.footer__act { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+
+.footer__cols { padding-block: var(--s7); display: grid; gap: var(--s6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
+
+.footer h3 {
+  font-family: var(--mono); font-size: var(--t-2xs); font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--on-night); margin-block-end: var(--s3);
+  padding-block-end: var(--s2); border-block-end: 1px solid var(--night-line);
+}
+
+.footer ul { display: flex; flex-direction: column; }
+
+.footer li a { display: flex; align-items: center; min-block-size: 2.4rem; font-size: var(--t-sm); color: var(--on-night-2); text-decoration: none; }
+
+.footer li a:hover { color: var(--on-night); text-decoration: underline; text-underline-offset: .25em; }
+
+.footer__bar {
+  padding-block: var(--s5); border-block-start: 1px solid var(--night-line);
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s5);
+}
+
+.footer__legal { display: flex; flex-wrap: wrap; gap: var(--s4); font-size: var(--t-xs); }
+
+.footer__legal a { color: var(--on-night-2); text-decoration: none; min-block-size: 2.3rem; display: inline-flex; align-items: center; }
+
+.footer__legal a:hover { color: var(--on-night); text-decoration: underline; }
+
+.footer__copy { font-size: var(--t-xs); font-family: var(--mono); color: var(--on-night-3); }
+
+.footer__social { display: flex; flex-wrap: wrap; gap: var(--s2); margin-inline-start: auto; }
+
+.footer__social a { inline-size: 2.6rem; block-size: 2.6rem; display: grid; place-items: center; border: 1px solid var(--night-line); border-radius: var(--r2); color: var(--on-night-2); }
+
+.footer__social a:hover { background: var(--on-night); color: var(--night); border-color: var(--on-night); }
+
+.footer__social .ico { inline-size: 1.1rem; block-size: 1.1rem; }
+
+.footer__geo { font-size: var(--t-xs); color: var(--on-night-3); line-height: 1.6; margin-block-start: var(--s3); }

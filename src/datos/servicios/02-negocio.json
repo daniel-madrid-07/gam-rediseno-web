@@ -1,0 +1,97 @@
+[
+  {
+    "id": "formacion",
+    "nombre": "Formación",
+    "icono": "v-formacion",
+    "resumen": "+300 cursos al mes",
+    "descripcion": "Formación homologada de operarios con carnet y certificado oficial: cursos abiertos, programas a medida y formación in company.",
+    "detalle": "Kirleo, la línea de formación de GAM, busca reducir la brecha existente en el mercado laboral de profesiones técnicas no regladas. Los alumnos practican en entorno real con maquinaria de GAM y el equipo docente está formado por técnicos de PRL titulados.",
+    "puntos": [
+      "Carretillas elevadoras y plataformas elevadoras móviles de personal (UNE)",
+      "Trabajos temporales en altura y espacios confinados (PRL)",
+      "Grúas puente o pórtico y maquinaria de movimiento de tierras",
+      "Aula virtual con simulador y gestión completa de bonificaciones FUNDAE"
+    ],
+    "enlace": {
+      "texto": "Ver el catálogo formativo",
+      "href": "#formacion",
+      "externo": false
+    }
+  },
+  {
+    "id": "movilidad",
+    "nombre": "Movilidad sostenible",
+    "icono": "v-movilidad",
+    "resumen": "+3.400 vehículos eléctricos",
+    "descripcion": "Renting, venta, mantenimiento y gestión de flotas cero emisiones para la última milla logística, a través de Inquieto.",
+    "detalle": "Pioneros en servicios integrales para la última milla logística y el reparto de mercancías. Optimizamos las rutas de cada negocio y llevamos la transición verde a sectores tradicionalmente ligados al vehículo de combustión.",
+    "puntos": [
+      "Venta de vehículos eléctricos alternativos en propiedad",
+      "Renting cero emisiones con mantenimiento completo",
+      "Reparación y mantenimiento de vehículos de última milla",
+      "Cobertura en 58 delegaciones y 300 talleres en península e islas"
+    ],
+    "enlace": {
+      "texto": "Ir a soyinquieto.com",
+      "href": "https://soyinquieto.com",
+      "externo": true
+    }
+  },
+  {
+    "id": "audiovisuales",
+    "nombre": "Audiovisuales",
+    "icono": "v-audiovisual",
+    "resumen": "Único proveedor llave en mano",
+    "descripcion": "Diseño y producción técnica de grandes eventos: iluminación, vídeo, sonido, estructuras, proyecciones, energía y maquinaria.",
+    "detalle": "Somos el único proveedor en España con servicio llave en mano de audiovisual, energía y maquinaria. Asignamos un Project Manager a tu evento y cubrimos todas y cada una de las fases del proyecto.",
+    "puntos": [
+      "Culturales y musicales: festivales y grandes citas",
+      "Corporativos: congresos, campañas y presentaciones de producto",
+      "Deportivos: planificación, diseño y producción",
+      "Exposiciones y ferias, fiestas patronales, premios y homenajes"
+    ],
+    "enlace": {
+      "texto": "Ir a gamaudiovisuales.com",
+      "href": "https://gamaudiovisuales.com",
+      "externo": true
+    }
+  },
+  {
+    "id": "ocasion",
+    "nombre": "Compraventa de ocasión",
+    "icono": "v-ocasion",
+    "resumen": "+5.000 máquinas subastadas",
+    "descripcion": "Portal de maquinaria de segunda mano reacondicionada, subastas online y venta de repuestos oficiales y reacondicionados.",
+    "detalle": "Somos especialistas en gestión de maquinaria y activos. Nuestra red comercial te acompaña en todo el proceso: tasación de tus máquinas actuales, búsqueda de la mejor opción de ocasión y organización de la logística y el transporte.",
+    "puntos": [
+      "Maquinaria de ocasión revisada de las mejores marcas",
+      "Subastas online: más de 30 celebradas y 14.000 usuarios",
+      "Repuestos oficiales, de otras marcas y reacondicionados",
+      "Tasamos y compramos tu flota, o la anunciamos por ti"
+    ],
+    "enlace": {
+      "texto": "Ir a GAM Online",
+      "href": "https://online.gamrentals.com",
+      "externo": true
+    }
+  },
+  {
+    "id": "nueva",
+    "nombre": "Maquinaria nueva",
+    "icono": "v-nueva",
+    "resumen": "Distribución oficial",
+    "descripcion": "Distribuidores oficiales de Hyster, Yale, XCMG, CTE, Bravi, Logitrans, Ormig, Pramac, Tennant y Magni, con garantía y postventa propia.",
+    "detalle": "Gran variedad de maquinaria disponible para compra con garantías de calidad, respaldada por la red de talleres y técnicos de GAM en toda España.",
+    "puntos": [
+      "Plataformas elevadoras y carretillas elevadoras nuevas",
+      "Limpieza industrial: fregadoras, barredoras, aspiradoras y pulidoras",
+      "Apiladores manuales y autopropulsados",
+      "Compra por marca y financiación a medida"
+    ],
+    "enlace": {
+      "texto": "Ir a GAM Online",
+      "href": "https://online.gamrentals.com",
+      "externo": true
+    }
+  }
+]

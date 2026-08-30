@@ -1,0 +1,24 @@
+[
+  {
+    "id": "las-palmas-de-gran-canaria",
+    "nombre": "Las Palmas de Gran Canaria",
+    "direccion": "Pol. Ind. de Arinaga, C/ Las Adelfas, s/n, Parc 69-1ª fase",
+    "cp": "35119",
+    "ciudad": "Agüimes, Las Palmas de Gran Canaria",
+    "comunidad": "Canarias",
+    "telefono": "928 182 617",
+    "lat": 27.86662,
+    "lng": -15.41836
+  },
+  {
+    "id": "tenerife",
+    "nombre": "Tenerife",
+    "direccion": "Pol. Ind. Eras Altas, Parcelas 13-14-15",
+    "cp": "38592",
+    "ciudad": "Villa de Arico, Santa Cruz de Tenerife",
+    "comunidad": "Canarias",
+    "telefono": "922 160 966",
+    "lat": 28.19563,
+    "lng": -16.43168
+  }
+]

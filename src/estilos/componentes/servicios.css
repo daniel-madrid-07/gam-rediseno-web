@@ -1,0 +1,115 @@
+/* =========================================================
+   SERVICIOS — diez piezas del mismo rango, sin jerarquía falsa
+   ========================================================= */
+.svcs { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+
+.svc {
+  position: relative; display: flex; flex-direction: column; gap: var(--s3);
+  padding-block: var(--s4) var(--s5); border-block-start: 1px solid var(--line);
+  text-align: start; cursor: pointer; color: inherit; text-decoration: none;
+  transition: border-color var(--d2) var(--ease);
+}
+
+.svc:hover { border-block-start-color: var(--gam); }
+
+.svc:hover h3 { color: var(--gam-ink); }
+
+.svc__top { display: flex; align-items: center; gap: var(--s3); }
+
+.svc__dato {
+  font-family: var(--mono); font-size: var(--t-xs); color: var(--ink-2);
+  letter-spacing: .02em; overflow-wrap: anywhere; display: block; margin-block-start: .3rem;
+}
+
+.svc__ico { color: var(--ink-2); flex: none; }
+
+.svc:hover .svc__ico { color: var(--gam); }
+
+.svc__ico .ico { inline-size: 1.65rem; block-size: 1.65rem; }
+
+.svc h3 { font-size: var(--t-lg); }
+
+.svc p { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55; }
+
+.svc__go {
+  margin-block-start: auto; padding-block-start: var(--s3);
+  display: flex; align-items: center; gap: .5em;
+  font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+
+.svc:hover .svc__go { color: var(--gam-ink); }
+
+.svc__go .ico { inline-size: 1rem; block-size: 1rem; transition: transform var(--d2) var(--ease); }
+
+.svc:hover .svc__go .ico { transform: translateX(3px); }
+
+/* Tabla de datos */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r3); background: var(--paper); }
+
+table.data { inline-size: 100%; min-inline-size: 38rem; font-size: var(--t-sm); }
+
+table.data caption { text-align: start; padding: var(--s4); font-size: var(--t-2xs); color: var(--ink-3); font-family: var(--mono); letter-spacing: .1em; text-transform: uppercase; border-block-end: 1px solid var(--line); }
+
+table.data th, table.data td { padding: .8rem var(--s4); text-align: start; border-block-end: 1px solid var(--line); vertical-align: top; }
+
+table.data thead th { font-family: var(--mono); font-size: var(--t-2xs); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; background: var(--paper-2); }
+
+table.data tbody th { font-weight: 620; color: var(--ink); }
+
+table.data tbody tr:last-child > * { border-block-end: 0; }
+
+table.data tbody tr:hover { background: var(--paper-2); }
+
+table.data td.si { color: var(--ok); font-weight: 620; }
+
+table.data td.no { color: var(--ink-3); }
+
+/* =========================================================
+   SECTORES Y MARCAS — franja de credibilidad
+   ========================================================= */
+.sectors { display: grid; gap: var(--s3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+
+.sector {
+  display: flex; align-items: center; gap: var(--s3); padding-block: var(--s4);
+  border-block-start: 1px solid var(--line);
+  text-decoration: none; color: var(--ink); min-block-size: 4rem;
+  transition: border-color var(--d2) var(--ease), color var(--d2) var(--ease);
+}
+
+.sector:hover { border-block-start-color: var(--gam); color: var(--gam-ink); }
+
+.sector .ico { inline-size: 1.45rem; block-size: 1.45rem; color: var(--ink-2); flex: none; }
+
+.sector:hover .ico { color: var(--gam-ink); }
+
+.sector b { font-size: var(--t-sm); font-weight: 620; line-height: 1.3; }
+
+.brands { display: grid; gap: 0; border-block-start: 2px solid var(--ink); grid-template-columns: repeat(auto-fill, minmax(min(50%, 9.5rem), 1fr)); }
+
+/* =========================================================
+   PREGUNTAS FRECUENTES
+   ========================================================= */
+.faq { display: flex; flex-direction: column; border-block-start: 1px solid var(--line); }
+
+.faq details { border-block-end: 1px solid var(--line); }
+
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s5);
+  padding-block: var(--s4); min-block-size: 4rem; cursor: pointer;
+  font-family: var(--sans); font-weight: 700; font-size: var(--t-lg); letter-spacing: -.012em;
+  font-variation-settings: "wdth" var(--wd-mid);
+  list-style: none; color: var(--ink);
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary:hover { color: var(--gam-ink); }
+
+.faq summary .plus { inline-size: 1.2rem; block-size: 1.2rem; color: var(--gam-ink); flex: none; transition: transform var(--d2) var(--ease); }
+
+.faq details[open] summary .plus { transform: rotate(45deg); }
+
+.faq details > div { padding-block-end: var(--s5); color: var(--ink-2); font-size: var(--t-md); line-height: 1.7; max-inline-size: var(--measure); }
+
+.faq details > div p + p { margin-block-start: var(--s4); }

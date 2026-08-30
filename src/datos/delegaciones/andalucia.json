@@ -1,0 +1,79 @@
+[
+  {
+    "id": "algeciras",
+    "nombre": "Algeciras",
+    "direccion": "Pol. Ind. Cortijo Real, C/ Capricho 7",
+    "cp": "11203",
+    "ciudad": "Algeciras, Cádiz",
+    "comunidad": "Andalucía",
+    "telefono": "956 573 256",
+    "lat": 36.11428,
+    "lng": -5.47437
+  },
+  {
+    "id": "almeria",
+    "nombre": "Almería",
+    "direccion": "Ctra. Viator a La Cañada, Paraje Mami Km 1,2",
+    "cp": "04120",
+    "ciudad": "La Cañada de San Urbano, Almería",
+    "comunidad": "Andalucía",
+    "telefono": "950 626 026",
+    "lat": 36.85112,
+    "lng": -2.41975
+  },
+  {
+    "id": "cordoba",
+    "nombre": "Córdoba",
+    "direccion": "Delegación atendida desde Sevilla.",
+    "cp": "-",
+    "ciudad": "Córdoba",
+    "comunidad": "Andalucía",
+    "telefono": "954 278 502",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "id": "el-puerto-de-santa-maria",
+    "nombre": "El Puerto de Santa María",
+    "direccion": "Pol. Ind. Salinas de Levante, Avda. Inventor Pedro Cawley 5, Nave 33-34",
+    "cp": "11500",
+    "ciudad": "El Puerto de Santa María, Cádiz",
+    "comunidad": "Andalucía",
+    "telefono": "956 832 212",
+    "lat": 36.61446,
+    "lng": -6.20099
+  },
+  {
+    "id": "granada",
+    "nombre": "Granada",
+    "direccion": "Pol. Ind. Asegra, Avda. Asegra 16",
+    "cp": "18210",
+    "ciudad": "Peligros, Granada",
+    "comunidad": "Andalucía",
+    "telefono": "958 401 225",
+    "lat": 37.22332,
+    "lng": -3.62671
+  },
+  {
+    "id": "malaga",
+    "nombre": "Málaga",
+    "direccion": "C. Castelao, 40-42, Churriana",
+    "cp": "29004",
+    "ciudad": "Málaga",
+    "comunidad": "Andalucía",
+    "telefono": "952 231 498",
+    "lat": 36.69797,
+    "lng": -4.48311
+  },
+  {
+    "id": "sevilla",
+    "nombre": "Sevilla",
+    "direccion": "Ctra. de la Esclusa s/n",
+    "cp": "41011",
+    "ciudad": "Sevilla",
+    "comunidad": "Andalucía",
+    "telefono": "954 278 502",
+    "lat": 37.36381,
+    "lng": -6.00299
+  }
+]
