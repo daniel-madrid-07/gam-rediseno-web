@@ -16,23 +16,45 @@
    * seguir escribiendo mientras se recorre la lista con las flechas.
    */
   interface Props {
-    /** Índice ya aplanado en build: aquí no se recorre el catálogo entero. */
-    indice: EntradaIndice[];
+    /** URL del índice, que se descarga la primera vez que se abre el buscador. */
+    url: string;
   }
 
-  const { indice }: Props = $props();
+  const { url }: Props = $props();
 
   let consulta = $state("");
   let activo = $state(0);
   let campo = $state<HTMLInputElement | null>(null);
+  let indice = $state<EntradaIndice[]>([]);
+  let cargando = $state(false);
 
   const resultados = $derived(buscar(indice, consulta));
   const abierto = $derived($dialogoAbierto === "buscador");
+
+  /**
+   * El índice pesa 44 KB y sólo hace falta aquí, así que no viaja en el HTML:
+   * se descarga la primera vez que se abre el buscador. Como el campo recibe el
+   * foco de inmediato, para cuando alguien termina de teclear dos letras ya ha
+   * llegado.
+   */
+  async function asegurarIndice(): Promise<void> {
+    if (indice.length > 0 || cargando) return;
+    cargando = true;
+    try {
+      const respuesta = await fetch(url);
+      if (respuesta.ok) indice = await respuesta.json();
+    } catch {
+      /* Sin índice el buscador queda vacío, pero la página sigue funcionando */
+    } finally {
+      cargando = false;
+    }
+  }
 
   $effect(() => {
     if (abierto) {
       consulta = "";
       activo = 0;
+      void asegurarIndice();
       setTimeout(() => campo?.focus(), 40);
     }
   });
@@ -133,7 +155,9 @@
         <p class="t-sm t-muted" style="padding:var(--s4)">
           {consulta.trim().length < 2
             ? "Escribe al menos dos letras."
-            : "Sin resultados. Prueba con otra palabra."}
+            : cargando
+              ? "Buscando…"
+              : "Sin resultados. Prueba con otra palabra."}
         </p>
       {/each}
     </div>

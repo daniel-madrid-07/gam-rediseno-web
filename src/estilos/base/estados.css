@@ -1,9 +1,84 @@
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity 560ms var(--ease), transform 560ms var(--ease); }
+/**
+ * Estados de aparición y de renderizado diferido.
+ */
 
-.reveal[data-in="true"] { opacity: 1; transform: none; }
+/* ---------- Aparición escalonada ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 560ms var(--ease),
+    transform 560ms var(--ease);
+}
 
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+.reveal[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
 
-:root[data-motion="off"] .reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
 
-.cv { content-visibility: auto; contain-intrinsic-size: auto 620px; }
+:root[data-motion="off"] .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/**
+ * ---------- Renderizado diferido ----------
+ *
+ * `content-visibility: auto` deja sin renderizar lo que está fuera de pantalla.
+ * En una página tan larga como esta vale 11 puntos de rendimiento en móvil
+ * (la primera pintura pasa de 3,0 s a 1,8 s), así que se queda.
+ *
+ * El precio es `contain-intrinsic-size`: mientras la sección está saltada, el
+ * navegador reserva esa altura estimada en lugar de la real. Si la estimación
+ * se queda muy corta, las secciones de más abajo se colocan demasiado arriba
+ * y las herramientas automáticas creen ver solapamientos que en pantalla no
+ * existen. Por eso la altura se ajusta por sección en vez de usar un único
+ * valor para todas.
+ *
+ * `auto` delante del valor es lo que hace que, una vez renderizada de verdad,
+ * el navegador recuerde su tamaño real y deje de usar la estimación.
+ */
+.cv {
+  --alto-estimado: 900px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--alto-estimado);
+}
+
+/* Secciones con rejillas de tarjetas: son bastante más altas que la media */
+#servicios,
+#catalogo,
+#delegaciones {
+  --alto-estimado: 1700px;
+}
+
+#mantenimiento,
+#formacion,
+#contacto {
+  --alto-estimado: 1400px;
+}
+
+/* Bandas cortas: cifras, sectores y sostenibilidad */
+#cifras,
+#familias {
+  --alto-estimado: 700px;
+}
+
+@media (width < 48rem) {
+  /* En móvil todo se apila, así que las secciones son bastante más altas */
+  .cv {
+    --alto-estimado: 1400px;
+  }
+
+  #servicios,
+  #catalogo,
+  #delegaciones {
+    --alto-estimado: 2600px;
+  }
+}

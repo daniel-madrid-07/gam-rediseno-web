@@ -56,16 +56,37 @@ const GARANTIAS = [
       </div>
 
       <figure class="hero__shot">
-        <img
-          src={`${base}/img/hero-xl.webp`}
-          srcset={`${base}/img/hero-m.webp 800w, ${base}/img/hero-xl.webp 1600w`}
-          sizes="100vw"
-          alt="Delegación de GAM con maquinaria de elevación y manutención lista para alquiler"
-          width="1600"
-          height="1000"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <picture>
+          <!--
+            Direccion de arte, no solo cambio de tamano: en movil el CSS recorta
+            la foto a una franja de relacion 2,76, asi que servir la version de
+            800x500 seria descargar media imagen para tirarla. `srcset` no puede
+            expresar esto porque solo sabe de anchos, no de encuadres.
+          -->
+          <source
+            media="(max-width: 47.99rem)"
+            type="image/avif"
+            srcset={`${base}/img/hero-mov.avif`}
+            width="800"
+            height="290"
+          />
+          <source
+            media="(max-width: 47.99rem)"
+            srcset={`${base}/img/hero-mov.webp`}
+            width="800"
+            height="290"
+          />
+          <img
+            src={`${base}/img/hero-xl.webp`}
+            srcset={`${base}/img/hero-m.webp 800w, ${base}/img/hero-xl.webp 1600w`}
+            sizes="(min-width: 62rem) 46vw, 100vw"
+            alt="Delegación de GAM con maquinaria de elevación y manutención lista para alquiler"
+            width="1600"
+            height="1000"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <figcaption class="hero__tag">
           <b class="num">+{numero(EMPRESA.equipos)}</b>
           <span>Máquinas en parque propio</span>

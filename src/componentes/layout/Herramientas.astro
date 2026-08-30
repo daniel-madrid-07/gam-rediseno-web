@@ -6,9 +6,9 @@ import PanelAccesibilidad from "@islas/dialogos/PanelAccesibilidad.svelte";
 import Asistente from "@islas/dialogos/Asistente.svelte";
 import FichaServicio from "@islas/dialogos/FichaServicio.svelte";
 import CajonNavegacion from "@islas/dialogos/CajonNavegacion.svelte";
-import { construirIndice } from "@lib/buscador";
 import { catalogoBreve, catalogoSugerible, serviciosBreves } from "@lib/proyecciones";
-import type { Delegacion, Maquina, Servicio } from "@tipos";
+import { SITIO } from "@/config/sitio";
+import type { Maquina, Servicio } from "@tipos";
 
 /**
  * Los diálogos y los avisos, todos juntos al final del documento.
@@ -23,18 +23,17 @@ import type { Delegacion, Maquina, Servicio } from "@tipos";
 interface Props {
   catalogo: Maquina[];
   servicios: Servicio[];
-  delegaciones: Delegacion[];
 }
 
-const { catalogo, servicios, delegaciones } = Astro.props;
+const { catalogo, servicios } = Astro.props;
 
-/* El indice del buscador se aplana aqui, en build: la isla no vuelve a
-   recorrer el catalogo y el HTML no lleva los textos largos que no muestra. */
-const indice = construirIndice({ catalogo, servicios, delegaciones });
+/* El indice del buscador se genera como archivo aparte (indice-busqueda.json)
+   y se descarga al abrir el buscador: son 44 KB que no pinta nadie al cargar. */
+const urlIndice = `${SITIO.base.replace(/\/$/, "")}/indice-busqueda.json`;
 ---
 
 <Avisos client:idle />
-<BuscadorGlobal {indice} client:idle />
+<BuscadorGlobal url={urlIndice} client:idle />
 <Bandeja catalogo={catalogoBreve(catalogo)} client:idle />
 <PanelAccesibilidad client:idle />
 <Asistente catalogo={catalogoSugerible(catalogo)} client:idle />

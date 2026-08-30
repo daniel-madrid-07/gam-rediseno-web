@@ -20,6 +20,7 @@ npm run verify       # lint + tipos + tests unitarios + extremo a extremo
 | **nanostores**           | La bandeja vive en la cabecera, en el catálogo y en su diálogo: tres islas que no se conocen entre sí.        |
 | **Zod** (vía colecciones) | Valida las 35 familias y las 54 delegaciones en build. Un dato mal formado rompe la compilación, no la web.  |
 | **Vitest + Playwright**  | La lógica pura se prueba en milisegundos; los recorridos reales, contra el sitio ya compilado.                |
+| **Tipografías propias**  | Servidas desde el mismo origen. Pedirlas a Google bloqueaba el renderizado 2,3 s en móvil.                     |
 
 ## Estructura
 
@@ -81,11 +82,48 @@ ni un color.
 npm test              # 35 tests de lógica pura (filtrado, geo, texto)
 npm run test:e2e      # 45 recorridos en escritorio y móvil
 npm run auditar       # contraste AA en 12 escenarios (temas, móvil, diálogos)
+npm run medir         # Lighthouse en móvil y escritorio
 ```
+
+### Lighthouse
+
+| | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
+| --- | --- | --- | --- | --- |
+| Escritorio | **100** | **100** | **100** | **100** |
+| Móvil | **96** | **100** | **100** | **100** |
+
+Móvil: FCP 1,9 s · LCP 2,6 s · CLS 0 · TBT 0 ms (simulación Slow 4G).
+
+Lo que se probó y **empeoraba**, por si alguien lo vuelve a intentar:
+
+- Meter la hoja de estilos entera en línea: el HTML engorda de 54 a 67 KB y el
+  FCP en móvil pasa de 1,9 s a 2,5 s. La hoja externa gana.
+- Extraer el CSS crítico con Beasties: con la página entera en el marcado
+  considera crítico 50 de los 61 KB, los mete en línea y encima sigue cargando
+  la hoja completa. FCP 2,6 s.
+- Quitar los 54 nodos `LocalBusiness` del JSON-LD: ahorra 4 KB comprimidos y la
+  puntuación no se mueve, así que no compensa perder el marcado local.
+- Quitar `content-visibility`: cuesta 11 puntos de rendimiento en móvil.
 
 La auditoría de contraste desactiva `content-visibility` antes de medir: Chrome
 no recalcula estilos fuera de pantalla y, sin eso, informa de fallos que no
 existen.
+
+## Tipografías
+
+No se cargan desde Google: se sirven desde el mismo origen. El proceso está
+automatizado en dos pasos y sólo hay que repetirlo si cambian las familias:
+
+```bash
+npm run fuentes   # descarga los .woff2 y recorta los ejes variables
+```
+
+El segundo paso (`scripts/afinar-fuentes.py`, necesita `fonttools` y `brotli`)
+estrecha los ejes de Archivo a lo que la web usa de verdad: anchura 82–92 en
+lugar de 62–125. Son 87 KB que pasan a 41 sin perder ni un carácter.
+
+Las dos del primer pantallazo se precargan con su hash real, que la integración
+`endurecer` busca en el CSS ya compilado.
 
 ## Despliegue
 

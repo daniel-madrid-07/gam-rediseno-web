@@ -9,6 +9,9 @@
 @layer reset, tokens, base, layout, componentes, estados, utilidades;
 
 /* ---- Fundamentos ---- */
+/* Las @font-face van fuera de toda capa: no compiten con nada y asi
+   el navegador las descubre en cuanto llega el CSS. */
+@import "./base/fuentes.css";
 @import "./base/tokens.css" layer(tokens);
 @import "./base/reset.css" layer(reset);
 @import "./base/tipografia.css" layer(base);

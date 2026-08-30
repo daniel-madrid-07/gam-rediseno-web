@@ -8,6 +8,19 @@ import { SITIO } from "@/config/sitio";
  * donde esté desplegada esta versión: así una vista previa nunca compite en
  * buscadores con gamrentals.com ni se lleva sus posiciones.
  */
+/** Recurso que debe empezar a descargarse antes de que el CSS lo descubra. */
+export interface Precarga {
+  href: string;
+  como: "image" | "font" | "style" | "script";
+  /** Sube la prioridad de la descarga. Imprescindible en la imagen del LCP. */
+  prioritaria?: boolean;
+  /** Restringe la precarga a un ancho concreto, para `<picture>`. */
+  media?: string;
+  srcset?: string;
+  sizes?: string;
+  tipo?: string;
+}
+
 interface Props {
   titulo: string;
   descripcion: string;
@@ -15,6 +28,7 @@ interface Props {
   ruta?: string;
   imagen?: string;
   tipo?: "website" | "article" | "product";
+  precargas?: Precarga[];
 }
 
 const {
@@ -22,6 +36,7 @@ const {
   descripcion,
   ruta = "/",
   tipo = "website",
+  precargas = [],
   imagen = "https://gamrentals.com/media/media-bd/imagenes/cabecera-alquiler-1920x550-1595927378.png",
 } = Astro.props;
 
@@ -43,6 +58,27 @@ const IDIOMAS: readonly [string, string][] = [
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!--
+  Precargas primero. Sin esto, la imagen del héroe no empieza a bajar hasta que
+  el navegador ha descargado y aplicado el CSS, porque hasta entonces no sabe
+  qué tamaño le toca. Es lo que separa un LCP de 3 s de uno de 1,5 s.
+-->
+{
+  precargas.map((recurso) => (
+    <link
+      rel="preload"
+      as={recurso.como}
+      href={recurso.href}
+      media={recurso.media}
+      imagesrcset={recurso.srcset}
+      imagesizes={recurso.sizes}
+      type={recurso.tipo}
+      fetchpriority={recurso.prioritaria ? "high" : undefined}
+      crossorigin={recurso.como === "font" ? "" : undefined}
+    />
+  ))
+}
 
 <title>{titulo}</title>
 <meta name="description" content={descripcion} />
@@ -77,9 +113,9 @@ const IDIOMAS: readonly [string, string][] = [
 
 <link rel="icon" href={`${SITIO.base.replace(/\/$/, "")}/favicon.svg`} type="image/svg+xml" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
-/>
+<!--
+  No hay enlace a fonts.googleapis.com: las tipografias se sirven desde el
+  mismo origen (ver src/estilos/base/fuentes.css). Pedirlas a Google obligaba
+  a resolver dos dominios y abrir dos conexiones TLS antes de pintar la primera
+  letra, y eso bloqueaba el renderizado 2,3 s en movil.
+-->

@@ -1,5 +1,5 @@
 ---
-import Cabeza from "@componentes/layout/Cabeza.astro";
+import Cabeza, { type Precarga } from "@componentes/layout/Cabeza.astro";
 import Sprite from "@componentes/base/Sprite.astro";
 import "@/estilos/indice.css";
 
@@ -16,15 +16,16 @@ interface Props {
   descripcion: string;
   ruta?: string;
   tipo?: "website" | "article" | "product";
+  precargas?: Precarga[];
 }
 
-const { titulo, descripcion, ruta = "/", tipo = "website" } = Astro.props;
+const { titulo, descripcion, ruta = "/", tipo = "website", precargas = [] } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <Cabeza {titulo} {descripcion} {ruta} {tipo} />
+    <Cabeza {titulo} {descripcion} {ruta} {tipo} {precargas} />
     <script is:inline>
       /* Preferencias antes del primer pintado: evita el parpadeo de tema. */
       (function () {

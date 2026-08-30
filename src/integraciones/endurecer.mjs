@@ -51,7 +51,7 @@ async function* archivos(directorio, extensiones) {
   }
 }
 
-export default function endurecer() {
+export default function endurecer({ base = "/" } = {}) {
   return {
     name: "gam-endurecer",
     hooks: {
@@ -61,6 +61,7 @@ export default function endurecer() {
         /* ---- 1. Limpiar el HTML ---- */
         let ahorro = 0;
         let paginas = 0;
+        const htmls = [];
         for await (const ruta of archivos(raiz, [".html"])) {
           const original = await readFile(ruta, "utf8");
           const limpio = quitarGenerador(limpiarComentarios(original));
@@ -69,9 +70,53 @@ export default function endurecer() {
             ahorro += original.length - limpio.length;
           }
           paginas += 1;
+          htmls.push(ruta);
         }
 
-        /* ---- 2. Comprobar que no se publica nada que delate el origen ---- */
+        /* Sobre el CSS crítico: se probó a extraerlo con Beasties y salió
+         * peor (con la página entera en el marcado considera crítico 50 de los
+         * 61 KB, y encima sigue cargando la hoja completa: la primera pintura
+         * pasaba de 1,8 s a 2,6 s). Meter la hoja entera en línea era aún peor,
+         * 3,0 s. Gana dejarla como hoja externa. */
+
+        /* ---- 2. Precargar las tipografías del primer pantallazo ----
+         *
+         * Sin esto, una fuente no empieza a bajar hasta que el navegador ha
+         * descargado el CSS, lo ha analizado, ha maquetado y ha descubierto que
+         * hay texto que la necesita. Son tres pasos en serie antes de pedir un
+         * archivo que ya se sabe que hace falta.
+         *
+         * El nombre lleva un hash que pone Vite, así que no se puede escribir a
+         * mano en la plantilla: se busca en el CSS ya compilado.
+         *
+         * Sólo van las dos de la primera pantalla. Precargar todas competiría
+         * por el ancho de banda con la imagen del héroe, que es el LCP.
+         */
+        const CRITICAS = [/archivo-[^"')]*-latin\.[\w-]+\.woff2/, /instrument-sans-[^"')]*-latin\.[\w-]+\.woff2/];
+        const urlsFuentes = new Set();
+        for await (const hoja of archivos(raiz, [".css"])) {
+          const contenido = await readFile(hoja, "utf8");
+          for (const patron of CRITICAS) {
+            const encontrado = patron.exec(contenido);
+            if (encontrado) urlsFuentes.add(`${base.replace(/\/$/, "")}/a/${encontrado[0]}`);
+          }
+        }
+
+        const precargas = [...urlsFuentes]
+          .map((url) => `<link rel="preload" as="font" type="font/woff2" href="${url}" crossorigin>`)
+          .join("");
+
+        if (precargas) {
+          for (const ruta of htmls) {
+            const html = await readFile(ruta, "utf8");
+            if (html.includes('as="font"')) continue;
+            // Delante del primer <link>, que es donde antes empieza la descarga
+            await writeFile(ruta, html.replace(/<link /, `${precargas}<link `), "utf8");
+          }
+          logger.info(`Tipografías precargadas: ${urlsFuentes.size}`);
+        }
+
+        /* ---- 3. Comprobar que no se publica nada que delate el origen ---- */
         const sospechosos = [];
         for await (const ruta of archivos(raiz, [".js", ".css", ".html", ".json"])) {
           const contenido = await readFile(ruta, "utf8");

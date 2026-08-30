@@ -33,9 +33,34 @@ const servicios = (await getCollection("servicios")).map((e) => e.data as Servic
 const delegaciones = (await getCollection("delegaciones")).map((e) => e.data as Delegacion);
 
 const datosEstructurados = grafoDePortada({ catalogo, servicios, delegaciones });
+
+const base = SITIO.base.replace(/\/$/, "");
+
+/**
+ * La foto del héroe es el LCP. Se precarga con la misma condición `media` que
+ * usa el <picture>, para que el navegador baje exactamente el mismo archivo
+ * que va a pintar y no dos.
+ */
+const precargas = [
+  {
+    href: `${base}/img/hero-mov.avif`,
+    como: "image" as const,
+    media: "(max-width: 47.99rem)",
+    tipo: "image/avif",
+    prioritaria: true,
+  },
+  {
+    href: `${base}/img/hero-xl.webp`,
+    como: "image" as const,
+    media: "(min-width: 48rem)",
+    srcset: `${base}/img/hero-m.webp 800w, ${base}/img/hero-xl.webp 1600w`,
+    sizes: "(min-width: 62rem) 46vw, 100vw",
+    prioritaria: true,
+  },
+];
 ---
 
-<Base titulo={SITIO.titulo} descripcion={SITIO.descripcion}>
+<Base titulo={SITIO.titulo} descripcion={SITIO.descripcion} {precargas}>
   <script
     slot="cabeza"
     type="application/ld+json"
@@ -62,7 +87,7 @@ const datosEstructurados = grafoDePortada({ catalogo, servicios, delegaciones })
 
   <Pie />
   <BarraPulgar />
-  <Herramientas {catalogo} {servicios} {delegaciones} />
+  <Herramientas {catalogo} {servicios} />
 </Base>
 
 <script>
